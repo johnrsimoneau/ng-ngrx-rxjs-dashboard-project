@@ -58,12 +58,16 @@ const generateCompany = (number) => {
 //#region Progject Generation
 const generateProject = (number) => {
   const projects = [];
+  const overallStatus = ['G', 'Y', 'R'];
   
   while(number >= 0) {
     const companyIndex = randomIntFromInterval(0, companyEntities.length-1);
+    const statusIndex = randomIntFromInterval(0, overallStatus.length-1);
+
     projects.push({
       id: faker.datatype.uuid(),
       projectCodeName: faker.random.word().toUpperCase(),
+      overallStatus: overallStatus[statusIndex],
       startDate: faker.date.past(2),
       modifiedDate: faker.date.recent(),
       percentageComplete: faker.random.numeric(2),
@@ -76,9 +80,9 @@ const generateProject = (number) => {
 };
 //#endregion
 
-//#region User
-const generateUserData = (number) => {
-  const users = [];
+//#region Consultant
+const generateConsultantData = (number) => {
+  const consultants = [];
   while(number >= 0) {
 
     const firstName = faker.name.firstName();
@@ -86,7 +90,7 @@ const generateUserData = (number) => {
     const roleIndex = randomIntFromInterval(0, projectRoleTitles.length-1);
     const projectIndex = randomIntFromInterval(0, projectEntities.length-1);
 
-    users.push({
+    consultants.push({
       id: faker.datatype.uuid(),
       firstName: firstName,
       lastName: lastName,
@@ -98,7 +102,7 @@ const generateUserData = (number) => {
     });
     number--;
   }
-  return users;
+  return consultants;
 };
 //#endregion
 
@@ -163,8 +167,9 @@ const generateCompanyContacts = (number) => {
 const roleEntities = generateRole();
 const companyEntities = generateCompany(10);
 const projectEntities = generateProject(70);
-const userEntities = generateUserData(200)
+const consultantEntities = generateConsultantData(200)
 const companyContactEntities = generateCompanyContacts(45);
+console.log(projectEntities);
 
 fs.writeFileSync(
   "./db.json",
@@ -172,7 +177,7 @@ fs.writeFileSync(
     roles: roleEntities,
     companies: companyEntities,
     projects: projectEntities,
-    users: userEntities,
+    consultants: consultantEntities,
     contacts: companyContactEntities
   })
 );
