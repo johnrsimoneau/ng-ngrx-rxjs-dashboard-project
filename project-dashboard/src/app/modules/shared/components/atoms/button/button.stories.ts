@@ -5,7 +5,19 @@ export default {
   title: 'Atoms/Button',
   component: ButtonComponent,
   argTypes: {
-    backgroundColor: { control: 'color' },
+    label: {
+      control: { type: 'text' }
+    },
+    type: {
+      // table:  { defaultValue: { summary: 'primary'} },
+      options: ['primary', 'primary-outline', 'secondary', 'secondary-outline'],
+      control: { type: 'select'}
+    },
+    size: {
+      // table:  { defaultValue: { summary: 'm'} },
+      options: ['xs', 's', 'm', 'l', 'xl'],
+      control: { type: 'select'}
+    }
   },
 } as Meta;
 
@@ -15,6 +27,13 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: 'Primary',
-  label: 'Button Label'
+  label: 'Primary Button',
+  type: 'primary'
 }
+
+export const Secondary: Story = () => ({
+  props: {
+    label: 'Secondary Button',
+    type: 'secondary',
+  }
+});
