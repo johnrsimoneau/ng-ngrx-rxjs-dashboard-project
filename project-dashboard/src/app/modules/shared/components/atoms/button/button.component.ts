@@ -10,7 +10,9 @@ export class ButtonComponent implements OnInit {
 
   @Input() label = '';
 
-  @Input() type: 'primary' | 'primary-outline' | 'secondary' | 'secondary-outline' = 'primary';
+  @Input() type: 'primary' | 'secondary' = 'primary';
+
+  @Input() hasOutline: boolean = false;
 
   @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
 

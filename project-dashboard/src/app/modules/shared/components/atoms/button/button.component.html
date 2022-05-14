@@ -2,12 +2,11 @@
   class="
     atom--button
     rounded-md 
-    py-2
-    px-6
     bg-sky-800 
     text-white 
     uppercase
     font-bold
     box-border"
-  [ngClass]="size">{{ label }}
+  [class.has-outline]="hasOutline"
+  [ngClass]="[size, type ]">{{ label }}
 </button>

@@ -410,8 +410,9 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-8d461720c3b9e98254fe3acfc181dd5f4f0475532b59d8727fd2d1c3e0c9c01e1068ca3fcc7fb90f7b3f1de5d2b157eeb9b0e7041dcf32ab65a8714e8bb87dad",
+            "id": "component-ButtonComponent-b222d650080229d1c26dd84baed89b82705c83ed4de59854cebf7f72ef747284affce0d959238b121c61dbc420c169c97e28159cb02dda3d78b2b204891c1d14",
             "file": "src/app/modules/shared/components/atoms/button/button.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -428,11 +429,20 @@
             "viewProviders": [],
             "inputsClass": [
                 {
+                    "name": "hasOutline",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
                     "name": "label",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 10,
+                    "line": 11,
                     "type": "string",
                     "decorators": []
                 },
@@ -441,7 +451,7 @@
                     "defaultValue": "'m'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 17,
                     "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
                     "decorators": []
                 },
@@ -450,8 +460,8 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 12,
-                    "type": "\"primary\" | \"primary-outline\" | \"secondary\" | \"secondary-outline\"",
+                    "line": 13,
+                    "type": "\"primary\" | \"secondary\"",
                     "decorators": []
                 }
             ],
@@ -464,7 +474,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 18,
+                    "line": 21,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -476,11 +486,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss']\n})\nexport class ButtonComponent implements OnInit {\n\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'primary-outline' | 'secondary' | 'secondary-outline' = 'primary';\n\n  @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent implements OnInit {\n\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'secondary' = 'primary';\n\n  @Input() hasOutline: boolean = false;\n\n  @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';\n\n  constructor() { }\n\n  ngOnInit(): void {\n    console.log(this.size);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".atom--button {\r\n  box-sizing: border-box !important;\r\n  padding: 8px 24px;\r\n  &.primary {\r\n    background-color: var(--primary-color);\r\n    &.has-outline {\r\n      background-color: var(--white);\r\n      color: var(--primary-color);\r\n      outline: 2px solid var(--primary-color);\r\n      padding: 6px 22px;\r\n      margin-top: 2px;\r\n      margin-left: 2px;\r\n    }\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--primary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.secondary {\r\n\r\n    background-color: var(--white);\r\n      color: var(--secondary-color);\r\n      outline: 2px solid var(--secondary-color);\r\n      padding: 6px 22px;\r\n      margin-top: 2px;\r\n      margin-left: 2px;\r\n    // &.has-outline {\r\n    //   background-color: var(--white);\r\n    //   color: var(--secondary-color);\r\n    //   outline: 2px solid var(--secondary-color);\r\n    //   padding: 6px 22px;\r\n    //   margin-top: 2px;\r\n    //   margin-left: 2px;\r\n    // }\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--secondary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.xs {\r\n    font-size: smaller;\r\n  }\r\n  &.s {\r\n    font-size: small\r\n  }\r\n  &.m {\r\n    font-size: medium;\r\n  }\r\n  &.l {\r\n    font-size: large;\r\n  }\r\n  &.xl {\r\n    font-size: larger;\r\n  }\r\n}",
                     "styleUrl": "./button.component.scss"
                 }
             ],
@@ -491,12 +501,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 14
+                "line": 17
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<button \r\n  class=\"\r\n    px-6 \r\n    py-2 \r\n    rounded-lg \r\n    bg-sky-500 \r\n    text-white \r\n    font-bold \r\n    uppercase\">{{ label }}\r\n</button>"
+            "templateData": "<button \r\n  class=\"\r\n    atom--button\r\n    rounded-md \r\n    bg-sky-800 \r\n    text-white \r\n    uppercase\r\n    font-bold\r\n    box-border\"\r\n  [class.has-outline]=\"hasOutline\"\r\n  [ngClass]=\"[size, type ]\">{{ label }}\r\n</button>"
         }
     ],
     "modules": [
@@ -821,21 +831,21 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  production: true\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
                 "defaultValue": "{\n  production: false\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
             },
             {
                 "name": "Primary",
@@ -844,8 +854,18 @@
                 "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "() => ({\r\n  props: {\r\n    label: 'Primary Button',\r\n    type: 'primary',\r\n    size: 'm'\r\n  }\r\n})"
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "PrimaryOutline",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "require",
@@ -863,8 +883,18 @@
                 "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "() => ({\r\n  props: {\r\n    label: 'Secondary Button',\r\n    type: 'secondary',\r\n    size: 'm'\r\n  }\r\n})"
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
             }
         ],
         "functions": [],
@@ -892,18 +922,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
-                }
-            ],
             "src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -916,6 +934,18 @@
                     "defaultValue": "{\n  production: false\n}"
                 }
             ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
             "src/app/modules/shared/components/atoms/button/button.stories.ts": [
                 {
                     "name": "Primary",
@@ -924,8 +954,18 @@
                     "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "() => ({\r\n  props: {\r\n    label: 'Primary Button',\r\n    type: 'primary',\r\n    size: 'm'\r\n  }\r\n})"
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "PrimaryOutline",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
                 },
                 {
                     "name": "Secondary",
@@ -934,8 +974,18 @@
                     "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "() => ({\r\n  props: {\r\n    label: 'Secondary Button',\r\n    type: 'secondary',\r\n    size: 'm'\r\n  }\r\n})"
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<ButtonComponent>",
+                    "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
                 }
             ]
         },
@@ -976,7 +1026,7 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -994,7 +1044,27 @@
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
+                "name": "PrimaryOutline",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
                 "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

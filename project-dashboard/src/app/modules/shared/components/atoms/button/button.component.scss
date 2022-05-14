@@ -1,9 +1,35 @@
 .atom--button {
-  &:active,
-  &:focus,
-  &:hover {
-    outline: 2px solid #075985;
-    outline-offset: 4px;
+  box-sizing: border-box !important;
+  padding: 8px 24px;
+  &.primary {
+    background-color: var(--primary-color);
+    &.has-outline {
+      background-color: var(--white);
+      color: var(--primary-color);
+      outline: 2px solid var(--primary-color);
+      padding: 6px 22px;
+      margin-top: 2px;
+      margin-left: 2px;
+    }
+    &:hover,
+    &:focus {
+      outline: 2px solid var(--primary-color);
+      outline-offset: 4px;
+    }
+  }
+  &.secondary {
+
+    background-color: var(--white);
+      color: var(--secondary-color);
+      outline: 2px solid var(--secondary-color);
+      padding: 6px 22px;
+      margin-top: 2px;
+      margin-left: 2px;
+    &:hover,
+    &:focus {
+      outline: 2px solid var(--secondary-color);
+      outline-offset: 4px;
+    }
   }
   &.xs {
     font-size: smaller;

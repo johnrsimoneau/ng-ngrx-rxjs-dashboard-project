@@ -9,12 +9,14 @@ export default {
       control: { type: 'text' }
     },
     type: {
-      // table:  { defaultValue: { summary: 'primary'} },
-      options: ['primary', 'primary-outline', 'secondary', 'secondary-outline'],
+      options: ['primary', 'secondary'],
       control: { type: 'select'}
     },
+    hasOutline: {
+      options: [true, false],
+      control: { type: 'radio' }
+    },
     size: {
-      // table:  { defaultValue: { summary: 'm'} },
       options: ['xs', 's', 'm', 'l', 'xl'],
       control: { type: 'select'}
     }
@@ -27,13 +29,21 @@ const Template: Story<ButtonComponent> = (args: ButtonComponent) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  label: 'Primary Button',
-  type: 'primary'
-}
+  label: 'Primary',
+  type: 'primary',
+  hasOutline: false
+};
 
-export const Secondary: Story = () => ({
-  props: {
-    label: 'Secondary Button',
-    type: 'secondary',
-  }
-});
+export const PrimaryOutline = Template.bind({});
+PrimaryOutline.args = {
+  label: 'Primary Outline',
+  type: 'primary',
+  hasOutline: true
+};
+
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: 'Secondary',
+  type: 'secondary',
+  hasOutline: false
+};
