@@ -5,8 +5,8 @@
     bg-sky-800 
     text-white 
     uppercase
-    font-bold
+    font-semibold
     box-border"
-  [class.has-outline]="hasOutline"
+    (click)="onClick($event)"
   [ngClass]="[size, type ]">{{ label }}
 </button>

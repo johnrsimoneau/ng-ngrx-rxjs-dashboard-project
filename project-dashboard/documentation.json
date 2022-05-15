@@ -410,7 +410,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-b222d650080229d1c26dd84baed89b82705c83ed4de59854cebf7f72ef747284affce0d959238b121c61dbc420c169c97e28159cb02dda3d78b2b204891c1d14",
+            "id": "component-ButtonComponent-0d38fe562320e19f67d721506e9012dc532703d112e07d48a9471831e5ef6a3925ecced254bd0ce905ae387e68d1cb3cb0139fe12d4c4ac0cc3c41ccf1dcf1d4",
             "file": "src/app/modules/shared/components/atoms/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -429,20 +429,11 @@
             "viewProviders": [],
             "inputsClass": [
                 {
-                    "name": "hasOutline",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 15,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
                     "name": "label",
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 10,
                     "type": "string",
                     "decorators": []
                 },
@@ -451,7 +442,7 @@
                     "defaultValue": "'m'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 14,
                     "type": "\"xs\" | \"s\" | \"m\" | \"l\" | \"xl\"",
                     "decorators": []
                 },
@@ -460,23 +451,50 @@
                     "defaultValue": "'primary'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 12,
                     "type": "\"primary\" | \"secondary\"",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "clickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "EventEmitter<Event>"
+                }
+            ],
             "propertiesClass": [],
             "methodsClass": [
                 {
-                    "name": "ngOnInit",
-                    "args": [],
+                    "name": "onClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 20,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -486,11 +504,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent implements OnInit {\n\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'secondary' = 'primary';\n\n  @Input() hasOutline: boolean = false;\n\n  @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';\n\n  constructor() { }\n\n  ngOnInit(): void {\n    console.log(this.size);\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'secondary' = 'primary';\n\n  @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';\n\n  @Output() clickEvent: EventEmitter<Event> = new EventEmitter();\n\n  constructor() { }\n\n  onClick(event: Event): void {\n    this.clickEvent.emit(event);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".atom--button {\r\n  box-sizing: border-box !important;\r\n  padding: 8px 24px;\r\n  &.primary {\r\n    background-color: var(--primary-color);\r\n    &.has-outline {\r\n      background-color: var(--white);\r\n      color: var(--primary-color);\r\n      outline: 2px solid var(--primary-color);\r\n      padding: 6px 22px;\r\n      margin-top: 2px;\r\n      margin-left: 2px;\r\n    }\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--primary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.secondary {\r\n\r\n    background-color: var(--white);\r\n      color: var(--secondary-color);\r\n      outline: 2px solid var(--secondary-color);\r\n      padding: 6px 22px;\r\n      margin-top: 2px;\r\n      margin-left: 2px;\r\n    // &.has-outline {\r\n    //   background-color: var(--white);\r\n    //   color: var(--secondary-color);\r\n    //   outline: 2px solid var(--secondary-color);\r\n    //   padding: 6px 22px;\r\n    //   margin-top: 2px;\r\n    //   margin-left: 2px;\r\n    // }\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--secondary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.xs {\r\n    font-size: smaller;\r\n  }\r\n  &.s {\r\n    font-size: small\r\n  }\r\n  &.m {\r\n    font-size: medium;\r\n  }\r\n  &.l {\r\n    font-size: large;\r\n  }\r\n  &.xl {\r\n    font-size: larger;\r\n  }\r\n}",
+                    "data": ".atom--button {\r\n  box-sizing: border-box !important;\r\n  padding: 8px 24px;\r\n  &.primary {\r\n    background-color: var(--primary-color);\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--primary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.secondary {\r\n    background-color: var(--white);\r\n      color: var(--secondary-color);\r\n      outline: 2px solid var(--secondary-color);\r\n      padding: 6px 22px;\r\n      margin-top: 2px;\r\n      margin-left: 2px;\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--secondary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.xs {\r\n    font-size: smaller;\r\n  }\r\n  &.s {\r\n    font-size: small\r\n  }\r\n  &.m {\r\n    font-size: medium;\r\n  }\r\n  &.l {\r\n    font-size: large;\r\n  }\r\n  &.xl {\r\n    font-size: larger;\r\n  }\r\n}",
                     "styleUrl": "./button.component.scss"
                 }
             ],
@@ -501,12 +519,9 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 17
+                "line": 16
             },
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<button \r\n  class=\"\r\n    atom--button\r\n    rounded-md \r\n    bg-sky-800 \r\n    text-white \r\n    uppercase\r\n    font-bold\r\n    box-border\"\r\n  [class.has-outline]=\"hasOutline\"\r\n  [ngClass]=\"[size, type ]\">{{ label }}\r\n</button>"
+            "templateData": "<button \r\n  class=\"\r\n    atom--button\r\n    rounded-md \r\n    bg-sky-800 \r\n    text-white \r\n    uppercase\r\n    font-semibold\r\n    box-border\"\r\n    (click)=\"onClick($event)\"\r\n  [ngClass]=\"[size, type ]\">{{ label }}\r\n</button>"
         }
     ],
     "modules": [
@@ -831,16 +846,6 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  production: false\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.prod.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -848,17 +853,17 @@
                 "defaultValue": "{\n  production: true\n}"
             },
             {
-                "name": "Primary",
+                "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "Template.bind({})"
+                "type": "object",
+                "defaultValue": "{\n  production: false\n}"
             },
             {
-                "name": "PrimaryOutline",
+                "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
@@ -922,18 +927,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: false\n}"
-                }
-            ],
             "src/environments/environment.prod.ts": [
                 {
                     "name": "environment",
@@ -946,19 +939,21 @@
                     "defaultValue": "{\n  production: true\n}"
                 }
             ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false\n}"
+                }
+            ],
             "src/app/modules/shared/components/atoms/button/button.stories.ts": [
                 {
                     "name": "Primary",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                },
-                {
-                    "name": "PrimaryOutline",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
@@ -1035,16 +1030,6 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Primary",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/modules/shared/components/atoms/button/button.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "PrimaryOutline",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

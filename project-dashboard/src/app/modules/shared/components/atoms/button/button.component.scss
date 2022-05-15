@@ -3,14 +3,6 @@
   padding: 8px 24px;
   &.primary {
     background-color: var(--primary-color);
-    &.has-outline {
-      background-color: var(--white);
-      color: var(--primary-color);
-      outline: 2px solid var(--primary-color);
-      padding: 6px 22px;
-      margin-top: 2px;
-      margin-left: 2px;
-    }
     &:hover,
     &:focus {
       outline: 2px solid var(--primary-color);
@@ -18,7 +10,6 @@
     }
   }
   &.secondary {
-
     background-color: var(--white);
       color: var(--secondary-color);
       outline: 2px solid var(--secondary-color);
