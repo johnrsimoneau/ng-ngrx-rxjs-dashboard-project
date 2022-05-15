@@ -17,7 +17,7 @@ export default {
       options: ['xs', 's', 'm', 'l', 'xl'],
       control: { type: 'select'}
     },
-    clickEvent: { action: 'clicked '}
+    handleButtonClickEvent: { action: 'clicked '} 
   },
 } as Meta;
 

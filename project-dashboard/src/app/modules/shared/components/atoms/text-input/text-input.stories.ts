@@ -1,37 +1,45 @@
 import { Story, Meta, moduleMetadata  } from '@storybook/angular';
-import { InputLabelComponent } from './input-label.component';
+import { TextInputComponent } from './text-input.component';
 import { SharedModule } from '../../../shared.module';
 
 export default {
   title: 'Atoms/InputLabel',
-  component: InputLabelComponent,
+  component: TextInputComponent,
   decorators: [
     moduleMetadata({
       imports: [SharedModule]
     })
   ],
   argTypes: {
-    labelId: {
+    inputId: {
       control: { type: 'text' }
     },
-    laeblName: {
+    placeholder: {
       control: { type: 'text' }
+    },
+    inputType: {
+      options: ['date', 'email', 'number', 'tel','text','url'],
+      control: { type: 'select' }
     },
     size: {
       options: ['xs', 's', 'm', 'l', 'xl'],
       control: { type: 'select' }
-    }
+    },
+    handleBlurOutputEvent: { action: 'blur '},
+    handleFocusOutputEvent: { action: 'focus '},
+    handleKeyupOutputEvent: { action: 'keyup '},
   }
 } as Meta;
 
-const Template: Story<InputLabelComponent> = (args: InputLabelComponent) => ({
+const Template: Story<TextInputComponent> = (args: TextInputComponent) => ({
   props: args,
 });
 
 export const InputLabel = Template.bind({});
 InputLabel.args = {
-  labelId: '123',
-  labelName: 'Test Label',
+  inputId: '123',
+  placeholder: 'Input Text',
+  inputType: 'text',
   size: 'm',
   isRequired: true,
 }

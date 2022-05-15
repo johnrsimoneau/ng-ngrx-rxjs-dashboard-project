@@ -9,21 +9,26 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { IconComponent } from './components/atoms/icon/icon.component';
 import { InputLabelComponent } from './components/atoms/input-label/input-label.component';
+import { TextInputComponent } from './components/atoms/text-input/text-input.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     ButtonComponent,
     IconComponent,
     InputLabelComponent,
+    TextInputComponent,
   ],
   imports: [
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   exports: [
     ButtonComponent,
     IconComponent,
     InputLabelComponent,
+    TextInputComponent,
   ]
 })
 export class SharedModule {

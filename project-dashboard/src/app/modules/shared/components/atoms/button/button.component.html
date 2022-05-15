@@ -1,12 +1,9 @@
 <button 
-  class="
-    atom--button
+  class="atom--button
     rounded-md 
-    bg-sky-800 
-    text-white 
     uppercase
     font-semibold
     box-border"
-    (click)="onClick($event)"
+  (click)="handleButtonClickEvent($event)"
   [ngClass]="[size, type ]">{{ label }}
 </button>

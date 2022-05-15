@@ -14,5 +14,4 @@ export class InputLabelComponent {
   @Input() size: UiSize = 'm';
 
   @Input() isRequired = false;
-
 }

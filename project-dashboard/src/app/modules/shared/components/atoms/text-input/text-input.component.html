@@ -1,0 +1,13 @@
+<input 
+  class="py-2 px-3 border border-darker-grey-color rounded-md"
+  autocomplete="off"
+  [(ngModel)]="inputValue"
+  [attr.id]="inputId"
+  [attr.placeholder]="placeholder"
+  [attr.type]="inputType"
+  [ngClass]="size"
+  [attr.required]="isRequired"
+  (blur)="handleBlurOutputEvent(inputValue)"
+  (focus)="handleFocusOutputEvent(inputValue)"
+  (keyup)="handleKeyupOutputEvent(inputValue)"
+/>
