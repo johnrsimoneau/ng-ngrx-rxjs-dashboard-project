@@ -31,12 +31,6 @@ Primary.args = {
   type: 'primary',
 };
 
-// export const PrimaryWithIcon = Template.bind({});
-// PrimaryWithIcon.args = {
-//   iconName: 'folder',
-//   isSolidIcon: false 
-// }
-
 export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Secondary',
