@@ -410,7 +410,7 @@
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-0d38fe562320e19f67d721506e9012dc532703d112e07d48a9471831e5ef6a3925ecced254bd0ce905ae387e68d1cb3cb0139fe12d4c4ac0cc3c41ccf1dcf1d4",
+            "id": "component-ButtonComponent-0fc7ee110b366f560841192363c5b2edf872e8f38cea32978e7e4003e4a73ecbedb343adf774a1c9363ce49f43aa702c2457630582d5147394007f14ed6ac18d",
             "file": "src/app/modules/shared/components/atoms/button/button.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -428,6 +428,23 @@
             ],
             "viewProviders": [],
             "inputsClass": [
+                {
+                    "name": "iconName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "isSolidIcon",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "boolean",
+                    "decorators": []
+                },
                 {
                     "name": "label",
                     "defaultValue": "''",
@@ -462,12 +479,22 @@
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 20,
                     "type": "EventEmitter<Event>"
                 }
             ],
             "propertiesClass": [],
             "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "onClick",
                     "args": [
@@ -481,7 +508,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 20,
+                    "line": 28,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -504,7 +531,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent {\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'secondary' = 'primary';\n\n  @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';\n\n  @Output() clickEvent: EventEmitter<Event> = new EventEmitter();\n\n  constructor() { }\n\n  onClick(event: Event): void {\n    this.clickEvent.emit(event);\n  }\n\n}\n",
+            "sourceCode": "import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class ButtonComponent implements OnInit {\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'secondary' = 'primary';\n\n  @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';\n\n  @Input() iconName: string;\n\n  @Input() isSolidIcon = false;\n\n  @Output() clickEvent: EventEmitter<Event> = new EventEmitter();\n\n  constructor() { }\n\n  ngOnInit(): void {\n    \n  }\n\n  onClick(event: Event): void {\n    this.clickEvent.emit(event);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -519,21 +546,24 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 16
+                "line": 20
             },
-            "templateData": "<button \r\n  class=\"\r\n    atom--button\r\n    rounded-md \r\n    bg-sky-800 \r\n    text-white \r\n    uppercase\r\n    font-semibold\r\n    box-border\"\r\n    (click)=\"onClick($event)\"\r\n  [ngClass]=\"[size, type ]\">{{ label }}\r\n</button>"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<ng-container *ngIf=\"!iconName; else icon_template\">\r\n<button \r\n  class=\"\r\n    atom--button\r\n    rounded-md \r\n    bg-sky-800 \r\n    text-white \r\n    uppercase\r\n    font-semibold\r\n    box-border\"\r\n    (click)=\"onClick($event)\"\r\n  [ngClass]=\"[size, type ]\">{{ label }}\r\n</button>\r\n</ng-container>\r\n<ng-template #icon_template>\r\n  <p>Test</p>\r\n  <fa-icon [icon]=\"['fas', 'star']\"></fa-icon>\r\n</ng-template>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-b0bb343999c0401a2e3ecbec65490c5a76866396b25cae82ed79702c1d4e115033ea8c8ade9395518e8eba42217f2ec5d6c7a62f3d969b3ab2838fe206d56a66",
+            "id": "module-AppModule-2b9b1ef7310f64288068c276072663e1e7f79bc8328fd85c625a7e1e718e974bc424f283c082a37566fa2bccdf05be5316cd41eabc48086ad42b763c44268385",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -552,6 +582,9 @@
                     "elements": [
                         {
                             "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
                         }
                     ]
                 },
@@ -791,13 +824,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-c134525a0f424532cb81d5f74a9123a2b86e314d1c9cac09753fd4e32b3d80cf93ad53c2bb6e97b7c0103273860b193113b204123be263e147028ef7e17012ba",
+            "id": "module-SharedModule-f89e710ddb497efec2e2b1abf91cc239db6cc412fe946affe4baaacfdaa7bcbb8fe116a4d52893cae83f03890bdedc7f22f862f6cd2fab0e8504dde04509fd76",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\n\n\n\n@NgModule({\n  declarations: [\n    ButtonComponent\n  ],\n  imports: [\n    CommonModule\n  ]\n})\nexport class SharedModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { faStar as farStar } from '@fortawesome/free-regular-svg-icons';\nimport { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';\n\n@NgModule({\n  declarations: [\n    ButtonComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule\n  ],\n  exports: [\n    ButtonComponent\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(fasStar, farStar);\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -817,7 +850,11 @@
                 },
                 {
                     "type": "exports",
-                    "elements": []
+                    "elements": [
+                        {
+                            "name": "ButtonComponent"
+                        }
+                    ]
                 },
                 {
                     "type": "bootstrap",
@@ -846,16 +883,6 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  production: true\n}"
-            },
-            {
-                "name": "environment",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -863,7 +890,27 @@
                 "defaultValue": "{\n  production: false\n}"
             },
             {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
                 "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "PrimaryWithIcon",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
@@ -927,18 +974,6 @@
                     "type": "literal type"
                 }
             ],
-            "src/environments/environment.prod.ts": [
-                {
-                    "name": "environment",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
-                }
-            ],
             "src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -951,9 +986,31 @@
                     "defaultValue": "{\n  production: false\n}"
                 }
             ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
             "src/app/modules/shared/components/atoms/button/button.stories.ts": [
                 {
                     "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "PrimaryWithIcon",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
@@ -1021,7 +1078,7 @@
                 "linktype": "component",
                 "name": "ButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -1030,6 +1087,16 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
                 "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "PrimaryWithIcon",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"

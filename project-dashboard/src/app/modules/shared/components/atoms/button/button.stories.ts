@@ -1,9 +1,16 @@
-import { Story, Meta } from '@storybook/angular/types-6-0';
+
+import { Story, Meta, moduleMetadata  } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
+import { SharedModule } from '../../../shared.module';
 
 export default {
   title: 'Atoms/Button',
   component: ButtonComponent,
+  decorators: [
+    moduleMetadata({
+      imports: [SharedModule]
+    })
+  ],
   argTypes: {
     label: {
       control: { type: 'text' }
@@ -29,6 +36,11 @@ Primary.args = {
   label: 'Primary',
   type: 'primary',
 };
+
+export const PrimaryWithIcon = Template.bind({});
+PrimaryWithIcon.args = {
+  iconName: 'faCoffee'
+}
 
 export const Secondary = Template.bind({});
 Secondary.args = {
