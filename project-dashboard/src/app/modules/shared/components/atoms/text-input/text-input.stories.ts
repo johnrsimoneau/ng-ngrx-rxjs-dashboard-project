@@ -3,7 +3,7 @@ import { TextInputComponent } from './text-input.component';
 import { SharedModule } from '../../../shared.module';
 
 export default {
-  title: 'Atoms/InputLabel',
+  title: 'Atoms/Input',
   component: TextInputComponent,
   decorators: [
     moduleMetadata({
@@ -35,8 +35,8 @@ const Template: Story<TextInputComponent> = (args: TextInputComponent) => ({
   props: args,
 });
 
-export const InputLabel = Template.bind({});
-InputLabel.args = {
+export const TextInput = Template.bind({});
+TextInput.args = {
   inputId: '123',
   placeholder: 'Input Text',
   inputType: 'text',

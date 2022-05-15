@@ -3,7 +3,7 @@ import { InputLabelComponent } from './input-label.component';
 import { SharedModule } from '../../../shared.module';
 
 export default {
-  title: 'Atoms/InputLabel',
+  title: 'Atoms/Input',
   component: InputLabelComponent,
   decorators: [
     moduleMetadata({

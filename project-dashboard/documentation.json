@@ -678,7 +678,7 @@
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-eeba26f97f27a7409323f4e85f8d8273a371af6122c05dbd3cf6584195e0e3cb14dc3a35d80c2db11a26814fa0f8dea040b76cf677701b5cf5d14bfdc4f19ef7",
+            "id": "component-TextInputComponent-3951d468690faea6a2f5c849a59e83355c82c1fb3530663896ddc48e8010a9a23506b531d28d3ed512c318b1834b8c23815ff32be6347ececca4bc4426cd8792",
             "file": "src/app/modules/shared/components/atoms/text-input/text-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -757,19 +757,19 @@
                     "type": "EventEmitter<string>"
                 },
                 {
-                    "name": "changeOutputEvent",
-                    "defaultValue": "new EventEmitter()",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 26,
-                    "type": "EventEmitter<string>"
-                },
-                {
                     "name": "focusOutputEvent",
                     "defaultValue": "new EventEmitter()",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 24,
+                    "type": "EventEmitter<string>"
+                },
+                {
+                    "name": "keyupOutputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
                     "type": "EventEmitter<string>"
                 }
             ],
@@ -789,34 +789,6 @@
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 28,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "input",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "handleFhangeOutputEvent",
-                    "args": [
-                        {
-                            "name": "input",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 36,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -858,6 +830,34 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "handleKeyupOutputEvent",
+                    "args": [
+                        {
+                            "name": "input",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "input",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -867,7 +867,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize, UiTextInputType } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-text-input',\n  templateUrl: './text-input.component.html',\n  styleUrls: ['./text-input.component.scss']\n})\nexport class TextInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() inputType: UiTextInputType = 'text';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() changeOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(input: string) {\n    this.blurOutputEvent.emit(this.inputValue);\n  }\n\n  handleFocusOutputEvent(input: string) {\n    this.focusOutputEvent.emit(input);\n  }\n\n  handleFhangeOutputEvent(input: string) {\n    this.changeOutputEvent.emit(input);\n  }\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize, UiTextInputType } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-text-input',\n  templateUrl: './text-input.component.html',\n  styleUrls: ['./text-input.component.scss']\n})\nexport class TextInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() inputType: UiTextInputType = 'text';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(input: string) {\n    this.blurOutputEvent.emit(this.inputValue);\n  }\n\n  handleFocusOutputEvent(input: string) {\n    this.focusOutputEvent.emit(input);\n  }\n\n  handleKeyupOutputEvent(input: string) {\n    this.keyupOutputEvent.emit(input);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -876,7 +876,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<input \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [attr.type]=\"inputType\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (change)=\"handleFhangeOutputEvent(inputValue)\"\n/>"
+            "templateData": "<input \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [attr.type]=\"inputType\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (keyup)=\"handleKeyupOutputEvent(inputValue)\"\n/>"
         }
     ],
     "modules": [
