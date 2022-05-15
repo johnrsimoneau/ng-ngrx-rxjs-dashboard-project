@@ -1,4 +1,3 @@
-
 import { Story, Meta, moduleMetadata  } from '@storybook/angular';
 import { IconComponent } from './icon.component';
 import { SharedModule } from '../../../shared.module';
@@ -13,7 +12,7 @@ export default {
   ],
   argTypes: {
     iconName: {
-      options: ['folder', 'circle-exclamation'],
+      options: ['folder', 'circle-check', 'circle-exclamation'],
       control: { type: 'select' }
     },
     size: {

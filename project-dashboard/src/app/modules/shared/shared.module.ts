@@ -8,11 +8,13 @@ import {
   faFolder 
 } from '@fortawesome/free-solid-svg-icons';
 import { IconComponent } from './components/atoms/icon/icon.component';
+import { InputLabelComponent } from './components/atoms/input-label/input-label.component';
 
 @NgModule({
   declarations: [
     ButtonComponent,
     IconComponent,
+    InputLabelComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { IconComponent } from './components/atoms/icon/icon.component';
   exports: [
     ButtonComponent,
     IconComponent,
+    InputLabelComponent,
   ]
 })
 export class SharedModule {

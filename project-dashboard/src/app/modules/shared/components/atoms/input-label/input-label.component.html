@@ -1,0 +1,7 @@
+<label 
+  class="cursor-pointer"
+  [attr.for]="labelId" 
+  [ngClass]="size">
+  {{ labelName }}
+  <span *ngIf="isRequired" class="required">*</span>
+</label>
