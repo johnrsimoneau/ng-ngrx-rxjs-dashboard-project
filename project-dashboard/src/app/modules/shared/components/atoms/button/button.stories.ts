@@ -1,16 +1,10 @@
 
-import { Story, Meta, moduleMetadata  } from '@storybook/angular';
+import { Story, Meta,  } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
-import { SharedModule } from '../../../shared.module';
 
 export default {
   title: 'Atoms/Button',
   component: ButtonComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [SharedModule]
-    })
-  ],
   argTypes: {
     label: {
       control: { type: 'text' }
@@ -37,10 +31,11 @@ Primary.args = {
   type: 'primary',
 };
 
-export const PrimaryWithIcon = Template.bind({});
-PrimaryWithIcon.args = {
-  iconName: 'faCoffee'
-}
+// export const PrimaryWithIcon = Template.bind({});
+// PrimaryWithIcon.args = {
+//   iconName: 'folder',
+//   isSolidIcon: false 
+// }
 
 export const Secondary = Template.bind({});
 Secondary.args = {

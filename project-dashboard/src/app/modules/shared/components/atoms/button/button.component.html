@@ -1,4 +1,3 @@
-<ng-container *ngIf="!iconName; else icon_template">
 <button 
   class="
     atom--button
@@ -11,8 +10,3 @@
     (click)="onClick($event)"
   [ngClass]="[size, type ]">{{ label }}
 </button>
-</ng-container>
-<ng-template #icon_template>
-  <p>Test</p>
-  <fa-icon [icon]="['fas', 'star']"></fa-icon>
-</ng-template>

@@ -1,0 +1,11 @@
+fa-icon {
+  &.white {
+    color: var(--white);
+  }
+  &.primary {
+    color: var(--primary-color);
+  }
+  &.secondary {
+    color: var(--secondary-color);
+  }
+}

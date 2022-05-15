@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { UiSize } from '../../../types/ui.types';
 
 @Component({
   selector: 'jrs-button',
@@ -6,24 +7,14 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
   styleUrls: ['./button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ButtonComponent implements OnInit {
+export class ButtonComponent {
   @Input() label = '';
 
   @Input() type: 'primary' | 'secondary' = 'primary';
 
-  @Input() size: 'xs' | 's' | 'm' | 'l' | 'xl' = 'm';
-
-  @Input() iconName: string;
-
-  @Input() isSolidIcon = false;
+  @Input() size: UiSize = 'm';
 
   @Output() clickEvent: EventEmitter<Event> = new EventEmitter();
-
-  constructor() { }
-
-  ngOnInit(): void {
-    
-  }
 
   onClick(event: Event): void {
     this.clickEvent.emit(event);
