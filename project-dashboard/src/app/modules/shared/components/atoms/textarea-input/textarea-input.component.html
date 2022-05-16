@@ -1,0 +1,12 @@
+<textarea 
+  class="py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color"
+  autocomplete="off"
+  [(ngModel)]="inputValue"
+  [attr.id]="inputId"
+  [attr.placeholder]="placeholder"
+  [ngClass]="size"
+  [attr.required]="isRequired"
+  (blur)="handleBlurOutputEvent(inputValue)"
+  (focus)="handleFocusOutputEvent(inputValue)"
+  (keyup)="handleKeyupOutputEvent(inputValue)">
+</textarea>

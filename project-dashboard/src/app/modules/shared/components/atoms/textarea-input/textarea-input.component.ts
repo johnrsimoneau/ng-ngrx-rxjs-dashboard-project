@@ -1,19 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { UiSize, UiTextInputType } from '../../../types/ui.types';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { UiSize } from '../../../types/ui.types';
 
 @Component({
-  selector: 'jrs-text-input',
-  templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.scss']
+  selector: 'jrs-textarea-input',
+  templateUrl: './textarea-input.component.html',
+  styleUrls: ['./textarea-input.component.scss']
 })
-export class TextInputComponent {
+export class TextareaInputComponent {
   @Input() inputId: string;
 
   @Input() inputValue: string;
 
   @Input() placeholder: string;
-
-  @Input() inputType: UiTextInputType = 'text';
 
   @Input() size: UiSize = 'm';
 

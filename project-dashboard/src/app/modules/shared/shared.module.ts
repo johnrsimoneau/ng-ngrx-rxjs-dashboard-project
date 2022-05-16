@@ -11,6 +11,7 @@ import { IconComponent } from './components/atoms/icon/icon.component';
 import { InputLabelComponent } from './components/atoms/input-label/input-label.component';
 import { TextInputComponent } from './components/atoms/text-input/text-input.component';
 import { FormsModule } from '@angular/forms';
+import { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     IconComponent,
     InputLabelComponent,
     TextInputComponent,
+    TextareaInputComponent,
   ],
   imports: [
     CommonModule,
@@ -29,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     IconComponent,
     InputLabelComponent,
     TextInputComponent,
+    TextareaInputComponent,
   ]
 })
 export class SharedModule {
