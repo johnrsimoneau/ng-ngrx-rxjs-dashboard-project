@@ -1,0 +1,15 @@
+<ng-container *ngIf="!linkTo.includes('http'); else out_side_link_template">
+  <a 
+  class="text-white uppercase text-2xl font-semibold hover:underline underline-offset-1"
+    [routerLink]="linkTo"
+    [attr.target]="openInNewTab ? '_blank' : null">
+  {{ linkText }}
+  </a>
+</ng-container>
+<ng-template #out_side_link_template>
+  <a
+    class="underline hover:text-info-color"
+    [attr.href]="linkTo"
+    [attr.target]="openInNewTab ? '_blank' : null">
+  {{ linkText }}</a>
+</ng-template>

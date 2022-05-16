@@ -677,8 +677,76 @@
             "templateData": "<label \n  class=\"cursor-pointer\"\n  [attr.for]=\"labelId\" \n  [ngClass]=\"size\">\n  {{ labelName }}\n  <span *ngIf=\"isRequired\" class=\"required\">*</span>\n</label>\n"
         },
         {
+            "name": "LinkComponent",
+            "id": "component-LinkComponent-cf3b397c0e5e562a20964835413a2f3181a21f8ba932101f51dee19e3acf4899a1e94b2b4b65bce7d13c0ace7b8a4ded35051c77fcd3ce1ff0f4a49b67d124f3",
+            "file": "src/app/modules/shared/components/atoms/link/link.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-nav-link",
+            "styleUrls": [
+                "./link.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./link.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "linkText",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "linkTo",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "openInNewTab",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'jrs-nav-link',\n  templateUrl: './link.component.html',\n  styleUrls: ['./link.component.scss']\n})\nexport class LinkComponent {\n  @Input() linkTo = '';\n\n  @Input() linkText = '';\n\n  @Input() openInNewTab = false;\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./link.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<a \n  class=\"text-white uppercase text-2xl font-semibold hover:text-secondary-light-color\"\n  href=\"https://bing.com\"\n  target=\"_blank\">\n  Projects\n</a>\n\n\n<!-- <ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a \n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}</a>\n</ng-template> -->"
+        },
+        {
             "name": "TextareaInputComponent",
-            "id": "component-TextareaInputComponent-8c79cc08eb22016d5c1dd7ebd01b05e412d429cae7fbf4ef9520349ec3ed1d19180bb5db104c4bfb22716ef32f61ae85fafb6c0f9d2dba9deadf6cf0ae1e51fe",
+            "id": "component-TextareaInputComponent-ec8c784a156de9adaba2640ba2f798906a3d34ddb3a02dd79d9ad6b396ef7e610e658fef6cd0332d33fe837d609c93948377e8b2291c9c8eb50fa02ebd7d37f4",
             "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -768,33 +836,87 @@
             "methodsClass": [
                 {
                     "name": "handleBlurOutputEvent",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 26,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "handleFocusOutputEvent",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 30,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "handleKeyupOutputEvent",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 34,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -804,7 +926,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-textarea-input',\n  templateUrl: './textarea-input.component.html',\n  styleUrls: ['./textarea-input.component.scss']\n})\nexport class TextareaInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent() {\n    this.blurOutputEvent.emit(this.inputValue);\n  }\n\n  handleFocusOutputEvent() {\n    this.focusOutputEvent.emit(this.inputValue);\n  }\n\n  handleKeyupOutputEvent() {\n    this.keyupOutputEvent.emit(this.inputValue);\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-textarea-input',\n  templateUrl: './textarea-input.component.html',\n  styleUrls: ['./textarea-input.component.scss']\n})\nexport class TextareaInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(event: string) {\n    this.blurOutputEvent.emit(event);\n  }\n\n  handleFocusOutputEvent(event: string) {\n    this.focusOutputEvent.emit(event);\n  }\n\n  handleKeyupOutputEvent(event: string) {\n    this.keyupOutputEvent.emit(event);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -813,11 +935,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<textarea \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent()\"\n  (focus)=\"handleFocusOutputEvent()\"\n  (keyup)=\"handleKeyupOutputEvent()\">\n</textarea>\n"
+            "templateData": "<textarea \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (keyup)=\"handleKeyupOutputEvent(inputValue)\">\n</textarea>\n"
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-bc07c557c4600c0287d86e959834fe85a95fa3ad64ace8565b5626c2489e990f1f4afe7aec532eb69e088444e010a9a569ba7e6bcf1bdbde8c09b9a0d0672694",
+            "id": "component-TextInputComponent-3076293bd9cd2157e990b85a5cabe9c4d8d0aed7eb1e29bf459a3c293c83a9f4eefea1d19431be177c97665e474a8216a986084796fc8fb89cc8bf9cd7e6eefa",
             "file": "src/app/modules/shared/components/atoms/text-input/text-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -916,33 +1038,87 @@
             "methodsClass": [
                 {
                     "name": "handleBlurOutputEvent",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 28,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "handleFocusOutputEvent",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 32,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "handleKeyupOutputEvent",
-                    "args": [],
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
                     "line": 36,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 }
             ],
             "deprecated": false,
@@ -952,7 +1128,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize, UiTextInputType } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-text-input',\n  templateUrl: './text-input.component.html',\n  styleUrls: ['./text-input.component.scss']\n})\nexport class TextInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() inputType: UiTextInputType = 'text';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent() {\n    this.blurOutputEvent.emit(this.inputValue);\n  }\n\n  handleFocusOutputEvent() {\n    this.focusOutputEvent.emit(this.inputValue);\n  }\n\n  handleKeyupOutputEvent() {\n    this.keyupOutputEvent.emit(this.inputValue);\n  }\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize, UiTextInputType } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-text-input',\n  templateUrl: './text-input.component.html',\n  styleUrls: ['./text-input.component.scss']\n})\nexport class TextInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() inputType: UiTextInputType = 'text';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(event: string) {\n    this.blurOutputEvent.emit(event);\n  }\n\n  handleFocusOutputEvent(event: string) {\n    this.focusOutputEvent.emit(event);\n  }\n\n  handleKeyupOutputEvent(event: string) {\n    this.keyupOutputEvent.emit(event);\n  }\n\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -961,19 +1137,19 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<input \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [attr.type]=\"inputType\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent()\"\n  (focus)=\"handleFocusOutputEvent()\"\n  (keyup)=\"handleKeyupOutputEvent()\"\n/>"
+            "templateData": "<input \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [attr.type]=\"inputType\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (keyup)=\"handleKeyupOutputEvent(inputValue)\"\n/>"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-2b9b1ef7310f64288068c276072663e1e7f79bc8328fd85c625a7e1e718e974bc424f283c082a37566fa2bccdf05be5316cd41eabc48086ad42b763c44268385",
+            "id": "module-AppModule-b292b59a3be7c8a3fbc8fdfb16b15762a750dab7033947cf5501affce9cf3ac5778251162a664964ac4b4b321dc8f45e8c97f6ffebecd8026b7e6c3efe153515",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule,\n    RouterModule.forRoot([])\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
             "children": [
                 {
                     "type": "providers",
@@ -1234,13 +1410,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-ba43dc9b6a66067e7598dd6db6c6af532cd8605643cf55c9739017518d4918e91057e9863e285092ce03ab2f93f26429560e1421eb1c70c1b502f378732c3bfe",
+            "id": "module-SharedModule-ea09905ffa35cdf14ec991b4bc7de4db5908634cd07ca8d40fd8521d57e674ab4d54e97296b32188ebe89aaaa53d7744b1c105781e129163a231ef63bff724c4",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { \n  faCircleCheck,\n  faCircleExclamation,\n  faFolder \n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\n\n@NgModule({\n  declarations: [\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule\n  ],\n  exports: [\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(\n      faCircleCheck,\n      faCircleExclamation,\n      faFolder\n    );\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { \n  faCircleCheck,\n  faCircleExclamation,\n  faFolder \n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\n\n@NgModule({\n  declarations: [\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule,\n    RouterModule,\n  ],\n  exports: [\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(\n      faCircleCheck,\n      faCircleExclamation,\n      faFolder\n    );\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1257,6 +1433,9 @@
                         },
                         {
                             "name": "InputLabelComponent"
+                        },
+                        {
+                            "name": "LinkComponent"
                         },
                         {
                             "name": "TextInputComponent"
@@ -1281,6 +1460,9 @@
                         },
                         {
                             "name": "InputLabelComponent"
+                        },
+                        {
+                            "name": "LinkComponent"
                         },
                         {
                             "name": "TextInputComponent"
@@ -1354,6 +1536,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Link",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/link/link.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1396,6 +1588,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1406,11 +1608,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "file": "src/app/modules/shared/components/atoms/link/link.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<LinkComponent>",
+                "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1589,6 +1791,28 @@
                     "deprecationMessage": "",
                     "type": "Story<InputLabelComponent>",
                     "defaultValue": "(args: InputLabelComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/modules/shared/components/atoms/link/link.stories.ts": [
+                {
+                    "name": "Link",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/link/link.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/link/link.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LinkComponent>",
+                    "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/app/modules/shared/components/atoms/button/button.stories.ts": [
@@ -1835,6 +2059,35 @@
             },
             {
                 "filePath": "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/link/link.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LinkComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/link/link.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Link",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/link/link.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

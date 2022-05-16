@@ -35,4 +35,4 @@ Icon.args = {
   iconName: 'circle-exclamation',
   size: '2x',
   color: 'primary'
-}
+};

@@ -12,6 +12,8 @@ import { InputLabelComponent } from './components/atoms/input-label/input-label.
 import { TextInputComponent } from './components/atoms/text-input/text-input.component';
 import { FormsModule } from '@angular/forms';
 import { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';
+import { LinkComponent } from './components/atoms/link/link.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { TextareaInputComponent } from './components/atoms/textarea-input/textar
     InputLabelComponent,
     TextInputComponent,
     TextareaInputComponent,
+    LinkComponent,
   ],
   imports: [
     CommonModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
   ],
   exports: [
     ButtonComponent,
@@ -32,6 +36,7 @@ import { TextareaInputComponent } from './components/atoms/textarea-input/textar
     InputLabelComponent,
     TextInputComponent,
     TextareaInputComponent,
+    LinkComponent,
   ]
 })
 export class SharedModule {
