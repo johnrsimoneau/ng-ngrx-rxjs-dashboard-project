@@ -9,7 +9,17 @@ export default {
     moduleMetadata({
       imports: [SharedModule]
     })
-  ]
+  ],
+  argTypes: {
+    color: {
+      options: ['white', 'black'],
+      control: { type: 'select' }
+    },
+    size: {
+      options: ['small', 'large'],
+      control: { type: 'select' }
+    }
+  }
 } as Meta;
 
 const Template: Story<LogoComponent> = (args: LogoComponent) => ({
@@ -17,8 +27,7 @@ const Template: Story<LogoComponent> = (args: LogoComponent) => ({
 });
 
 export const Logo = Template.bind({});
-// Icon.args = {
-//   iconName: 'circle-exclamation',
-//   size: '2x',
-//   color: 'primary'
-// };
+Logo.args = {
+  color: 'black',
+  size: 'large'
+}
