@@ -14,15 +14,18 @@ import { FormsModule } from '@angular/forms';
 import { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';
 import { LinkComponent } from './components/atoms/link/link.component';
 import { RouterModule } from '@angular/router';
+import { LogoComponent } from './components/atoms/logo/logo.component';
 
 @NgModule({
   declarations: [
+    // Atoms
     ButtonComponent,
     IconComponent,
     InputLabelComponent,
     TextInputComponent,
     TextareaInputComponent,
     LinkComponent,
+    LogoComponent,
   ],
   imports: [
     CommonModule,
@@ -31,12 +34,14 @@ import { RouterModule } from '@angular/router';
     RouterModule,
   ],
   exports: [
+    // Atoms
     ButtonComponent,
     IconComponent,
     InputLabelComponent,
     TextInputComponent,
     TextareaInputComponent,
     LinkComponent,
+    LogoComponent
   ]
 })
 export class SharedModule {

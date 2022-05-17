@@ -742,7 +742,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<a \n  class=\"text-white uppercase text-2xl font-semibold hover:text-secondary-light-color\"\n  href=\"https://bing.com\"\n  target=\"_blank\">\n  Projects\n</a>\n\n\n<!-- <ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a \n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}</a>\n</ng-template> -->"
+            "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a \n  class=\"text-white uppercase text-2xl font-semibold hover:underline underline-offset-1\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}</a>\n</ng-template>"
         },
         {
             "name": "TextareaInputComponent",
@@ -1588,16 +1588,6 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1613,6 +1603,16 @@
                 "deprecationMessage": "",
                 "type": "Story<LinkComponent>",
                 "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
