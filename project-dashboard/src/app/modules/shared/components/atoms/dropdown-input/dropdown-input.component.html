@@ -1,0 +1,4 @@
+<select [attr.aria-label]="accessibilityLabelName" [(ngModel)]="selectedValue.value" [attr.id]="inputId" [ngClass]="size" [attr.required]="isRequired">
+  <option *ngIf="placeholder !== ''">{{ placeholder }}</option>
+  <option *ngFor="let option of options">{{option.display}}</option>
+</select>

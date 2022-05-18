@@ -15,6 +15,7 @@ import { TextareaInputComponent } from './components/atoms/textarea-input/textar
 import { LinkComponent } from './components/atoms/link/link.component';
 import { RouterModule } from '@angular/router';
 import { LogoComponent } from './components/atoms/logo/logo.component';
+import { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LogoComponent } from './components/atoms/logo/logo.component';
     TextareaInputComponent,
     LinkComponent,
     LogoComponent,
+    DropdownInputComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { LogoComponent } from './components/atoms/logo/logo.component';
     TextInputComponent,
     TextareaInputComponent,
     LinkComponent,
-    LogoComponent
+    LogoComponent,
+    DropdownInputComponent
   ]
 })
 export class SharedModule {
