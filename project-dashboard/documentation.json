@@ -745,6 +745,65 @@
             "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a \n  class=\"text-white uppercase text-2xl font-semibold hover:underline underline-offset-1\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}</a>\n</ng-template>"
         },
         {
+            "name": "LogoComponent",
+            "id": "component-LogoComponent-9ab41d8323055e057ebbde25983da4e47c4a202bac4ec92aec1e1946943e0e7d4ba0a3dbb088d4e5201f3f2fa6adc920cf73c0db5459dd7326c61c7ed100cc0d",
+            "file": "src/app/modules/shared/components/atoms/logo/logo.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-logo",
+            "styleUrls": [
+                "./logo.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./logo.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "color",
+                    "defaultValue": "\"black\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 9,
+                    "type": "\"black\" | \"white\"",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'large'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "\"small\" | \"large\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'jrs-logo',\n  templateUrl: './logo.component.html',\n  styleUrls: ['./logo.component.scss']\n})\nexport class LogoComponent {\n  @Input() color: 'black' | 'white' = \"black\";\n\n  @Input() size: 'small' | 'large' = 'large';\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// .logo-container {\r\n//   position: relative;\r\n//   .logo {\r\n//     position: absolute;\r\n//     top: 0;\r\n//     left: 0;\r\n//     mask-image: url('assets/logo/logo.svg');\r\n//     background-color: var(--secondary-color);\r\n//     mask-size: contain;\r\n//     mask-position: center;\r\n//     mask-repeat: no-repeat;\r\n//     &.white {\r\n//       background-color: var(--white);\r\n//     }\r\n//     &.large {\r\n//       height: 100px;\r\n//       width: 200px;\r\n//     }\r\n//     &.small {\r\n//       height: 50px;\r\n//       width: 100px;\r\n//     }\r\n//   }\r\n// }\r\n\r\n",
+                    "styleUrl": "./logo.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"logo-container\">\n  <!-- <div class=\"logo\" [ngClass]=\"[color, size]\"></div> -->\n  <img class=\"logo\" src=\"assets/logo/logo.svg\" alt=\"logo\" />\n</div>"
+        },
+        {
             "name": "TextareaInputComponent",
             "id": "component-TextareaInputComponent-ec8c784a156de9adaba2640ba2f798906a3d34ddb3a02dd79d9ad6b396ef7e610e658fef6cd0332d33fe837d609c93948377e8b2291c9c8eb50fa02ebd7d37f4",
             "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.component.ts",
@@ -1410,13 +1469,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-ea09905ffa35cdf14ec991b4bc7de4db5908634cd07ca8d40fd8521d57e674ab4d54e97296b32188ebe89aaaa53d7744b1c105781e129163a231ef63bff724c4",
+            "id": "module-SharedModule-f1fa084ceba55f9c4742a84d9e016715da1106f4658ffaca3b435e55bc11cd8892987208fffa85ed49e63a481fa10dd584b7d12939cf2e57d9fea461cdc83eb3",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { \n  faCircleCheck,\n  faCircleExclamation,\n  faFolder \n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\n\n@NgModule({\n  declarations: [\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule,\n    RouterModule,\n  ],\n  exports: [\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(\n      faCircleCheck,\n      faCircleExclamation,\n      faFolder\n    );\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { \n  faCircleCheck,\n  faCircleExclamation,\n  faFolder \n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule,\n    RouterModule,\n  ],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(\n      faCircleCheck,\n      faCircleExclamation,\n      faFolder\n    );\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1436,6 +1495,9 @@
                         },
                         {
                             "name": "LinkComponent"
+                        },
+                        {
+                            "name": "LogoComponent"
                         },
                         {
                             "name": "TextInputComponent"
@@ -1463,6 +1525,9 @@
                         },
                         {
                             "name": "LinkComponent"
+                        },
+                        {
+                            "name": "LogoComponent"
                         },
                         {
                             "name": "TextInputComponent"
@@ -1546,6 +1611,16 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Logo",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1588,6 +1663,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -1608,11 +1693,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "file": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<LogoComponent>",
+                "defaultValue": "(args: LogoComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1813,6 +1898,28 @@
                     "deprecationMessage": "",
                     "type": "Story<LinkComponent>",
                     "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/modules/shared/components/atoms/logo/logo.stories.ts": [
+                {
+                    "name": "Logo",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LogoComponent>",
+                    "defaultValue": "(args: LogoComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/app/modules/shared/components/atoms/button/button.stories.ts": [
@@ -2088,6 +2195,35 @@
             },
             {
                 "filePath": "src/app/modules/shared/components/atoms/link/link.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/logo/logo.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LogoComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Logo",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

@@ -1,28 +1,11 @@
-.logo-container {
-  position: relative;
-  .logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    mask-image: url('assets/logo/logo.svg');
-    background-color: var(--secondary-color);
-    -webkit-mask-size: contain;
-    mask-size: contain;
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    &.white {
-      background-color: var(--white);
-    }
-    &.large {
-      height: 100px;
-      width: 200px;
-    }
-    &.small {
-      height: 50px;
-      width: 100px;
-    }
+.logo {
+  &.black {
+    filter: brightness(0%);;
+  }
+  &.large {
+    width: 200px;
+  }
+  &.small {
+    width: 100px;
   }
 }
-
