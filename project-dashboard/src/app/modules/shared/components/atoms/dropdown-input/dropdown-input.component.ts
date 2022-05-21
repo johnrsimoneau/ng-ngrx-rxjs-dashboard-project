@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Dropdown } from '../../../interfaces/ui.interface';
 import { UiSize } from '../../../types/ui.types';
 
@@ -10,7 +10,10 @@ import { UiSize } from '../../../types/ui.types';
 export class DropdownInputComponent {
   @Input() inputId: string;
 
-  @Input() selectedValue: Dropdown;
+  @Input() selectedValue: Dropdown =   {
+    value: "0",
+    display: 'Choose option...'
+  }
 
   @Input() options: Dropdown[];
 
@@ -21,4 +24,10 @@ export class DropdownInputComponent {
   @Input() isRequired = false;
 
   @Input() accessibilityLabelName: string;
+
+  @Output() changeOutputEvent: EventEmitter<any> = new EventEmitter();
+
+  handleChangeOutputEvent(event: any) {
+    this.changeOutputEvent.emit(event);
+  }
 }

@@ -233,6 +233,47 @@
             "methods": []
         },
         {
+            "name": "Dropdown",
+            "id": "interface-Dropdown-1326923a57d3a62a6fe0752a7fe4d25ad13117ae48df30bb39d9a632155200f6420eb84cd1390232d54e04b4c472451c7aceb22f515679e3e52264193f493815",
+            "file": "src/app/modules/shared/interfaces/ui.interface.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface Dropdown {\r\n  value: any;\r\n  display: any;\r\n  metaData?: any;\r\n}",
+            "properties": [
+                {
+                    "name": "display",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "metaData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "Project",
             "id": "interface-Project-6109025a41023fbd9146d3462f70ceb0a5f29e70378ae9f105e76ef2fcd5c8f95914ed61fd5c7a5184b4a3f190d091d4e322fb1bcfcaa4063877d65bec066a42",
             "file": "src/app/modules/shared/interfaces/project.interface.ts",
@@ -513,6 +554,106 @@
             ],
             "stylesData": "",
             "templateData": "<button \r\n  class=\"atom--button\r\n    rounded-md \r\n    uppercase\r\n    font-semibold\r\n    box-border\"\r\n  (click)=\"handleButtonClickEvent($event)\"\r\n  [ngClass]=\"[size, type ]\">{{ label }}\r\n</button>"
+        },
+        {
+            "name": "DropdownInputComponent",
+            "id": "component-DropdownInputComponent-a32c427e594336b19b2a9470fbfbcbb32d38d13ec22953c2142b430d3fbbe1bed460fd214a7439ff9ca8e8808d3c53aa3a3fe1b2b5d99dc8673f8e82de3d1993",
+            "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-dropdown-input",
+            "styleUrls": [
+                "./dropdown-input.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dropdown-input.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "accessibilityLabelName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "inputId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "isRequired",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "options",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "Dropdown[]",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "\"Choose option...\"",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "selectedValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "Dropdown",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'m'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "UiSize",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { Dropdown } from '../../../interfaces/ui.interface';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-dropdown-input',\n  templateUrl: './dropdown-input.component.html',\n  styleUrls: ['./dropdown-input.component.scss']\n})\nexport class DropdownInputComponent {\n  @Input() inputId: string;\n\n  @Input() selectedValue: Dropdown;\n\n  @Input() options: Dropdown[];\n\n  @Input() placeholder = \"Choose option...\";\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Input() accessibilityLabelName: string;\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./dropdown-input.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<select [attr.aria-label]=\"accessibilityLabelName\" [(ngModel)]=\"selectedValue.value\" [attr.id]=\"inputId\" [ngClass]=\"size\" [attr.required]=\"isRequired\">\n  <option *ngIf=\"placeholder !== ''\">{{ placeholder }}</option>\n  <option *ngFor=\"let option of options\">{{option.display}}</option>\n</select>\n"
         },
         {
             "name": "IconComponent",
@@ -796,12 +937,12 @@
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "// .logo-container {\r\n//   position: relative;\r\n//   .logo {\r\n//     position: absolute;\r\n//     top: 0;\r\n//     left: 0;\r\n//     mask-image: url('assets/logo/logo.svg');\r\n//     background-color: var(--secondary-color);\r\n//     mask-size: contain;\r\n//     mask-position: center;\r\n//     mask-repeat: no-repeat;\r\n//     &.white {\r\n//       background-color: var(--white);\r\n//     }\r\n//     &.large {\r\n//       height: 100px;\r\n//       width: 200px;\r\n//     }\r\n//     &.small {\r\n//       height: 50px;\r\n//       width: 100px;\r\n//     }\r\n//   }\r\n// }\r\n\r\n",
+                    "data": ".logo {\r\n  &.black {\r\n    filter: brightness(0%);;\r\n  }\r\n  &.large {\r\n    width: 200px;\r\n  }\r\n  &.small {\r\n    width: 100px;\r\n  }\r\n}\r\n",
                     "styleUrl": "./logo.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"logo-container\">\n  <!-- <div class=\"logo\" [ngClass]=\"[color, size]\"></div> -->\n  <img class=\"logo\" src=\"assets/logo/logo.svg\" alt=\"logo\" />\n</div>"
+            "templateData": "<img class=\"logo\" src=\"assets/logo/logo.svg\" alt=\"logo\" [ngClass]=\"[color, size]\" />"
         },
         {
             "name": "TextareaInputComponent",
@@ -1469,13 +1610,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-f1fa084ceba55f9c4742a84d9e016715da1106f4658ffaca3b435e55bc11cd8892987208fffa85ed49e63a481fa10dd584b7d12939cf2e57d9fea461cdc83eb3",
+            "id": "module-SharedModule-4fc1c3121d854d9855e1d84bef9fa90553815636d62afda9316a76272855620a845f22499cc778d750b8b21114d39aadfeaf6a0d50641fc7e4f9fdb3117b8da2",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { \n  faCircleCheck,\n  faCircleExclamation,\n  faFolder \n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule,\n    RouterModule,\n  ],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(\n      faCircleCheck,\n      faCircleExclamation,\n      faFolder\n    );\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { \n  faCircleCheck,\n  faCircleExclamation,\n  faFolder \n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\nimport { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule,\n    RouterModule,\n  ],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(\n      faCircleCheck,\n      faCircleExclamation,\n      faFolder\n    );\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1486,6 +1627,9 @@
                     "elements": [
                         {
                             "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "DropdownInputComponent"
                         },
                         {
                             "name": "IconComponent"
@@ -1516,6 +1660,9 @@
                     "elements": [
                         {
                             "name": "ButtonComponent"
+                        },
+                        {
+                            "name": "DropdownInputComponent"
                         },
                         {
                             "name": "IconComponent"
@@ -1559,6 +1706,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "DropdownInput",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "environment",
@@ -1648,6 +1805,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<DropdownInputComponent>",
+                "defaultValue": "(args: DropdownInputComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1808,6 +1975,28 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "literal type"
+                }
+            ],
+            "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts": [
+                {
+                    "name": "DropdownInput",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<DropdownInputComponent>",
+                    "defaultValue": "(args: DropdownInputComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -2117,6 +2306,35 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DropdownInputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DropdownInput",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/modules/shared/components/atoms/icon/icon.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -2333,6 +2551,15 @@
                 "name": "role",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/interfaces/ui.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Dropdown",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
                 "status": "low"
             },
             {

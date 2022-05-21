@@ -21,9 +21,7 @@ export default {
       options: ['xs', 's', 'm', 'l', 'xl'],
       control: { type: 'select' }
     },
-    // handleBlurOutputEvent: { action: 'blur '},
-    // handleFocusOutputEvent: { action: 'focus '},
-    // handleKeyupOutputEvent: { action: 'keyup '},
+    handleChangeOutputEvent: { action: 'change '},
   }
 } as Meta;
 
@@ -36,6 +34,7 @@ DropdownInput.args = {
   inputId: '123',
   size: 'm',
   isRequired: true,
+  placeholder: 'Choose one...',
   accessibilityLabelName: 'Select Fruit',
   selectedValue: {value: 'banana', display: 'Banana'},
   options: [
