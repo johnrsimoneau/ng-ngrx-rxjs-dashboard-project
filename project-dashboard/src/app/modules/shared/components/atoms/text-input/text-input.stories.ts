@@ -1,4 +1,4 @@
-import { Story, Meta, moduleMetadata  } from '@storybook/angular';
+import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { TextInputComponent } from './text-input.component';
 import { SharedModule } from '../../../shared.module';
 
@@ -7,28 +7,28 @@ export default {
   component: TextInputComponent,
   decorators: [
     moduleMetadata({
-      imports: [SharedModule]
-    })
+      imports: [SharedModule],
+    }),
   ],
   argTypes: {
     inputId: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     placeholder: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     inputType: {
-      options: ['date', 'email', 'number', 'tel','text','url'],
-      control: { type: 'select' }
+      options: ['date', 'email', 'number', 'tel', 'text', 'url'],
+      control: { type: 'select' },
     },
     size: {
       options: ['xs', 's', 'm', 'l', 'xl'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
-    handleBlurOutputEvent: { action: 'blur '},
-    handleFocusOutputEvent: { action: 'focus '},
-    handleKeyupOutputEvent: { action: 'keyup '},
-  }
+    handleBlurOutputEvent: { action: 'blur ' },
+    handleFocusOutputEvent: { action: 'focus ' },
+    handleKeyupOutputEvent: { action: 'keyup ' },
+  },
 } as Meta;
 
 const Template: Story<TextInputComponent> = (args: TextInputComponent) => ({
@@ -42,4 +42,4 @@ TextInput.args = {
   inputType: 'text',
   size: 'm',
   isRequired: true,
-}
+};

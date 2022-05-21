@@ -1,9 +1,7 @@
-<button 
-  class="atom--button
-    rounded-md 
-    uppercase
-    font-semibold
-    box-border"
+<button
+  class="atom--button rounded-md uppercase font-semibold box-border"
   (click)="handleButtonClickEvent($event)"
-  [ngClass]="[size, type ]">{{ label }}
+  [ngClass]="[size, type]"
+>
+  {{ label }}
 </button>

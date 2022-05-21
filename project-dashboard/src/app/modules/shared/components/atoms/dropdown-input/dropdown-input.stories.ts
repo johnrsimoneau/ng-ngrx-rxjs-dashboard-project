@@ -1,4 +1,4 @@
-import { Story, Meta, moduleMetadata  } from '@storybook/angular';
+import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { SharedModule } from '../../../shared.module';
 import { DropdownInputComponent } from './dropdown-input.component';
 
@@ -7,25 +7,27 @@ export default {
   component: DropdownInputComponent,
   decorators: [
     moduleMetadata({
-      imports: [SharedModule]
-    })
+      imports: [SharedModule],
+    }),
   ],
   argTypes: {
     inputId: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     placeholder: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     size: {
       options: ['xs', 's', 'm', 'l', 'xl'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
-    handleChangeOutputEvent: { action: 'change '},
-  }
+    handleChangeOutputEvent: { action: 'change ' },
+  },
 } as Meta;
 
-const Template: Story<DropdownInputComponent> = (args: DropdownInputComponent) => ({
+const Template: Story<DropdownInputComponent> = (
+  args: DropdownInputComponent
+) => ({
   props: args,
 });
 
@@ -36,19 +38,19 @@ DropdownInput.args = {
   isRequired: true,
   placeholder: 'Choose one...',
   accessibilityLabelName: 'Select Fruit',
-  selectedValue: {value: 'banana', display: 'Banana'},
+  selectedValue: { value: 'banana', display: 'Banana' },
   options: [
     {
       value: 'apple',
-      display: 'Apple'
+      display: 'Apple',
     },
     {
       value: 'banana',
-      display: 'Banana'
+      display: 'Banana',
     },
     {
       value: 'grape',
-      display: 'Grape'
-    }
-  ]
-}
+      display: 'Grape',
+    },
+  ],
+};

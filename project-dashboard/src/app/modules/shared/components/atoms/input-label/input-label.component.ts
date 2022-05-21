@@ -4,7 +4,7 @@ import { UiSize } from '../../../types/ui.types';
 @Component({
   selector: 'jrs-input-label',
   templateUrl: './input-label.component.html',
-  styleUrls: ['./input-label.component.scss']
+  styleUrls: ['./input-label.component.scss'],
 })
 export class InputLabelComponent {
   @Input() labelId: string;

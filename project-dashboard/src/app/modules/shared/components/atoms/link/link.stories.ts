@@ -8,20 +8,17 @@ export default {
   component: LinkComponent,
   decorators: [
     moduleMetadata({
-      imports: [
-        SharedModule,
-        RouterTestingModule,
-      ]
-    })
+      imports: [SharedModule, RouterTestingModule],
+    }),
   ],
   argTypes: {
     linkTo: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     linkText: {
-      control: { type: 'text' }
-    }
-  }
+      control: { type: 'text' },
+    },
+  },
 } as Meta;
 
 const Template: Story<LinkComponent> = (args: LinkComponent) => ({
@@ -30,7 +27,7 @@ const Template: Story<LinkComponent> = (args: LinkComponent) => ({
 
 export const Link = Template.bind({});
 Link.args = {
-  linkTo: "https://www.bing.com/#",
-  linkText: "Bing",
+  linkTo: 'https://www.bing.com/#',
+  linkText: 'Bing',
   openInNewTab: true,
 };

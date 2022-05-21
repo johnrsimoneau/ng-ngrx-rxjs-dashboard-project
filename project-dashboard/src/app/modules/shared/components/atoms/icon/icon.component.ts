@@ -5,19 +5,18 @@ import { UiIconSize, UiColor } from '../../../types/ui.types';
 @Component({
   selector: 'jrs-icon',
   templateUrl: './icon.component.html',
-  styleUrls: ['./icon.component.scss']
+  styleUrls: ['./icon.component.scss'],
 })
 export class IconComponent {
   @Input() iconName: IconName;
 
   @Input() size: UiIconSize = '3x';
 
-  @Input() color: UiColor = 'secondary'
+  @Input() color: UiColor = 'secondary';
 
-  constructor() { }
+  constructor() {}
 
   setIconForDisplay(): [IconPrefix, IconName] {
-    return ['fas', this.iconName]
+    return ['fas', this.iconName];
   }
-
 }

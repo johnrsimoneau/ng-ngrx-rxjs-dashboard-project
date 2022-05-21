@@ -1,4 +1,4 @@
-import { Story, Meta, moduleMetadata  } from '@storybook/angular';
+import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { SharedModule } from '../../../shared.module';
 import { LogoComponent } from './logo.component';
 
@@ -7,19 +7,19 @@ export default {
   component: LogoComponent,
   decorators: [
     moduleMetadata({
-      imports: [SharedModule]
-    })
+      imports: [SharedModule],
+    }),
   ],
   argTypes: {
     color: {
       options: ['white', 'black'],
-      control: { type: 'select' }
+      control: { type: 'select' },
     },
     size: {
       options: ['small', 'large'],
-      control: { type: 'select' }
-    }
-  }
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 const Template: Story<LogoComponent> = (args: LogoComponent) => ({
@@ -29,5 +29,5 @@ const Template: Story<LogoComponent> = (args: LogoComponent) => ({
 export const Logo = Template.bind({});
 Logo.args = {
   color: 'black',
-  size: 'large'
-}
+  size: 'large',
+};

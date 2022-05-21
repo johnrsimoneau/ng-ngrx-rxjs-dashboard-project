@@ -18,5 +18,4 @@ export class ButtonComponent {
   handleButtonClickEvent(event: Event): void {
     this.clickOutputEvent.emit(event);
   }
-
 }

@@ -1,5 +1,4 @@
-
-import { Story, Meta,  } from '@storybook/angular';
+import { Story, Meta } from '@storybook/angular';
 import { ButtonComponent } from './button.component';
 
 export default {
@@ -7,17 +6,17 @@ export default {
   component: ButtonComponent,
   argTypes: {
     label: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     type: {
       options: ['primary', 'secondary'],
-      control: { type: 'select'}
+      control: { type: 'select' },
     },
     size: {
       options: ['xs', 's', 'm', 'l', 'xl'],
-      control: { type: 'select'}
+      control: { type: 'select' },
     },
-    handleButtonClickEvent: { action: 'clicked '} 
+    handleButtonClickEvent: { action: 'clicked ' },
   },
 } as Meta;
 

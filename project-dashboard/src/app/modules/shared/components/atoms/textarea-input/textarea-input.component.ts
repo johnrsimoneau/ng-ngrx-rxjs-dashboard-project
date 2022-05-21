@@ -4,7 +4,7 @@ import { UiSize } from '../../../types/ui.types';
 @Component({
   selector: 'jrs-textarea-input',
   templateUrl: './textarea-input.component.html',
-  styleUrls: ['./textarea-input.component.scss']
+  styleUrls: ['./textarea-input.component.scss'],
 })
 export class TextareaInputComponent {
   @Input() inputId: string;
@@ -34,5 +34,4 @@ export class TextareaInputComponent {
   handleKeyupOutputEvent(event: string) {
     this.keyupOutputEvent.emit(event);
   }
-
 }

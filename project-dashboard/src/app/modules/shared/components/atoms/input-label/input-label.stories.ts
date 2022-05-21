@@ -1,4 +1,4 @@
-import { Story, Meta, moduleMetadata  } from '@storybook/angular';
+import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { InputLabelComponent } from './input-label.component';
 import { SharedModule } from '../../../shared.module';
 
@@ -7,21 +7,21 @@ export default {
   component: InputLabelComponent,
   decorators: [
     moduleMetadata({
-      imports: [SharedModule]
-    })
+      imports: [SharedModule],
+    }),
   ],
   argTypes: {
     labelId: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     laeblName: {
-      control: { type: 'text' }
+      control: { type: 'text' },
     },
     size: {
       options: ['xs', 's', 'm', 'l', 'xl'],
-      control: { type: 'select' }
-    }
-  }
+      control: { type: 'select' },
+    },
+  },
 } as Meta;
 
 const Template: Story<InputLabelComponent> = (args: InputLabelComponent) => ({
@@ -34,4 +34,4 @@ InputLabel.args = {
   labelName: 'Test Label',
   size: 'm',
   isRequired: true,
-}
+};

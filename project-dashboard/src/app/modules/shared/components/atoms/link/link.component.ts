@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'jrs-nav-link',
   templateUrl: './link.component.html',
-  styleUrls: ['./link.component.scss']
+  styleUrls: ['./link.component.scss'],
 })
 export class LinkComponent {
   @Input() linkTo = '';
@@ -11,5 +11,4 @@ export class LinkComponent {
   @Input() linkText = '';
 
   @Input() openInNewTab = false;
-
 }

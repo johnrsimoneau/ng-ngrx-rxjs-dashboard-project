@@ -1,22 +1,25 @@
-<select 
-  class="py-2 px-3 
-  border 
-  border-darker-grey-color 
-  rounded-md 
-  outline-2 
-  outline-secondary-color
-  dropdown-select" 
+<select
+  class="
+    py-2
+    px-3
+    border border-darker-grey-color
+    rounded-md
+    outline-2 outline-secondary-color
+    dropdown-select
+  "
   (change)="handleChangeOutputEvent(selectedValue.value)"
-  [attr.aria-label]="accessibilityLabelName" 
-  [(ngModel)]="selectedValue.value" 
-  [attr.id]="inputId" 
-  [ngClass]="size" 
-  [attr.required]="isRequired">
+  [attr.aria-label]="accessibilityLabelName"
+  [(ngModel)]="selectedValue.value"
+  [attr.id]="inputId"
+  [ngClass]="size"
+  [attr.required]="isRequired"
+>
   <option *ngIf="placeholder !== ''" value="0">{{ placeholder }}</option>
-  <option 
-    *ngFor="let option of options" 
-    [selected]="option.value" 
-    [ngValue]="option.value">
-    {{option.display}}
+  <option
+    *ngFor="let option of options"
+    [selected]="option.value"
+    [ngValue]="option.value"
+  >
+    {{ option.display }}
   </option>
 </select>
