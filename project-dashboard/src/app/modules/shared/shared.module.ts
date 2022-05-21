@@ -19,6 +19,7 @@ import { LinkComponent } from './components/atoms/link/link.component';
 import { RouterModule } from '@angular/router';
 import { LogoComponent } from './components/atoms/logo/logo.component';
 import { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';
+import { HeaderComponent } from './components/organisms/header/header.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { DropdownInputComponent } from './components/atoms/dropdown-input/dropdo
     LinkComponent,
     LogoComponent,
     DropdownInputComponent,
+    HeaderComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
   exports: [
@@ -43,6 +45,7 @@ import { DropdownInputComponent } from './components/atoms/dropdown-input/dropdo
     LinkComponent,
     LogoComponent,
     DropdownInputComponent,
+    HeaderComponent,
   ],
 })
 export class SharedModule {
