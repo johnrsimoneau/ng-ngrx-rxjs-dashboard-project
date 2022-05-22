@@ -3,12 +3,12 @@
     "interfaces": [
         {
             "name": "Company",
-            "id": "interface-Company-a90d110c917b4fb11a138794141f51e87cb569c4e3af85412841fee68af848f1dfa1993977e4cae253de6a9ee394fdfed6e58fb1b81c8d6bca862fc01a2f5687",
+            "id": "interface-Company-cc76587513a4beb46c2bd0ed7beebf53bb938233ffa2cfb6776b5f96ad007e80bc94c06393e9780115f145d853c216686b90a3b6ce52d04fa8dd4edc95d419b6",
             "file": "src/app/modules/shared/interfaces/company.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface Company {\r\n  id: string;\r\n  companyName: string;\r\n  address: string;\r\n  city: string;\r\n  state: string;\r\n  zip: string;\r\n}",
+            "sourceCode": "export interface Company {\r\n  id: string;\r\n  companyName: string;\r\n  address: string;\r\n  city: string;\r\n  state: string;\r\n  zip: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "address",
@@ -71,12 +71,12 @@
         },
         {
             "name": "Consultant",
-            "id": "interface-Consultant-aeed4242ef95e683ede6abace4152fad04cb036eed7ce9bd8e646e3225e339d665bbc6df75a38e263149cf2d301a4011ad93efbeee5a36cb6316de37480405c2",
+            "id": "interface-Consultant-ec2dd03bd1ef760448fca4b1177e6cea9e68d0479823013287a8658f77dcf312db96ac31312b1b481a00a775965ec637390f5b35376a5e4db4e85f8bd84c20aa",
             "file": "src/app/modules/shared/interfaces/consultant.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface Consultant {\r\n  id: string;\r\n  firstName: string;\r\n  lastName: string;\r\n  email: string;\r\n  workPhone: string;\r\n  profilePhoto: string;\r\n  roleId: string;\r\n  projectId: string;\r\n}",
+            "sourceCode": "export interface Consultant {\r\n  id: string;\r\n  firstName: string;\r\n  lastName: string;\r\n  email: string;\r\n  workPhone: string;\r\n  profilePhoto: string;\r\n  roleId: string;\r\n  projectId: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "email",
@@ -157,12 +157,12 @@
         },
         {
             "name": "Contact",
-            "id": "interface-Contact-f567011dd95b8787f0d858ea35dc0f1ad7763366c18704f5915ba6bad9756986211803d6377dc0273d4b8f82b0fbda168000ce0b550895421c8f762eca7140ab",
+            "id": "interface-Contact-c7be1fd36533cef7774150c049a8e8f86cd4a32cde2d5209b7dcead2ba9123bd42da3cb052840bdc94df527657f321714529974386d19a26f58b7620a73ebb39",
             "file": "src/app/modules/shared/interfaces/contact.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface Contact {\r\n  id: string;\r\n  firstName: string;\r\n  lastName: string;\r\n  jobTitle: string;\r\n  workPhone: string;\r\n  email: string;\r\n  companyId: string;\r\n}",
+            "sourceCode": "export interface Contact {\r\n  id: string;\r\n  firstName: string;\r\n  lastName: string;\r\n  jobTitle: string;\r\n  workPhone: string;\r\n  email: string;\r\n  companyId: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "companyId",
@@ -234,12 +234,12 @@
         },
         {
             "name": "Dropdown",
-            "id": "interface-Dropdown-1326923a57d3a62a6fe0752a7fe4d25ad13117ae48df30bb39d9a632155200f6420eb84cd1390232d54e04b4c472451c7aceb22f515679e3e52264193f493815",
+            "id": "interface-Dropdown-15fcd0b90fc402742eea06060ed3a6c5e612a72576b27254d51c01ef7f7191df449004b5525e7f4d459ca6b7c743f34282bb6b1d8ddeda26660711e0658ffab1",
             "file": "src/app/modules/shared/interfaces/ui.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface Dropdown {\r\n  value: any;\r\n  display: any;\r\n  metaData?: any;\r\n}",
+            "sourceCode": "export interface Dropdown {\r\n  value: any;\r\n  display: any;\r\n  metaData?: any;\r\n}\r\n",
             "properties": [
                 {
                     "name": "display",
@@ -275,12 +275,12 @@
         },
         {
             "name": "Project",
-            "id": "interface-Project-6109025a41023fbd9146d3462f70ceb0a5f29e70378ae9f105e76ef2fcd5c8f95914ed61fd5c7a5184b4a3f190d091d4e322fb1bcfcaa4063877d65bec066a42",
+            "id": "interface-Project-32b57b2a1605e1612341e2ac21c01ec9e0c370e1233cccb77dd57b31f9dba51e84aeb3f2b07dba4cf49298fb83748f1958064f9053951cff9d05ec2b88d5efe3",
             "file": "src/app/modules/shared/interfaces/project.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface Project {\r\n  id: string;\r\n  projectCodeName: string;\r\n  overallStatus: string;\r\n  startDate: string;\r\n  modifiedDate: string;\r\n  percentageComplete: string;\r\n  projectedEndDate: string;\r\n  companyId: string;\r\n}",
+            "sourceCode": "export interface Project {\r\n  id: string;\r\n  projectCodeName: string;\r\n  overallStatus: string;\r\n  startDate: string;\r\n  modifiedDate: string;\r\n  percentageComplete: string;\r\n  projectedEndDate: string;\r\n  companyId: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "companyId",
@@ -361,12 +361,12 @@
         },
         {
             "name": "role",
-            "id": "interface-role-7227e4e20e9adc04f1d943e7b0c8a988f29d7399a25bd0a5d927161cb5784bf2c13cbd1314e574d6d1339504edfd9f6590a639168a9aa37a2826f00e5f9ffd0e",
+            "id": "interface-role-a9e95ab1cce8761fe22591f6805cfb709d924834fc3ea607ba4b9f1d291db3bb2d43e25bb0a8d8c8c1358ea49e17eaf51f08afc028d9cfb9eaf208d840a5e8ad",
             "file": "src/app/modules/shared/interfaces/role.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface role {\r\n  id: string;\r\n  roleName: string;\r\n}",
+            "sourceCode": "export interface role {\r\n  id: string;\r\n  roleName: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "id",
@@ -400,7 +400,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-91f33885162b53af01db3d36de4da645f704786b5cc951d2ed10868b6a4f262c19b743a3c5e94395318d9c6cc4a3ddb6dc39b2f9b87b0019f2d83477ce2391cf",
+            "id": "component-AppComponent-6643d4a52f227bf1a93f069cdc6709baa0f053e2018f5d0dd542836c24fef6b256b5bf60b7b8f263dd709ad0ca13885afa38568dc4ec3dc29beb17d4e4958971",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -438,7 +438,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss']\n})\nexport class AppComponent {\n  title = 'project-dashboard';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  title = 'project-dashboard';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -447,11 +447,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<h1 class=\"px-3\">Project Dashboard</h1>\n<router-outlet></router-outlet>"
+            "templateData": "<jrs-header></jrs-header>\n<router-outlet></router-outlet>\n"
         },
         {
             "name": "ButtonComponent",
-            "id": "component-ButtonComponent-6e10056a292b0dcc9c572d1e7c24d3f73d703ff491c174678d3c653590d6f87f2d6c467da3037d5ee2daeb4175a7ede6030f8d10a3dc89dfae09879500acfe45",
+            "id": "component-ButtonComponent-c2158891f8c0ba34f0986ce1f2746b73a278bd73cd783633edfdce812f47c13b8175968b27455e6238ce7b332d43201251c78d05236b0a79d9862a023672df68",
             "file": "src/app/modules/shared/components/atoms/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -544,20 +544,20 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'secondary' = 'primary';\n\n  @Input() size: UiSize = 'm';\n\n  @Output() clickOutputEvent: EventEmitter<Event> = new EventEmitter();\n\n  handleButtonClickEvent(event: Event): void {\n    this.clickOutputEvent.emit(event);\n  }\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.component.scss'],\n})\nexport class ButtonComponent {\n  @Input() label = '';\n\n  @Input() type: 'primary' | 'secondary' = 'primary';\n\n  @Input() size: UiSize = 'm';\n\n  @Output() clickOutputEvent: EventEmitter<Event> = new EventEmitter();\n\n  handleButtonClickEvent(event: Event): void {\n    this.clickOutputEvent.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".atom--button {\r\n  box-sizing: border-box !important;\r\n  padding: 8px 24px;\r\n  &.primary {\r\n    background-color: var(--primary-color);\r\n    color: var(--white);\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--primary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.secondary {\r\n    background-color: var(--white);\r\n      color: var(--secondary-color);\r\n      outline: 2px solid var(--secondary-color);\r\n      padding: 6px 22px;\r\n      margin-top: 2px;\r\n      margin-left: 2px;\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--secondary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n}",
+                    "data": ".atom--button {\r\n  box-sizing: border-box !important;\r\n  padding: 8px 24px;\r\n  &.primary {\r\n    background-color: var(--primary-color);\r\n    color: var(--white);\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--primary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n  &.secondary {\r\n    background-color: var(--white);\r\n    color: var(--secondary-color);\r\n    outline: 2px solid var(--secondary-color);\r\n    padding: 6px 22px;\r\n    margin-top: 2px;\r\n    margin-left: 2px;\r\n    &:hover,\r\n    &:focus {\r\n      outline: 2px solid var(--secondary-color);\r\n      outline-offset: 4px;\r\n    }\r\n  }\r\n}\r\n",
                     "styleUrl": "./button.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<button \r\n  class=\"atom--button\r\n    rounded-md \r\n    uppercase\r\n    font-semibold\r\n    box-border\"\r\n  (click)=\"handleButtonClickEvent($event)\"\r\n  [ngClass]=\"[size, type ]\">{{ label }}\r\n</button>"
+            "templateData": "<button\r\n  class=\"atom--button rounded-md uppercase font-semibold box-border\"\r\n  (click)=\"handleButtonClickEvent($event)\"\r\n  [ngClass]=\"[size, type]\"\r\n>\r\n  {{ label }}\r\n</button>\r\n"
         },
         {
             "name": "DropdownInputComponent",
-            "id": "component-DropdownInputComponent-a32c427e594336b19b2a9470fbfbcbb32d38d13ec22953c2142b430d3fbbe1bed460fd214a7439ff9ca8e8808d3c53aa3a3fe1b2b5d99dc8673f8e82de3d1993",
+            "id": "component-DropdownInputComponent-c2f545d34c337cb9253818e98242c1b43a72c09be09ff4587291e63a2437a745f9ee3a1af137a91ff128e9003704fa647decae4aef3abfabad73c054a495aa59",
             "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -578,7 +578,7 @@
                     "name": "accessibilityLabelName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 26,
                     "type": "string",
                     "decorators": []
                 },
@@ -595,7 +595,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 24,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -603,21 +603,22 @@
                     "name": "options",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 15,
+                    "line": 18,
                     "type": "Dropdown[]",
                     "decorators": []
                 },
                 {
                     "name": "placeholder",
-                    "defaultValue": "\"Choose option...\"",
+                    "defaultValue": "'Choose option...'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
+                    "line": 20,
                     "type": "string",
                     "decorators": []
                 },
                 {
                     "name": "selectedValue",
+                    "defaultValue": "{\n    value: '0',\n    display: 'Choose option...',\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 13,
@@ -629,14 +630,52 @@
                     "defaultValue": "'m'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 19,
+                    "line": 22,
                     "type": "UiSize",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "changeOutputEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "EventEmitter<any>"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleChangeOutputEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 30,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -644,7 +683,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { Dropdown } from '../../../interfaces/ui.interface';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-dropdown-input',\n  templateUrl: './dropdown-input.component.html',\n  styleUrls: ['./dropdown-input.component.scss']\n})\nexport class DropdownInputComponent {\n  @Input() inputId: string;\n\n  @Input() selectedValue: Dropdown;\n\n  @Input() options: Dropdown[];\n\n  @Input() placeholder = \"Choose option...\";\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Input() accessibilityLabelName: string;\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { Dropdown } from '../../../interfaces/ui.interface';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-dropdown-input',\n  templateUrl: './dropdown-input.component.html',\n  styleUrls: ['./dropdown-input.component.scss'],\n})\nexport class DropdownInputComponent {\n  @Input() inputId: string;\n\n  @Input() selectedValue: Dropdown = {\n    value: '0',\n    display: 'Choose option...',\n  };\n\n  @Input() options: Dropdown[];\n\n  @Input() placeholder = 'Choose option...';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Input() accessibilityLabelName: string;\n\n  @Output() changeOutputEvent: EventEmitter<any> = new EventEmitter();\n\n  handleChangeOutputEvent(event: any) {\n    this.changeOutputEvent.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -653,11 +692,73 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<select [attr.aria-label]=\"accessibilityLabelName\" [(ngModel)]=\"selectedValue.value\" [attr.id]=\"inputId\" [ngClass]=\"size\" [attr.required]=\"isRequired\">\n  <option *ngIf=\"placeholder !== ''\">{{ placeholder }}</option>\n  <option *ngFor=\"let option of options\">{{option.display}}</option>\n</select>\n"
+            "templateData": "<select\n  class=\"\n    py-2\n    px-3\n    border border-darker-grey-color\n    rounded-md\n    outline-2 outline-secondary-color\n    dropdown-select\n  \"\n  (change)=\"handleChangeOutputEvent(selectedValue.value)\"\n  [attr.aria-label]=\"accessibilityLabelName\"\n  [(ngModel)]=\"selectedValue.value\"\n  [attr.id]=\"inputId\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n>\n  <option *ngIf=\"placeholder !== ''\" value=\"0\">{{ placeholder }}</option>\n  <option\n    *ngFor=\"let option of options\"\n    [selected]=\"option.value\"\n    [ngValue]=\"option.value\"\n  >\n    {{ option.display }}\n  </option>\n</select>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-1d7ae28d1e7e8a6844c6bfe7faa316f27290819de065d965e4719f1460156427221f86a88a81cdd9a4087baf5f79cb53e0707b59423bd70e0f3c0ed2ba7f4265",
+            "file": "src/app/modules/shared/components/organisms/header/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-header",
+            "styleUrls": [
+                "./header.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./header.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss']\n})\nexport class HeaderComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./header.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<header class=\"bg-primary-color h-20 flex items-center px-5\">\n  <div class=\"flex items-center grow\">\n    <jrs-logo [color]=\"'white'\" class=\"w-28\"></jrs-logo>\n    <h1 class=\"text-white ml-5\">Project Dashboard</h1>\n  </div>\n  <div class=\"flex justify-end content-evenly\">\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"PROJECTS\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"COMPANIES\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"CONSULTANTS\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n  </div>\n</header>\n"
         },
         {
             "name": "IconComponent",
-            "id": "component-IconComponent-b25e11baaf8c06656880a063cd5fe70dcac653d93c603b37240900f985fc989675abd6bf5e00fa965e6af557b72c1ef4e78e9656a54f9012ce55e611460f42d3",
+            "id": "component-IconComponent-d33d6339a141f9d83984b515258b8ce6d71ec3ada96bb986206a2e5d77a9dce72f066d3f5e73d0a8e4091b326ee2b04e7cf7f6fe0e72a691bfd718c6d60626b5",
             "file": "src/app/modules/shared/components/atoms/icon/icon.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -722,11 +823,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';\nimport { UiIconSize, UiColor } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss']\n})\nexport class IconComponent {\n  @Input() iconName: IconName;\n\n  @Input() size: UiIconSize = '3x';\n\n  @Input() color: UiColor = 'secondary'\n\n  constructor() { }\n\n  setIconForDisplay(): [IconPrefix, IconName] {\n    return ['fas', this.iconName]\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core';\nimport { UiIconSize, UiColor } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-icon',\n  templateUrl: './icon.component.html',\n  styleUrls: ['./icon.component.scss'],\n})\nexport class IconComponent {\n  @Input() iconName: IconName;\n\n  @Input() size: UiIconSize = '3x';\n\n  @Input() color: UiColor = 'secondary';\n\n  constructor() {}\n\n  setIconForDisplay(): [IconPrefix, IconName] {\n    return ['fas', this.iconName];\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "fa-icon {\r\n  &.white {\r\n    color: var(--white);\r\n  }\r\n  &.primary {\r\n    color: var(--primary-color);\r\n  }\r\n  &.secondary {\r\n    color: var(--secondary-color);\r\n  }\r\n}",
+                    "data": "fa-icon {\r\n  &.white {\r\n    color: var(--white);\r\n  }\r\n  &.primary {\r\n    color: var(--primary-color);\r\n  }\r\n  &.secondary {\r\n    color: var(--secondary-color);\r\n  }\r\n}\r\n",
                     "styleUrl": "./icon.component.scss"
                 }
             ],
@@ -739,11 +840,11 @@
                 "args": [],
                 "line": 15
             },
-            "templateData": "<ng-container *ngIf=\"iconName\">\n  <fa-icon [icon]=\"setIconForDisplay()\" [size]=\"size\" [ngClass]=\"color\"></fa-icon>\n</ng-container>"
+            "templateData": "<ng-container *ngIf=\"iconName\">\n  <fa-icon\n    [icon]=\"setIconForDisplay()\"\n    [size]=\"size\"\n    [ngClass]=\"color\"\n  ></fa-icon>\n</ng-container>\n"
         },
         {
             "name": "InputLabelComponent",
-            "id": "component-InputLabelComponent-71e3d083b1d3cb5290ebfc34b195e686154063bbc2360d20d82219d00d1fb855688c274b8ce28f9f8e6b8734279cb3fd07cd01df6c053ce7f0760ee716ea47b3",
+            "id": "component-InputLabelComponent-43e5c13b5a1075c6cb1193fae13b49b1a20706826d3e37de99759ee645c3fbbc7743190849fad137ec1d94ee599eead2b37c8b47f1e010b9f1c16e694ff94b0a",
             "file": "src/app/modules/shared/components/atoms/input-label/input-label.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -806,20 +907,20 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-input-label',\n  templateUrl: './input-label.component.html',\n  styleUrls: ['./input-label.component.scss']\n})\nexport class InputLabelComponent {\n  @Input() labelId: string;\n\n  @Input() labelName = '';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-input-label',\n  templateUrl: './input-label.component.html',\n  styleUrls: ['./input-label.component.scss'],\n})\nexport class InputLabelComponent {\n  @Input() labelId: string;\n\n  @Input() labelName = '';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".required {\r\n  color: var(--primary-color);\r\n  font-size: large;\r\n}",
+                    "data": ".required {\r\n  color: var(--primary-color);\r\n  font-size: large;\r\n}\r\n",
                     "styleUrl": "./input-label.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<label \n  class=\"cursor-pointer\"\n  [attr.for]=\"labelId\" \n  [ngClass]=\"size\">\n  {{ labelName }}\n  <span *ngIf=\"isRequired\" class=\"required\">*</span>\n</label>\n"
+            "templateData": "<label class=\"cursor-pointer\" [attr.for]=\"labelId\" [ngClass]=\"size\">\n  {{ labelName }}\n  <span *ngIf=\"isRequired\" class=\"required\">*</span>\n</label>\n"
         },
         {
             "name": "LinkComponent",
-            "id": "component-LinkComponent-cf3b397c0e5e562a20964835413a2f3181a21f8ba932101f51dee19e3acf4899a1e94b2b4b65bce7d13c0ace7b8a4ded35051c77fcd3ce1ff0f4a49b67d124f3",
+            "id": "component-LinkComponent-9cc2173efe8e49fb1474b66d466320b532bf69e9c1b53bb236dfe5d3a5af67de28c104817be0ef76f09b39fefac9d9c65231d4daf5e432c5a800189843fd8cbb",
             "file": "src/app/modules/shared/components/atoms/link/link.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -841,7 +942,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 11,
+                    "line": 12,
                     "type": "string",
                     "decorators": []
                 },
@@ -850,7 +951,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 9,
+                    "line": 10,
                     "type": "string",
                     "decorators": []
                 },
@@ -859,8 +960,17 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 16,
                     "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'m'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "UiSize",
                     "decorators": []
                 }
             ],
@@ -874,7 +984,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'jrs-nav-link',\n  templateUrl: './link.component.html',\n  styleUrls: ['./link.component.scss']\n})\nexport class LinkComponent {\n  @Input() linkTo = '';\n\n  @Input() linkText = '';\n\n  @Input() openInNewTab = false;\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-nav-link',\n  templateUrl: './link.component.html',\n  styleUrls: ['./link.component.scss'],\n})\nexport class LinkComponent {\n  @Input() linkTo = '';\n\n  @Input() linkText = '';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() openInNewTab = false;\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -883,11 +993,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a \n  class=\"text-white uppercase text-2xl font-semibold hover:underline underline-offset-1\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\">\n  {{ linkText }}</a>\n</ng-template>"
+            "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a\n    class=\"\n      text-white\n      uppercase\n      text-2xl\n      font-semibold\n      hover:underline\n      underline-offset-1\n    \"\n    [ngClass]=\"size\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}</a\n  >\n</ng-template>\n"
         },
         {
             "name": "LogoComponent",
-            "id": "component-LogoComponent-9ab41d8323055e057ebbde25983da4e47c4a202bac4ec92aec1e1946943e0e7d4ba0a3dbb088d4e5201f3f2fa6adc920cf73c0db5459dd7326c61c7ed100cc0d",
+            "id": "component-LogoComponent-634d4c34ec6878d43be2b642a279c2fb23000a5451784f718522e1dee603a84835f81065ee3419ffc4f97bea2905c14cee013b67a10d9e7c7b6f4b8c4f6d798b",
             "file": "src/app/modules/shared/components/atoms/logo/logo.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -906,7 +1016,7 @@
             "inputsClass": [
                 {
                     "name": "color",
-                    "defaultValue": "\"black\"",
+                    "defaultValue": "'black'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 9,
@@ -933,20 +1043,82 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'jrs-logo',\n  templateUrl: './logo.component.html',\n  styleUrls: ['./logo.component.scss']\n})\nexport class LogoComponent {\n  @Input() color: 'black' | 'white' = \"black\";\n\n  @Input() size: 'small' | 'large' = 'large';\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'jrs-logo',\n  templateUrl: './logo.component.html',\n  styleUrls: ['./logo.component.scss'],\n})\nexport class LogoComponent {\n  @Input() color: 'black' | 'white' = 'black';\n\n  @Input() size: 'small' | 'large' = 'large';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".logo {\r\n  &.black {\r\n    filter: brightness(0%);;\r\n  }\r\n  &.large {\r\n    width: 200px;\r\n  }\r\n  &.small {\r\n    width: 100px;\r\n  }\r\n}\r\n",
+                    "data": ".logo {\r\n  &.black {\r\n    filter: brightness(0%);\r\n  }\r\n  &.large {\r\n    width: 200px;\r\n  }\r\n  &.small {\r\n    width: 100px;\r\n  }\r\n}\r\n",
                     "styleUrl": "./logo.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<img class=\"logo\" src=\"assets/logo/logo.svg\" alt=\"logo\" [ngClass]=\"[color, size]\" />"
+            "templateData": "<img\r\n  class=\"logo\"\r\n  src=\"assets/logo/logo.svg\"\r\n  alt=\"logo\"\r\n  [ngClass]=\"[color, size]\"\r\n/>\r\n"
+        },
+        {
+            "name": "ProjectPageComponent",
+            "id": "component-ProjectPageComponent-ba32b21419e71c2257b3323c8c78907fd175dd0435f3fd6e483529a57d49e000336b3c72ec046456d62973d2ac9cc8beac01d50a5d44f858a42cff893e493903",
+            "file": "src/app/modules/features/project/page/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-page",
+            "styleUrls": [
+                "./page.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./page.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 11,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-page',\n  templateUrl: './page.component.html',\n  styleUrls: ['./page.component.scss'],\n})\nexport class ProjectPageComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {\n    console.log('project page loaded');\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./page.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>page works!</p>\n"
         },
         {
             "name": "TextareaInputComponent",
-            "id": "component-TextareaInputComponent-ec8c784a156de9adaba2640ba2f798906a3d34ddb3a02dd79d9ad6b396ef7e610e658fef6cd0332d33fe837d609c93948377e8b2291c9c8eb50fa02ebd7d37f4",
+            "id": "component-TextareaInputComponent-7613666009a73d75fe30e28c544aeb31befb8caed8035fe24b90ccd129dd43d544bb2f2ad10634637ecba04653650916bf769f5648a9bb03a7c35d191decc9d1",
             "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1126,7 +1298,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-textarea-input',\n  templateUrl: './textarea-input.component.html',\n  styleUrls: ['./textarea-input.component.scss']\n})\nexport class TextareaInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(event: string) {\n    this.blurOutputEvent.emit(event);\n  }\n\n  handleFocusOutputEvent(event: string) {\n    this.focusOutputEvent.emit(event);\n  }\n\n  handleKeyupOutputEvent(event: string) {\n    this.keyupOutputEvent.emit(event);\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-textarea-input',\n  templateUrl: './textarea-input.component.html',\n  styleUrls: ['./textarea-input.component.scss'],\n})\nexport class TextareaInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(event: string) {\n    this.blurOutputEvent.emit(event);\n  }\n\n  handleFocusOutputEvent(event: string) {\n    this.focusOutputEvent.emit(event);\n  }\n\n  handleKeyupOutputEvent(event: string) {\n    this.keyupOutputEvent.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1135,11 +1307,11 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<textarea \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (keyup)=\"handleKeyupOutputEvent(inputValue)\">\n</textarea>\n"
+            "templateData": "<textarea\n  class=\"\n    py-2\n    px-3\n    border border-darker-grey-color\n    rounded-md\n    outline-2 outline-secondary-color\n  \"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (keyup)=\"handleKeyupOutputEvent(inputValue)\"\n></textarea>\n"
         },
         {
             "name": "TextInputComponent",
-            "id": "component-TextInputComponent-3076293bd9cd2157e990b85a5cabe9c4d8d0aed7eb1e29bf459a3c293c83a9f4eefea1d19431be177c97665e474a8216a986084796fc8fb89cc8bf9cd7e6eefa",
+            "id": "component-TextInputComponent-ed2dce67430cf6084168b22276b98a504dcedb7be96935ca9d29975ee9b57b01e3c19934b5a16e2ba1cccf43881535541ec8d24da68aa161444d4acba93e2b97",
             "file": "src/app/modules/shared/components/atoms/text-input/text-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1328,7 +1500,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize, UiTextInputType } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-text-input',\n  templateUrl: './text-input.component.html',\n  styleUrls: ['./text-input.component.scss']\n})\nexport class TextInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() inputType: UiTextInputType = 'text';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(event: string) {\n    this.blurOutputEvent.emit(event);\n  }\n\n  handleFocusOutputEvent(event: string) {\n    this.focusOutputEvent.emit(event);\n  }\n\n  handleKeyupOutputEvent(event: string) {\n    this.keyupOutputEvent.emit(event);\n  }\n\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize, UiTextInputType } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-text-input',\n  templateUrl: './text-input.component.html',\n  styleUrls: ['./text-input.component.scss'],\n})\nexport class TextInputComponent {\n  @Input() inputId: string;\n\n  @Input() inputValue: string;\n\n  @Input() placeholder: string;\n\n  @Input() inputType: UiTextInputType = 'text';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() isRequired = false;\n\n  @Output() blurOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() focusOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  @Output() keyupOutputEvent: EventEmitter<string> = new EventEmitter();\n\n  handleBlurOutputEvent(event: string) {\n    this.blurOutputEvent.emit(event);\n  }\n\n  handleFocusOutputEvent(event: string) {\n    this.focusOutputEvent.emit(event);\n  }\n\n  handleKeyupOutputEvent(event: string) {\n    this.keyupOutputEvent.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1337,19 +1509,19 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<input \n  class=\"py-2 px-3 border border-darker-grey-color rounded-md outline-2 outline-secondary-color\"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [attr.type]=\"inputType\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (keyup)=\"handleKeyupOutputEvent(inputValue)\"\n/>"
+            "templateData": "<input\n  class=\"\n    py-2\n    px-3\n    border border-darker-grey-color\n    rounded-md\n    outline-2 outline-secondary-color\n  \"\n  autocomplete=\"off\"\n  [(ngModel)]=\"inputValue\"\n  [attr.id]=\"inputId\"\n  [attr.placeholder]=\"placeholder\"\n  [attr.type]=\"inputType\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n  (blur)=\"handleBlurOutputEvent(inputValue)\"\n  (focus)=\"handleFocusOutputEvent(inputValue)\"\n  (keyup)=\"handleKeyupOutputEvent(inputValue)\"\n/>\n"
         }
     ],
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-b292b59a3be7c8a3fbc8fdfb16b15762a750dab7033947cf5501affce9cf3ac5778251162a664964ac4b4b321dc8f45e8c97f6ffebecd8026b7e6c3efe153515",
+            "id": "module-AppModule-d2da5f93fa60d89fde575b82fa75594efe1dbe3b2cb981f072d07b48cf546a46d0930d5602c83e7eef0289ee056ca6ec93afbedab552857442f818f05415d405",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\n\n@NgModule({\n  declarations: [\n    AppComponent\n  ],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule,\n    RouterModule.forRoot([])\n  ],\n  providers: [],\n  bootstrap: [AppComponent]\n})\nexport class AppModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule,\n    RouterModule.forRoot([]),\n  ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1394,13 +1566,13 @@
         },
         {
             "name": "AppRoutingModule",
-            "id": "module-AppRoutingModule-78922b3ae99d2c5249b333980bd5afde1b120b2cc6fedfd41b8b2cc90f279797cb4b22e183bf7e1d1dfab8c6100e77e7812c110234d81f866f544f28a3e18b15",
+            "id": "module-AppRoutingModule-3a8f8865e974d880e0dde76d6f5861be5af16b8de43368d071dc335f1242c5498ca5a68c0b4ce2af5d771f8f743eba60faa11b08ab09137025f78cdba3ce5185",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule]\n})\nexport class AppRoutingModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { RouterModule, Routes } from '@angular/router';\n\nconst routes: Routes = [\n  {\n    path: 'projects',\n    loadChildren: () =>\n      \"import('./modules/features/project/project.module').then(\\\n        (m) => m.ProjectModule\\\n      )\",\n  },\n];\n\n@NgModule({\n  imports: [RouterModule.forRoot(routes)],\n  exports: [RouterModule],\n})\nexport class AppRoutingModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1574,13 +1746,60 @@
         },
         {
             "name": "ProjectModule",
-            "id": "module-ProjectModule-2693d51e2992b68639f1f8572f1062c5847a9cc124c077fdb4fd3d4bd6b287fd1666399c0f15265f84ff7a07bf082abb9d176336364efaafb96a91cd6ea6ac67",
+            "id": "module-ProjectModule-fbbdc6690e39ddba8d3b6c5d3cb64667c8c88d16a35b28ca9000ba190c7f5893cb8690d445c2f21ac343de1eb0a588d87a0ecf24a8c47e107a33092c7c0511b5",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/features/project/project.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n\n\n@NgModule({\n  declarations: [],\n  imports: [\n    CommonModule\n  ]\n})\nexport class ProjectModule { }\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectPageComponent } from './page/page.component';\nimport { SharedModule } from '../../shared/shared.module';\nimport { ProjectRoutingModule } from './project-routing.module';\n\n@NgModule({\n  declarations: [ProjectPageComponent],\n  imports: [CommonModule, SharedModule, ProjectRoutingModule],\n})\nexport class ProjectModule {}\n",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ProjectPageComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "ProjectRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "ProjectRoutingModule",
+            "id": "module-ProjectRoutingModule-9788a1997819f7b67c9f3cb5527991fc8a0b7d7689afade8db7beecb0c682fb832f035bf1fe26688656dae567f9e123d86799512b261c692638db7aabc0eeffc",
+            "description": "",
+            "deprecationMessage": "",
+            "deprecated": false,
+            "file": "src/app/modules/features/project/project-routing.module.ts",
+            "methods": [],
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ProjectPageComponent } from './page/page.component';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    pathMatch: 'full',\r\n    component: ProjectPageComponent,\r\n    // children: [\r\n    //   { path: '', component: ProjectPageComponent, pathMatch: 'full' },\r\n    // ],\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule],\r\n})\r\nexport class ProjectRoutingModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1610,13 +1829,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-4fc1c3121d854d9855e1d84bef9fa90553815636d62afda9316a76272855620a845f22499cc778d750b8b21114d39aadfeaf6a0d50641fc7e4f9fdb3117b8da2",
+            "id": "module-SharedModule-9e61a3d4befc1ad490240e841a56832b588949de605a88879555f4706209d876aff75065b2724770783faf0852c572970010a596c6f07266c1767f9cb7351602",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';\nimport { \n  faCircleCheck,\n  faCircleExclamation,\n  faFolder \n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\nimport { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule,\n    RouterModule,\n  ],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent\n  ]\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(\n      faCircleCheck,\n      faCircleExclamation,\n      faFolder\n    );\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport {\n  FaIconLibrary,\n  FontAwesomeModule,\n} from '@fortawesome/angular-fontawesome';\nimport {\n  faCircleCheck,\n  faCircleExclamation,\n  faFolder,\n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\nimport { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';\nimport { HeaderComponent } from './components/organisms/header/header.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    HeaderComponent,\n  ],\n  imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    HeaderComponent,\n  ],\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(faCircleCheck, faCircleExclamation, faFolder);\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1630,6 +1849,9 @@
                         },
                         {
                             "name": "DropdownInputComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
                         },
                         {
                             "name": "IconComponent"
@@ -1663,6 +1885,9 @@
                         },
                         {
                             "name": "DropdownInputComponent"
+                        },
+                        {
+                            "name": "HeaderComponent"
                         },
                         {
                             "name": "IconComponent"
@@ -1810,11 +2035,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<DropdownInputComponent>",
-                "defaultValue": "(args: DropdownInputComponent) => ({\r\n  props: args,\r\n})"
+                "defaultValue": "(\r\n  args: DropdownInputComponent\r\n) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1825,16 +2060,6 @@
                 "deprecationMessage": "",
                 "type": "Story<IconComponent>",
                 "defaultValue": "(args: IconComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -1884,7 +2109,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<TextareaInputComponent>",
-                "defaultValue": "(args: TextareaInputComponent) => ({\r\n  props: args,\r\n})"
+                "defaultValue": "(\r\n  args: TextareaInputComponent\r\n) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "TextareaInput",
@@ -1996,7 +2221,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<DropdownInputComponent>",
-                    "defaultValue": "(args: DropdownInputComponent) => ({\r\n  props: args,\r\n})"
+                    "defaultValue": "(\r\n  args: DropdownInputComponent\r\n) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/environments/environment.prod.ts": [
@@ -2174,7 +2399,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<TextareaInputComponent>",
-                    "defaultValue": "(args: TextareaInputComponent) => ({\r\n  props: args,\r\n})"
+                    "defaultValue": "(\r\n  args: TextareaInputComponent\r\n) => ({\r\n  props: args,\r\n})"
                 },
                 {
                     "name": "TextareaInput",
@@ -2248,7 +2473,33 @@
                 "name": "routes",
                 "filename": "src/app/app-routing.module.ts",
                 "module": "AppRoutingModule",
-                "children": [],
+                "children": [
+                    {
+                        "path": "projects",
+                        "loadChildren": "./modules/features/project/project.module#ProjectModule",
+                        "children": [
+                            {
+                                "kind": "module",
+                                "children": [
+                                    {
+                                        "name": "routes",
+                                        "filename": "src/app/modules/features/project/project-routing.module.ts",
+                                        "module": "ProjectRoutingModule",
+                                        "children": [
+                                            {
+                                                "path": "",
+                                                "pathMatch": "full",
+                                                "component": "ProjectPageComponent"
+                                            }
+                                        ],
+                                        "kind": "module"
+                                    }
+                                ],
+                                "module": "ProjectModule"
+                            }
+                        ]
+                    }
+                ],
                 "kind": "module"
             }
         ]
@@ -2264,6 +2515,15 @@
                 "name": "AppComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/page/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProjectPageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -2311,7 +2571,7 @@
                 "linktype": "component",
                 "name": "DropdownInputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/10",
                 "status": "low"
             },
             {
@@ -2398,7 +2658,7 @@
                 "linktype": "component",
                 "name": "LinkComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
@@ -2506,6 +2766,15 @@
                 "name": "TextareaInput",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/organisms/header/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
