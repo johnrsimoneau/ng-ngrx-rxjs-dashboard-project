@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProjectPageComponent } from './page/page.component';
+import { ProjectComponent } from './page/project.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: ProjectPageComponent,
+    component: ProjectComponent,
     // children: [
     //   { path: '', component: ProjectPageComponent, pathMatch: 'full' },
     // ],
