@@ -9,7 +9,7 @@ import { setPageTitle } from 'src/app/state/app.actions';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  @Input() headerTitle: string | null;
+  @Input() headerTitle: string | null = '';
 
   constructor(private router: Router, private store: Store) {}
 
