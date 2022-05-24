@@ -1,7 +1,11 @@
 <header class="bg-primary-color h-20 flex items-center px-5">
   <div class="flex items-center grow">
-    <jrs-logo [color]="'white'" class="w-28"></jrs-logo>
-    <h1 class="text-white ml-5">Project Dashboard</h1>
+    <jrs-logo
+      [color]="'white'"
+      class="w-28 hover:cursor-pointer"
+      (click)="navigateToHomePage()"
+    ></jrs-logo>
+    <h1 class="text-white ml-5">{{ headerTitle }}</h1>
   </div>
   <div class="flex justify-end content-evenly">
     <jrs-nav-link

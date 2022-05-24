@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { setPageTitle } from 'src/app/state/app.actions';
 
 @Component({
   selector: 'jrs-page',
@@ -6,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./project.component.scss'],
 })
 export class ProjectComponent implements OnInit {
-  constructor() {}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
+    this.store.dispatch(setPageTitle({ pageTitle: 'Project Dashboard' }));
     console.log('project page loaded');
   }
 }
