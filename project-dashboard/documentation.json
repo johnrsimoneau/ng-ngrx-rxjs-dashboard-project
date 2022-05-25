@@ -2,6 +2,29 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "AppState",
+            "id": "interface-AppState-4e03bed147604635ea55264c9405b550d65cee5d0e501256828df1966897b2be4541327b335835293e1d7a63758b93d058c62e8d0fb235b812aac895dbcf803d",
+            "file": "src/app/state/app.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface AppState {\r\n  pageTitle: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "pageTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "Company",
             "id": "interface-Company-cc76587513a4beb46c2bd0ed7beebf53bb938233ffa2cfb6776b5f96ad007e80bc94c06393e9780115f145d853c216686b90a3b6ce52d04fa8dd4edc95d419b6",
             "file": "src/app/modules/shared/interfaces/company.interface.ts",
@@ -360,13 +383,13 @@
             "methods": []
         },
         {
-            "name": "role",
-            "id": "interface-role-a9e95ab1cce8761fe22591f6805cfb709d924834fc3ea607ba4b9f1d291db3bb2d43e25bb0a8d8c8c1358ea49e17eaf51f08afc028d9cfb9eaf208d840a5e8ad",
+            "name": "Role",
+            "id": "interface-Role-77097012ee5ffac3cecad99f4fdb1125f6045d6217c5438b9e605f5bdb9a4395d00bd444f28b407b963b06a238477970695069c8c6afa84c1e6f9301cefd8495",
             "file": "src/app/modules/shared/interfaces/role.interface.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "export interface role {\r\n  id: string;\r\n  roleName: string;\r\n}\r\n",
+            "sourceCode": "export interface Role {\r\n  id: string;\r\n  roleName: string;\r\n}\r\n",
             "properties": [
                 {
                     "name": "id",
@@ -400,7 +423,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-6643d4a52f227bf1a93f069cdc6709baa0f053e2018f5d0dd542836c24fef6b256b5bf60b7b8f263dd709ad0ca13885afa38568dc4ec3dc29beb17d4e4958971",
+            "id": "component-AppComponent-5de7d478ebbc881326181b06168c92892e4b9b44f2bb50536cbce21307a9722927b2c0e90f040a6177a1855cbf26ef9eff00f9de25b448680f612326acdf70b7",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -420,17 +443,56 @@
             "outputsClass": [],
             "propertiesClass": [
                 {
-                    "name": "title",
-                    "defaultValue": "'project-dashboard'",
+                    "name": "pageTitle$",
+                    "defaultValue": "this.store.select(pipe(selectPageTitle))",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "string",
+                    "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 9
+                    "line": 14
                 }
             ],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleLinkClick",
+                    "args": [
+                        {
+                            "name": "linkName",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 18,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "linkName",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleLogoClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -438,7 +500,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  title = 'project-dashboard';\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { Observable, pipe } from 'rxjs';\nimport { setPageTitle } from './state/app.actions';\nimport { selectPageTitle } from './state/app.selectors';\nimport { AppState } from './state/app.state';\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  pageTitle$ = this.store.select(pipe(selectPageTitle));\n\n  constructor(private router: Router, private store: Store<AppState>) {}\n\n  handleLinkClick(linkName: any) {\n    this.store.dispatch(setPageTitle({ pageTitle: linkName }));\n  }\n\n  handleLogoClick() {\n    this.router.navigate(['/']);\n    this.store.dispatch(setPageTitle({ pageTitle: 'Welcome' }));\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -447,7 +509,48 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<jrs-header></jrs-header>\n<router-outlet></router-outlet>\n"
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 14,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<!-- <jrs-header\n  [headerTitle]=\"pageTitle$ | async\"\n  (logoClickEvent)=\"handleLogoClick()\"\n></jrs-header> -->\n\n<ng-container *ngIf=\"pageTitle$ | async; let pageTitle; else: loading\">\n  <jrs-header\n    [headerTitle]=\"pageTitle\"\n    (logoClickEvent)=\"handleLogoClick()\"\n    (linkClickEvent)=\"handleLinkClick($event)\"\n  ></jrs-header>\n</ng-container>\n<ng-template #loading>\n  <div id=\"loading\">Loading</div>\n</ng-template>\n\n<router-outlet></router-outlet>\n"
         },
         {
             "name": "ButtonComponent",
@@ -696,8 +799,9 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-1d7ae28d1e7e8a6844c6bfe7faa316f27290819de065d965e4719f1460156427221f86a88a81cdd9a4087baf5f79cb53e0707b59423bd70e0f3c0ed2ba7f4265",
+            "id": "component-HeaderComponent-b42c3f985fc84817f2a16038303b81959a1237ecf9ca2e394db1a71a92fba25c2395c7c454ecba5809e87d8e6bc8f38cfc9acb3c1996e57ffc0cc02344ff9c5a",
             "file": "src/app/modules/shared/components/organisms/header/header.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -712,17 +816,91 @@
                 "./header.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
+            "inputsClass": [
+                {
+                    "name": "headerTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "linkClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter<string>"
+                },
+                {
+                    "name": "logoClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "EventEmitter<any>"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "header",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                }
+            ],
             "methodsClass": [
+                {
+                    "name": "handleLinkClickEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "handleLogoClickEvent",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 12,
+                    "line": 33,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -734,7 +912,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss']\n})\nexport class HeaderComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  OnInit,\n  ChangeDetectionStrategy,\n  Output,\n  EventEmitter,\n  SimpleChanges,\n} from '@angular/core';\nimport { Router } from '@angular/router';\nimport { select, Store } from '@ngrx/store';\nimport { setPageTitle } from 'src/app/state/app.actions';\nimport { selectPageTitle } from 'src/app/state/app.selectors';\nimport { AppState } from 'src/app/state/app.state';\n\n@Component({\n  selector: 'jrs-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class HeaderComponent implements OnInit {\n  @Input() headerTitle: string | null;\n\n  @Output() logoClickEvent: EventEmitter<any> = new EventEmitter();\n\n  @Output() linkClickEvent: EventEmitter<string> = new EventEmitter();\n\n  header: string | null;\n\n  constructor(private router: Router, private store: Store<AppState>) {}\n\n  ngOnInit(): void {}\n\n  handleLinkClickEvent(event: any) {\n    this.linkClickEvent.emit(event);\n  }\n\n  handleLogoClickEvent() {\n    this.logoClickEvent.emit();\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -748,13 +926,46 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [],
-                "line": 8
+                "args": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 29,
+                "jsdoctags": [
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "store",
+                        "type": "Store<AppState>",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<header class=\"bg-primary-color h-20 flex items-center px-5\">\n  <div class=\"flex items-center grow\">\n    <jrs-logo [color]=\"'white'\" class=\"w-28\"></jrs-logo>\n    <h1 class=\"text-white ml-5\">Project Dashboard</h1>\n  </div>\n  <div class=\"flex justify-end content-evenly\">\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"PROJECTS\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"COMPANIES\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"CONSULTANTS\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n  </div>\n</header>\n"
+            "templateData": "<header class=\"bg-primary-color h-20 flex items-center px-5\">\n  <div class=\"flex items-center grow\">\n    <jrs-logo\n      [color]=\"'white'\"\n      class=\"w-28 hover:cursor-pointer\"\n      (click)=\"handleLogoClickEvent()\"\n    ></jrs-logo>\n    <h1 class=\"text-white ml-5\">{{ headerTitle }}</h1>\n  </div>\n  <div class=\"flex justify-end content-evenly\">\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"PROJECTS\"\n      (linkClickEvent)=\"handleLinkClickEvent($event)\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"COMPANIES\"\n      (linkClickEvent)=\"handleLinkClickEvent($event)\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n    <jrs-nav-link\n      linkTo=\"/projects\"\n      linkText=\"CONSULTANTS\"\n      (linkClickEvent)=\"handleLinkClickEvent($event)\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n  </div>\n</header>\n"
         },
         {
             "name": "IconComponent",
@@ -920,7 +1131,7 @@
         },
         {
             "name": "LinkComponent",
-            "id": "component-LinkComponent-9cc2173efe8e49fb1474b66d466320b532bf69e9c1b53bb236dfe5d3a5af67de28c104817be0ef76f09b39fefac9d9c65231d4daf5e432c5a800189843fd8cbb",
+            "id": "component-LinkComponent-8c795052bd378ac317a763e4b0df31093e4b400adc138d4316b9f1fb99c25db1b9b0d1c14bbedec835ccdccd97f7faff02693eb9faf35ff7650ca5ed60c80345",
             "file": "src/app/modules/shared/components/atoms/link/link.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -974,9 +1185,47 @@
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "linkClickEvent",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter<string>"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "handleLinkClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -984,7 +1233,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-nav-link',\n  templateUrl: './link.component.html',\n  styleUrls: ['./link.component.scss'],\n})\nexport class LinkComponent {\n  @Input() linkTo = '';\n\n  @Input() linkText = '';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() openInNewTab = false;\n}\n",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\nimport { UiSize } from '../../../types/ui.types';\n\n@Component({\n  selector: 'jrs-nav-link',\n  templateUrl: './link.component.html',\n  styleUrls: ['./link.component.scss'],\n})\nexport class LinkComponent {\n  @Input() linkTo = '';\n\n  @Input() linkText = '';\n\n  @Input() size: UiSize = 'm';\n\n  @Input() openInNewTab = false;\n\n  @Output() linkClickEvent: EventEmitter<string> = new EventEmitter();\n\n  handleLinkClick(event: Event) {\n    event.preventDefault();\n    this.linkClickEvent.emit(this.linkText);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -993,7 +1242,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a\n    class=\"\n      text-white\n      uppercase\n      text-2xl\n      font-semibold\n      hover:underline\n      underline-offset-1\n    \"\n    [ngClass]=\"size\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}</a\n  >\n</ng-template>\n"
+            "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a\n    class=\"\n      text-white\n      uppercase\n      text-2xl\n      font-semibold\n      hover:underline\n      underline-offset-1\n    \"\n    (click)=\"handleLinkClick($event)\"\n    [ngClass]=\"size\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}</a\n  >\n</ng-template>\n"
         },
         {
             "name": "LogoComponent",
@@ -1055,9 +1304,9 @@
             "templateData": "<img\r\n  class=\"logo\"\r\n  src=\"assets/logo/logo.svg\"\r\n  alt=\"logo\"\r\n  [ngClass]=\"[color, size]\"\r\n/>\r\n"
         },
         {
-            "name": "ProjectPageComponent",
-            "id": "component-ProjectPageComponent-ba32b21419e71c2257b3323c8c78907fd175dd0435f3fd6e483529a57d49e000336b3c72ec046456d62973d2ac9cc8beac01d50a5d44f858a42cff893e493903",
-            "file": "src/app/modules/features/project/page/page.component.ts",
+            "name": "ProjectComponent",
+            "id": "component-ProjectComponent-8c35c0f6e662eadb266d956ab041616621748a1490066224e726bd3e4dc50b9a7bdd82b2184dd319c51b503fd7a7d46355f28099d57aed0f0bff632e47c17200",
+            "file": "src/app/modules/features/project/page/project.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -1065,11 +1314,11 @@
             "providers": [],
             "selector": "jrs-page",
             "styleUrls": [
-                "./page.component.scss"
+                "./project.component.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./page.component.html"
+                "./project.component.html"
             ],
             "viewProviders": [],
             "inputsClass": [],
@@ -1082,7 +1331,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 11,
+                    "line": 13,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1094,12 +1343,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-page',\n  templateUrl: './page.component.html',\n  styleUrls: ['./page.component.scss'],\n})\nexport class ProjectPageComponent implements OnInit {\n  constructor() {}\n\n  ngOnInit(): void {\n    console.log('project page loaded');\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport { setPageTitle } from 'src/app/state/app.actions';\n\n@Component({\n  selector: 'jrs-page',\n  templateUrl: './project.component.html',\n  styleUrls: ['./project.component.scss'],\n})\nexport class ProjectComponent implements OnInit {\n  constructor(private store: Store) {}\n\n  ngOnInit(): void {\n    // this.store.dispatch(setPageTitle({ pageTitle: 'Project Dashboard' }));\n    // console.log('project page loaded');\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
                     "data": "",
-                    "styleUrl": "./page.component.scss"
+                    "styleUrl": "./project.component.scss"
                 }
             ],
             "stylesData": "",
@@ -1108,8 +1357,26 @@
                 "description": "",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "args": [],
-                "line": 8
+                "args": [
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "store",
+                        "type": "Store",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
             },
             "implements": [
                 "OnInit"
@@ -1515,13 +1782,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-d2da5f93fa60d89fde575b82fa75594efe1dbe3b2cb981f072d07b48cf546a46d0930d5602c83e7eef0289ee056ca6ec93afbedab552857442f818f05415d405",
+            "id": "module-AppModule-259d03238c72c3a70d147d6bb1e86a6d2ad5cc132342fe83c751c5e20dd6bc148de893082da5f41a389f98b074b8b5f52c1571c2576397f60210fd88314720e9",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule,\n    RouterModule.forRoot([]),\n  ],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { environment } from '../environments/environment';\nimport { appReducer } from './state/app.reducer';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule,\n    RouterModule.forRoot([]),\n    StoreModule.forRoot({ appState: appReducer }),\n    StoreDevtoolsModule.instrument({\n      maxAge: 50,\n      logOnly: environment.production,\n    }),\n  ],\n  exports: [StoreModule],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1746,13 +2013,13 @@
         },
         {
             "name": "ProjectModule",
-            "id": "module-ProjectModule-fbbdc6690e39ddba8d3b6c5d3cb64667c8c88d16a35b28ca9000ba190c7f5893cb8690d445c2f21ac343de1eb0a588d87a0ecf24a8c47e107a33092c7c0511b5",
+            "id": "module-ProjectModule-b27859ef9eb8bc1600b823aa2faa0405ecb9b42be1a6aa8a62a293a54940fd92efa5997cddf382500cb91214ca2b73f3733e26736a8a2ab9810954ebdd01652d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/features/project/project.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectPageComponent } from './page/page.component';\nimport { SharedModule } from '../../shared/shared.module';\nimport { ProjectRoutingModule } from './project-routing.module';\n\n@NgModule({\n  declarations: [ProjectPageComponent],\n  imports: [CommonModule, SharedModule, ProjectRoutingModule],\n})\nexport class ProjectModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectComponent } from './page/project.component';\nimport { SharedModule } from '../../shared/shared.module';\nimport { ProjectRoutingModule } from './project-routing.module';\nimport { StoreModule } from '@ngrx/store';\n\n@NgModule({\n  declarations: [ProjectComponent],\n  imports: [\n    CommonModule,\n    SharedModule,\n    ProjectRoutingModule,\n    StoreModule.forFeature('projects', {}),\n  ],\n})\nexport class ProjectModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1762,7 +2029,7 @@
                     "type": "declarations",
                     "elements": [
                         {
-                            "name": "ProjectPageComponent"
+                            "name": "ProjectComponent"
                         }
                     ]
                 },
@@ -1793,13 +2060,13 @@
         },
         {
             "name": "ProjectRoutingModule",
-            "id": "module-ProjectRoutingModule-9788a1997819f7b67c9f3cb5527991fc8a0b7d7689afade8db7beecb0c682fb832f035bf1fe26688656dae567f9e123d86799512b261c692638db7aabc0eeffc",
+            "id": "module-ProjectRoutingModule-c9f46276edee00431b62816e465ab6b55c7c350161df1c23e70182f7e101026ba00b08785aa22aa515ff85e72ea604ec0026bbb3db0bc56f3b80b782c0a022aa",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/features/project/project-routing.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ProjectPageComponent } from './page/page.component';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    pathMatch: 'full',\r\n    component: ProjectPageComponent,\r\n    // children: [\r\n    //   { path: '', component: ProjectPageComponent, pathMatch: 'full' },\r\n    // ],\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule],\r\n})\r\nexport class ProjectRoutingModule {}\r\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\r\nimport { RouterModule, Routes } from '@angular/router';\r\nimport { ProjectComponent } from './page/project.component';\r\n\r\nconst routes: Routes = [\r\n  {\r\n    path: '',\r\n    pathMatch: 'full',\r\n    component: ProjectComponent,\r\n    // children: [\r\n    //   { path: '', component: ProjectPageComponent, pathMatch: 'full' },\r\n    // ],\r\n  },\r\n];\r\n\r\n@NgModule({\r\n  imports: [RouterModule.forChild(routes)],\r\n  exports: [RouterModule],\r\n})\r\nexport class ProjectRoutingModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -1923,6 +2190,16 @@
     "miscellaneous": {
         "variables": [
             {
+                "name": "appReducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/app.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createReducer(\r\n  initialState,\r\n  on(setPageTitle, (state, action) => {\r\n    return {\r\n      ...state,\r\n      pageTitle: action.pageTitle,\r\n    };\r\n  })\r\n)"
+            },
+            {
                 "name": "context",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -1971,6 +2248,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "initialState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/app.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n  pageTitle: 'Welcome',\r\n}"
             },
             {
                 "name": "InputLabel",
@@ -2032,6 +2319,36 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "selectAppState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/app.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createFeatureSelector<AppState>('appState')"
+            },
+            {
+                "name": "selectPageTitle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/app.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createSelector(\r\n  selectAppState,\r\n  (state: AppState) => state.pageTitle\r\n)"
+            },
+            {
+                "name": "setPageTitle",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/state/app.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\n  '[App] Set Page Title',\n  props<{ pageTitle: string }>()\n)"
+            },
+            {
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2075,21 +2392,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/link/link.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<LinkComponent>",
-                "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<LogoComponent>",
                 "defaultValue": "(args: LogoComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/link/link.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<LinkComponent>",
+                "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -2181,6 +2498,28 @@
         ],
         "enumerations": [],
         "groupedVariables": {
+            "src/app/state/app.reducer.ts": [
+                {
+                    "name": "appReducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/app.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createReducer(\r\n  initialState,\r\n  on(setPageTitle, (state, action) => {\r\n    return {\r\n      ...state,\r\n      pageTitle: action.pageTitle,\r\n    };\r\n  })\r\n)"
+                },
+                {
+                    "name": "initialState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/app.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n  pageTitle: 'Welcome',\r\n}"
+                }
+            ],
             "src/test.ts": [
                 {
                     "name": "context",
@@ -2368,6 +2707,40 @@
                     "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
+            "src/app/state/app.selectors.ts": [
+                {
+                    "name": "selectAppState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/app.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createFeatureSelector<AppState>('appState')"
+                },
+                {
+                    "name": "selectPageTitle",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/app.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createSelector(\r\n  selectAppState,\r\n  (state: AppState) => state.pageTitle\r\n)"
+                }
+            ],
+            "src/app/state/app.actions.ts": [
+                {
+                    "name": "setPageTitle",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/state/app.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\n  '[App] Set Page Title',\n  props<{ pageTitle: string }>()\n)"
+                }
+            ],
             "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts": [
                 {
                     "name": "Template",
@@ -2489,7 +2862,7 @@
                                             {
                                                 "path": "",
                                                 "pathMatch": "full",
-                                                "component": "ProjectPageComponent"
+                                                "component": "ProjectComponent"
                                             }
                                         ],
                                         "kind": "module"
@@ -2514,14 +2887,14 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/2",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
-                "filePath": "src/app/modules/features/project/page/page.component.ts",
+                "filePath": "src/app/modules/features/project/page/project.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "ProjectPageComponent",
+                "name": "ProjectComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
@@ -2658,7 +3031,7 @@
                 "linktype": "component",
                 "name": "LinkComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -2774,7 +3147,7 @@
                 "linktype": "component",
                 "name": "HeaderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
@@ -2817,7 +3190,7 @@
                 "filePath": "src/app/modules/shared/interfaces/role.interface.ts",
                 "type": "interface",
                 "linktype": "interface",
-                "name": "role",
+                "name": "Role",
                 "coveragePercent": 0,
                 "coverageCount": "0/3",
                 "status": "low"
@@ -2829,6 +3202,65 @@
                 "name": "Dropdown",
                 "coveragePercent": 0,
                 "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/app.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "setPageTitle",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/app.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/app.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/app.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectAppState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/app.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "selectPageTitle",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/state/app.state.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AppState",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

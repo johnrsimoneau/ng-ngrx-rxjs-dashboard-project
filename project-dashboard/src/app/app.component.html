@@ -1,2 +1,17 @@
-<jrs-header [headerTitle]="pageTitle$ | async"></jrs-header>
+<!-- <jrs-header
+  [headerTitle]="pageTitle$ | async"
+  (logoClickEvent)="handleLogoClick()"
+></jrs-header> -->
+
+<ng-container *ngIf="pageTitle$ | async; let pageTitle; else: loading">
+  <jrs-header
+    [headerTitle]="pageTitle"
+    (logoClickEvent)="handleLogoClick()"
+    (linkClickEvent)="handleLinkClick($event)"
+  ></jrs-header>
+</ng-container>
+<ng-template #loading>
+  <div id="loading">Loading</div>
+</ng-template>
+
 <router-outlet></router-outlet>

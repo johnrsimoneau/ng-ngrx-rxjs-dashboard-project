@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { UiSize } from '../../../types/ui.types';
 
 @Component({
@@ -14,4 +14,11 @@ export class LinkComponent {
   @Input() size: UiSize = 'm';
 
   @Input() openInNewTab = false;
+
+  @Output() linkClickEvent: EventEmitter<string> = new EventEmitter();
+
+  handleLinkClick(event: Event) {
+    // event.preventDefault();
+    this.linkClickEvent.emit(this.linkText);
+  }
 }

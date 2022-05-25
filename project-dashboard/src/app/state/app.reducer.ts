@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import { setPageTitle } from './app.actions';
 
 export const initialState = {
-  pageTitle: '',
+  pageTitle: 'WELCOME',
 };
 
 export const appReducer = createReducer(

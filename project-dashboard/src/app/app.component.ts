@@ -1,21 +1,26 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable, pipe } from 'rxjs';
+import { setPageTitle } from './state/app.actions';
 import { selectPageTitle } from './state/app.selectors';
 import { AppState } from './state/app.state';
-
 @Component({
   selector: 'jrs-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent implements OnInit {
-  pageTitle$: Observable<string>;
+export class AppComponent {
+  pageTitle$ = this.store.select(pipe(selectPageTitle));
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
-  ngOnInit(): void {
-    this.pageTitle$ = this.store.pipe(select(selectPageTitle));
+  handleLinkClick(linkName: any) {
+    this.store.dispatch(setPageTitle({ pageTitle: linkName }));
+  }
+
+  handleLogoClick() {
+    this.router.navigate(['/']);
+    this.store.dispatch(setPageTitle({ pageTitle: 'WELCOME' }));
   }
 }

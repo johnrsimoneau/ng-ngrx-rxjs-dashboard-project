@@ -3,7 +3,7 @@
     <jrs-logo
       [color]="'white'"
       class="w-28 hover:cursor-pointer"
-      (click)="navigateToHomePage()"
+      (click)="handleLogoClickEvent()"
     ></jrs-logo>
     <h1 class="text-white ml-5">{{ headerTitle }}</h1>
   </div>
@@ -11,16 +11,19 @@
     <jrs-nav-link
       linkTo="/projects"
       linkText="PROJECTS"
+      (linkClickEvent)="linkClickEvent.emit($event)"
       class="ml-4"
     ></jrs-nav-link>
     <jrs-nav-link
       linkTo="/projects"
       linkText="COMPANIES"
+      (linkClickEvent)="linkClickEvent.emit($event)"
       class="ml-4"
     ></jrs-nav-link>
     <jrs-nav-link
       linkTo="/projects"
       linkText="CONSULTANTS"
+      (linkClickEvent)="linkClickEvent.emit($event)"
       class="ml-4"
     ></jrs-nav-link>
   </div>

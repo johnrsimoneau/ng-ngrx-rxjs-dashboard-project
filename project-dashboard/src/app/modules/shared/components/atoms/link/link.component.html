@@ -8,6 +8,7 @@
       hover:underline
       underline-offset-1
     "
+    (click)="handleLinkClick($event)"
     [ngClass]="size"
     [routerLink]="linkTo"
     [attr.target]="openInNewTab ? '_blank' : null"
@@ -18,7 +19,7 @@
 <ng-template #out_side_link_template>
   <a
     class="underline hover:text-info-color"
-    [attr.href]="linkTo"
+    [routerLink]="linkTo"
     [attr.target]="openInNewTab ? '_blank' : null"
   >
     {{ linkText }}</a
