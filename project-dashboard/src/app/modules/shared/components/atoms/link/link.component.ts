@@ -18,7 +18,6 @@ export class LinkComponent {
   @Output() linkClickEvent: EventEmitter<string> = new EventEmitter();
 
   handleLinkClick(event: Event) {
-    // event.preventDefault();
     this.linkClickEvent.emit(this.linkText);
   }
 }
