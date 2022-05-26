@@ -1,9 +1,9 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { AppState } from './app.state';
+import { State } from './app.state';
 
-export const selectAppState = createFeatureSelector<AppState>('appState');
+export const selectAppState = createFeatureSelector<State>('appState');
 
 export const selectPageTitle = createSelector(
   selectAppState,
-  (state: AppState) => state.pageTitle
+  (state: State) => state.pageTitle
 );
