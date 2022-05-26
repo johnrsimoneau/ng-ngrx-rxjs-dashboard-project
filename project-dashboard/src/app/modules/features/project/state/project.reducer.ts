@@ -21,7 +21,7 @@ const initialState: ProjectState = {
   error: '',
 };
 
-export const ProjectReducer = createReducer(
+export const projectReducer = createReducer(
   initialState,
   on(ProjectApiActions.loadProjectsSuccess, (state, action): ProjectState => {
     return {

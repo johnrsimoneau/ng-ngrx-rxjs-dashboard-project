@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { exhaustMap, Observable, tap } from 'rxjs';
-import { ProjectDashboardService } from 'src/app/modules/core/services/project-dashboard.service';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Project } from 'src/app/modules/shared/interfaces/project.interface';
-import { setPageTitle } from 'src/app/state/app.actions';
+import { ProjectPageActions } from '../state/actions';
+import { State } from '../state/project.reducer';
+import { getProjects } from '../state/project.selectors';
 
 @Component({
   selector: 'jrs-page',
@@ -13,9 +14,10 @@ import { setPageTitle } from 'src/app/state/app.actions';
 export class ProjectComponent implements OnInit {
   projects$: Observable<Project[]>;
 
-  constructor(private projectService: ProjectDashboardService) {}
+  constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
-    this.projects$ = this.projectService.projects$.pipe();
+    this.projects$ = this.store.pipe(select(getProjects));
+    this.store.dispatch(ProjectPageActions.loadProjects());
   }
 }

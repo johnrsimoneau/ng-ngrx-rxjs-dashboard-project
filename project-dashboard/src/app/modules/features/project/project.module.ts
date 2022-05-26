@@ -5,6 +5,9 @@ import { SharedModule } from '../../shared/shared.module';
 import { ProjectRoutingModule } from './project-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { ProjectGridComponent } from './components/project-grid/project-grid.component';
+import { ProjectFeatureKey, projectReducer } from './state/project.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ProjectEffects } from './state/project.effects';
 
 @NgModule({
   declarations: [ProjectComponent, ProjectGridComponent],
@@ -12,7 +15,8 @@ import { ProjectGridComponent } from './components/project-grid/project-grid.com
     CommonModule,
     SharedModule,
     ProjectRoutingModule,
-    StoreModule.forFeature('projects', {}),
+    StoreModule.forFeature(ProjectFeatureKey, projectReducer),
+    EffectsModule.forFeature([ProjectEffects]),
   ],
 })
 export class ProjectModule {}

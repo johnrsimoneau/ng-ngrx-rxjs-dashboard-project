@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { appReducer } from './state/app.reducer';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { appReducer } from './state/app.reducer';
       maxAge: 50,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([]),
   ],
   exports: [StoreModule],
   providers: [],

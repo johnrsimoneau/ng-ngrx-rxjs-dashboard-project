@@ -6,14 +6,16 @@ import { Project } from '../../shared/interfaces/project.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectDashboardService {
-  private projectDashboardUrl = 'http://localhost:3000/projects';
-
-  projects$ = this.http
-    .get<Project[]>(this.projectDashboardUrl)
-    .pipe(catchError(this.handleError));
+export class ProjectService {
+  private projectUrl = 'http://localhost:3000/projects';
 
   constructor(private http: HttpClient) {}
+
+  getProjects() {
+    return this.http
+      .get<Project[]>(this.projectUrl)
+      .pipe(catchError(this.handleError));
+  }
 
   handleError(err: HttpErrorResponse): Observable<never> {
     let errorMessage: string;
