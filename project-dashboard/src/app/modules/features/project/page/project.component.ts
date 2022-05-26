@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable, take, tap } from 'rxjs';
-import { Project } from '@modules/shared/interfaces/project.interface';
+import { take } from 'rxjs';
 import { ProjectPageActions } from './../state/actions/index';
 import { State } from '../state/project.reducer';
 import {

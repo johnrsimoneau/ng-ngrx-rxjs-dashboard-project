@@ -8,12 +8,14 @@ import { ProjectGridComponent } from './components/project-grid/project-grid.com
 import { ProjectFeatureKey, projectReducer } from './state/project.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProjectEffects } from './state/project.effects';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [ProjectComponent, ProjectGridComponent],
   imports: [
     CommonModule,
     SharedModule,
+    RouterModule,
     ProjectRoutingModule,
     StoreModule.forFeature(ProjectFeatureKey, projectReducer),
     EffectsModule.forFeature([ProjectEffects]),

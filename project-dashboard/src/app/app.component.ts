@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { pipe } from 'rxjs';
@@ -11,7 +11,7 @@ import { State } from './state/app.state';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   pageTitle$ = this.store.select(pipe(selectPageTitle));
 
   navLinks: NavLinkObj[] = [
@@ -30,10 +30,6 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(private router: Router, private store: Store<State>) {}
-
-  ngOnInit(): void {
-    this.navLinks;
-  }
 
   handleLinkClickEvent(linkName: any) {
     this.store.dispatch(setPageTitle({ pageTitle: linkName }));
