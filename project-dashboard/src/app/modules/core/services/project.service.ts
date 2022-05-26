@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, delay, Observable, throwError } from 'rxjs';
 import { Project } from '../../shared/interfaces/project.interface';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class ProjectService {
   getProjects() {
     return this.http
       .get<Project[]>(this.projectUrl)
-      .pipe(catchError(this.handleError));
+      .pipe(delay(750), catchError(this.handleError));
   }
 
   handleError(err: HttpErrorResponse): Observable<never> {
