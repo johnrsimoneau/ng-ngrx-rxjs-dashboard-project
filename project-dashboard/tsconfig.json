@@ -18,11 +18,12 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
-    "strictPropertyInitialization": false
+    "lib": ["es2020", "dom"],
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@modules/*": ["src/app/modules/*"],
+      "@environments": ["src/environments"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { pipe } from 'rxjs';
-import { NavLinkObj } from './modules/shared/interfaces/ui.interface';
+import { NavLinkObj } from '@modules/shared/interfaces/ui.interface';
 import { setPageTitle } from './state/app.actions';
 import { selectPageTitle } from './state/app.selectors';
-import { AppState } from './state/app.state';
+import { State } from './state/app.state';
 @Component({
   selector: 'jrs-root',
   templateUrl: './app.component.html',
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  constructor(private router: Router, private store: Store<AppState>) {}
+  constructor(private router: Router, private store: Store<State>) {}
 
   ngOnInit(): void {
     this.navLinks;
