@@ -20,6 +20,7 @@ import { RouterModule } from '@angular/router';
 import { LogoComponent } from './components/atoms/logo/logo.component';
 import { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';
 import { HeaderComponent } from './components/organisms/header/header.component';
+import { LoaderComponent } from './components/atoms/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,8 @@ import { HeaderComponent } from './components/organisms/header/header.component'
     LinkComponent,
     LogoComponent,
     DropdownInputComponent,
+    LoaderComponent,
+    // Organisms
     HeaderComponent,
   ],
   imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
@@ -45,6 +48,8 @@ import { HeaderComponent } from './components/organisms/header/header.component'
     LinkComponent,
     LogoComponent,
     DropdownInputComponent,
+    LoaderComponent,
+    // Organisms
     HeaderComponent,
   ],
 })

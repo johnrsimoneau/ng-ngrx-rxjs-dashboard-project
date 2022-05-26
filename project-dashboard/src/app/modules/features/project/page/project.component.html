@@ -1,2 +1,7 @@
-<p>page works!</p>
-<jrs-project-grid [projects]="projects$ | async"></jrs-project-grid>
+<ng-container *ngIf="projectsLoading$ | async; else display_grid">
+  Loading
+</ng-container>
+
+<ng-template #display_grid>
+  <jrs-project-grid [projects]="projects$ | async"></jrs-project-grid>
+</ng-template>

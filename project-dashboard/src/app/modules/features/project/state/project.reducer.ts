@@ -17,7 +17,7 @@ export interface ProjectState {
 
 const initialState: ProjectState = {
   projects: [],
-  isLoading: false,
+  isLoading: true,
   error: '',
 };
 
@@ -35,6 +35,7 @@ export const projectReducer = createReducer(
     return {
       ...state,
       projects: [],
+      isLoading: false,
       error: action.error,
     };
   })

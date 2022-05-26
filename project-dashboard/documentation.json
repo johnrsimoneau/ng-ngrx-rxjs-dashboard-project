@@ -2,29 +2,6 @@
     "pipes": [],
     "interfaces": [
         {
-            "name": "AppState",
-            "id": "interface-AppState-4e03bed147604635ea55264c9405b550d65cee5d0e501256828df1966897b2be4541327b335835293e1d7a63758b93d058c62e8d0fb235b812aac895dbcf803d",
-            "file": "src/app/state/app.state.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface AppState {\r\n  pageTitle: string;\r\n}\r\n",
-            "properties": [
-                {
-                    "name": "pageTitle",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 165,
-            "methods": []
-        },
-        {
             "name": "Company",
             "id": "interface-Company-cc76587513a4beb46c2bd0ed7beebf53bb938233ffa2cfb6776b5f96ad007e80bc94c06393e9780115f145d853c216686b90a3b6ce52d04fa8dd4edc95d419b6",
             "file": "src/app/modules/shared/interfaces/company.interface.ts",
@@ -415,6 +392,47 @@
             "methods": []
         },
         {
+            "name": "ProjectState",
+            "id": "interface-ProjectState-0c1f3768e348e6768f3550d3cb3393acd34579290ef7b6d9b71184c5321ce656462fb956ddf505caaa461e09db550f76c04cbc4e98d959af808fd52e863d41cf",
+            "file": "src/app/modules/features/project/state/project.reducer.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { createReducer, on } from '@ngrx/store';\r\nimport { Project } from 'src/app/modules/shared/interfaces/project.interface';\r\nimport * as AppState from 'src/app/state/app.state';\r\nimport { ProjectApiActions, ProjectPageActions } from './actions';\r\n\r\nexport const ProjectFeatureKey = 'projects';\r\n\r\nexport interface State extends AppState.State {\r\n  projects: ProjectState;\r\n}\r\n\r\nexport interface ProjectState {\r\n  projects: Project[];\r\n  isLoading: boolean;\r\n  error: string;\r\n}\r\n\r\nconst initialState: ProjectState = {\r\n  projects: [],\r\n  isLoading: true,\r\n  error: '',\r\n};\r\n\r\nexport const projectReducer = createReducer(\r\n  initialState,\r\n  on(ProjectApiActions.loadProjectsSuccess, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: action.projects,\r\n      error: '',\r\n      isLoading: false,\r\n    };\r\n  }),\r\n  on(ProjectApiActions.loadProjectError, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: [],\r\n      isLoading: false,\r\n      error: action.error,\r\n    };\r\n  })\r\n);\r\n",
+            "properties": [
+                {
+                    "name": "error",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "isLoading",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "projects",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Project[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
             "name": "Role",
             "id": "interface-Role-77097012ee5ffac3cecad99f4fdb1125f6045d6217c5438b9e605f5bdb9a4395d00bd444f28b407b963b06a238477970695069c8c6afa84c1e6f9301cefd8495",
             "file": "src/app/modules/shared/interfaces/role.interface.ts",
@@ -445,9 +463,216 @@
             "indexSignatures": [],
             "kind": 165,
             "methods": []
+        },
+        {
+            "name": "State",
+            "id": "interface-State-82ebf25a016ff3f1ae4c39530c703458d0e8d8a40238f97788c8b4904eec63e97d2b2e267b0fa0eb41e6259a26876d6742d363ff24e72ec36333853b5726060a",
+            "file": "src/app/state/app.state.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface State {\r\n  pageTitle: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "pageTitle",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": []
+        },
+        {
+            "name": "State",
+            "id": "interface-State-0c1f3768e348e6768f3550d3cb3393acd34579290ef7b6d9b71184c5321ce656462fb956ddf505caaa461e09db550f76c04cbc4e98d959af808fd52e863d41cf-1",
+            "file": "src/app/modules/features/project/state/project.reducer.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { createReducer, on } from '@ngrx/store';\r\nimport { Project } from 'src/app/modules/shared/interfaces/project.interface';\r\nimport * as AppState from 'src/app/state/app.state';\r\nimport { ProjectApiActions, ProjectPageActions } from './actions';\r\n\r\nexport const ProjectFeatureKey = 'projects';\r\n\r\nexport interface State extends AppState.State {\r\n  projects: ProjectState;\r\n}\r\n\r\nexport interface ProjectState {\r\n  projects: Project[];\r\n  isLoading: boolean;\r\n  error: string;\r\n}\r\n\r\nconst initialState: ProjectState = {\r\n  projects: [],\r\n  isLoading: true,\r\n  error: '',\r\n};\r\n\r\nexport const projectReducer = createReducer(\r\n  initialState,\r\n  on(ProjectApiActions.loadProjectsSuccess, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: action.projects,\r\n      error: '',\r\n      isLoading: false,\r\n    };\r\n  }),\r\n  on(ProjectApiActions.loadProjectError, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: [],\r\n      isLoading: false,\r\n      error: action.error,\r\n    };\r\n  })\r\n);\r\n",
+            "properties": [
+                {
+                    "name": "projects",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ProjectState",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 165,
+            "methods": [],
+            "isDuplicate": true,
+            "duplicateId": 1,
+            "duplicateName": "State-1"
         }
     ],
-    "injectables": [],
+    "injectables": [
+        {
+            "name": "ProjectEffects",
+            "id": "injectable-ProjectEffects-7cef1fa2fd514d5b86041eaad25e57a09f9a55c2a6e274e44fe6e2ab5e1dd3a197e7d890ffd33a3cbbedba4a8844b79dd3333c6f980c9410d07ae47152af813d",
+            "file": "src/app/modules/features/project/state/project.effects.ts",
+            "properties": [
+                {
+                    "name": "loadProjects$",
+                    "defaultValue": "createEffect(() => {\r\n    return this.actions$.pipe(\r\n      ofType(ProjectPageActions.loadProjects),\r\n      exhaustMap(() =>\r\n        this.projectService\r\n          .getProjects()\r\n          .pipe(\r\n            map((projects) =>\r\n              ProjectApiActions.loadProjectsSuccess({ projects })\r\n            )\r\n          )\r\n      )\r\n    );\r\n  })",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                }
+            ],
+            "methods": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { ProjectService } from '@modules/core/services/project.service';\r\nimport { Actions, createEffect, ofType } from '@ngrx/effects';\r\nimport { exhaustMap, map } from 'rxjs';\r\nimport { ProjectApiActions, ProjectPageActions } from './actions';\r\n\r\n@Injectable()\r\nexport class ProjectEffects {\r\n  constructor(\r\n    private actions$: Actions,\r\n    private projectService: ProjectService\r\n  ) {}\r\n\r\n  loadProjects$ = createEffect(() => {\r\n    return this.actions$.pipe(\r\n      ofType(ProjectPageActions.loadProjects),\r\n      exhaustMap(() =>\r\n        this.projectService\r\n          .getProjects()\r\n          .pipe(\r\n            map((projects) =>\r\n              ProjectApiActions.loadProjectsSuccess({ projects })\r\n            )\r\n          )\r\n      )\r\n    );\r\n  });\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "actions$",
+                        "type": "Actions",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "projectService",
+                        "type": "ProjectService",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "actions$",
+                        "type": "Actions",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "projectService",
+                        "type": "ProjectService",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "ProjectService",
+            "id": "injectable-ProjectService-575007d1d6b7b7fc7ad07ec40ac502484602171a45ada4a325eae2d3234eb2b36a522fc8f0c20d8f320b6146574cb161c440ee09b047d5f927ba7e787d65b328",
+            "file": "src/app/modules/core/services/project.service.ts",
+            "properties": [
+                {
+                    "name": "projectUrl",
+                    "defaultValue": "'http://localhost:3000/projects'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10,
+                    "modifierKind": [
+                        121
+                    ]
+                }
+            ],
+            "methods": [
+                {
+                    "name": "getProjects",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 14,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "handleError",
+                    "args": [
+                        {
+                            "name": "err",
+                            "type": "HttpErrorResponse",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Observable<never>",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "err",
+                            "type": "HttpErrorResponse",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "sourceCode": "import { HttpClient, HttpErrorResponse } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { catchError, Observable, tap, throwError } from 'rxjs';\nimport { Project } from '../../shared/interfaces/project.interface';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ProjectService {\n  private projectUrl = 'http://localhost:3000/projects';\n\n  constructor(private http: HttpClient) {}\n\n  getProjects() {\n    return this.http\n      .get<Project[]>(this.projectUrl)\n      .pipe(catchError(this.handleError));\n  }\n\n  handleError(err: HttpErrorResponse): Observable<never> {\n    let errorMessage: string;\n    if (err.error instanceof ErrorEvent) {\n      errorMessage = `An error occurred: ${err.error.message}`;\n    } else {\n      errorMessage = `Backend returned code ${err.status}: ${err.message}`;\n    }\n    console.error(err);\n    return throwError(() => errorMessage);\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 10,
+                "jsdoctags": [
+                    {
+                        "name": "http",
+                        "type": "HttpClient",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
     "guards": [],
     "interceptors": [],
     "classes": [],
@@ -455,7 +680,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-d4e492b4f8ffd8dbdde10217f49718fa6e01545349ab797fa4a8c7bdd07e3d519d0dba576cfd4596cbff46b4471cac866144147f85488a71b7cf503d4b5b0d30",
+            "id": "component-AppComponent-4e56c666129f40ac0e235c0530bb7b1865d0deaf033a9dffcff702acf24c5ae085f1864177d3b9f0fc8f8a3adb8d4f316f6ddd263a5f7ef487b9f11e306782aa",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -552,7 +777,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { pipe } from 'rxjs';\nimport { NavLinkObj } from './modules/shared/interfaces/ui.interface';\nimport { setPageTitle } from './state/app.actions';\nimport { selectPageTitle } from './state/app.selectors';\nimport { AppState } from './state/app.state';\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  pageTitle$ = this.store.select(pipe(selectPageTitle));\n\n  navLinks: NavLinkObj[] = [\n    {\n      to: '/projects',\n      text: 'PROJECTS',\n    },\n    {\n      to: '/projects',\n      text: 'COMPANIES',\n    },\n    {\n      to: '/projects',\n      text: 'CONSULTANTS',\n    },\n  ];\n\n  constructor(private router: Router, private store: Store<AppState>) {}\n\n  ngOnInit(): void {\n    this.navLinks;\n  }\n\n  handleLinkClickEvent(linkName: any) {\n    this.store.dispatch(setPageTitle({ pageTitle: linkName }));\n  }\n\n  handleLogoClickEvent() {\n    this.router.navigate(['/']);\n    this.store.dispatch(setPageTitle({ pageTitle: 'WELCOME' }));\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { pipe } from 'rxjs';\nimport { NavLinkObj } from '@modules/shared/interfaces/ui.interface';\nimport { setPageTitle } from './state/app.actions';\nimport { selectPageTitle } from './state/app.selectors';\nimport { State } from './state/app.state';\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  pageTitle$ = this.store.select(pipe(selectPageTitle));\n\n  navLinks: NavLinkObj[] = [\n    {\n      to: '/projects',\n      text: 'PROJECTS',\n    },\n    {\n      to: '/projects',\n      text: 'COMPANIES',\n    },\n    {\n      to: '/projects',\n      text: 'CONSULTANTS',\n    },\n  ];\n\n  constructor(private router: Router, private store: Store<State>) {}\n\n  ngOnInit(): void {\n    this.navLinks;\n  }\n\n  handleLinkClickEvent(linkName: any) {\n    this.store.dispatch(setPageTitle({ pageTitle: linkName }));\n  }\n\n  handleLogoClickEvent() {\n    this.router.navigate(['/']);\n    this.store.dispatch(setPageTitle({ pageTitle: 'WELCOME' }));\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -575,7 +800,7 @@
                     },
                     {
                         "name": "store",
-                        "type": "Store<AppState>",
+                        "type": "Store<State>",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
@@ -593,7 +818,7 @@
                     },
                     {
                         "name": "store",
-                        "type": "Store<AppState>",
+                        "type": "Store<State>",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -854,7 +1079,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-320e04146f674739c34f5f8137c80e4f69170deb8bae1f1d187726ecee0757f5ed73f7360887e0b70ea689b51602571eb9f75f4ad383bf4916dc553d4eb68d60",
+            "id": "component-HeaderComponent-cc2db33da6ea89984798dd1cd648743f40d766bf424d0282c218af9e38722d6861ab0cbb43b521fdf7b27c686cb69ca9163fb9effe652eeec14d87b5e4af93ce",
             "file": "src/app/modules/shared/components/organisms/header/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -910,6 +1135,34 @@
             "propertiesClass": [],
             "methodsClass": [
                 {
+                    "name": "handleLinkClickEvent",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "handleLogoClickEvent",
                     "args": [],
                     "optional": false,
@@ -927,7 +1180,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { NavLinkObj } from '../../../interfaces/ui.interface';\n\n@Component({\n  selector: 'jrs-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n})\nexport class HeaderComponent {\n  @Input() headerTitle: string | null;\n\n  @Input() navLinks: NavLinkObj[] = [];\n\n  @Output() logoClickEvent: EventEmitter<any> = new EventEmitter();\n\n  @Output() linkClickEvent: EventEmitter<string> = new EventEmitter();\n\n  handleLogoClickEvent() {\n    this.logoClickEvent.emit();\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { NavLinkObj } from '../../../interfaces/ui.interface';\n\n@Component({\n  selector: 'jrs-header',\n  templateUrl: './header.component.html',\n  styleUrls: ['./header.component.scss'],\n})\nexport class HeaderComponent {\n  @Input() headerTitle: string | null;\n\n  @Input() navLinks: NavLinkObj[] = [];\n\n  @Output() logoClickEvent: EventEmitter<any> = new EventEmitter();\n\n  @Output() linkClickEvent: EventEmitter<string> = new EventEmitter();\n\n  handleLogoClickEvent() {\n    this.logoClickEvent.emit();\n  }\n\n  handleLinkClickEvent(event: any) {\n    this.linkClickEvent.emit(event);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -936,7 +1189,7 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<header class=\"bg-primary-color h-20 flex items-center px-5\">\n  <div class=\"flex items-center grow\">\n    <jrs-logo\n      [color]=\"'white'\"\n      class=\"w-28 hover:cursor-pointer\"\n      (click)=\"handleLogoClickEvent()\"\n    ></jrs-logo>\n    <h1 class=\"text-white ml-5\">{{ headerTitle }}</h1>\n  </div>\n  <div class=\"flex justify-end content-evenly\">\n    <jrs-nav-link\n      *ngFor=\"let link of navLinks\"\n      [linkTo]=\"link.to\"\n      [linkText]=\"link.text\"\n      (linkClickEvent)=\"linkClickEvent.emit($event)\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n  </div>\n</header>\n"
+            "templateData": "<header class=\"bg-primary-color h-20 flex items-center px-5\">\n  <div class=\"flex items-center grow\">\n    <jrs-logo\n      [color]=\"'white'\"\n      class=\"w-28 hover:cursor-pointer\"\n      (click)=\"handleLogoClickEvent()\"\n    ></jrs-logo>\n    <h1 class=\"text-white ml-5\">{{ headerTitle }}</h1>\n  </div>\n  <div class=\"flex justify-end content-evenly\">\n    <jrs-nav-link\n      *ngFor=\"let link of navLinks\"\n      [linkTo]=\"link.to\"\n      [linkText]=\"link.text\"\n      (linkClickEvent)=\"handleLinkClickEvent($event)\"\n      class=\"ml-4\"\n    ></jrs-nav-link>\n  </div>\n</header>\n"
         },
         {
             "name": "IconComponent",
@@ -1213,7 +1466,69 @@
                 }
             ],
             "stylesData": "",
-            "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a\n    class=\"\n      text-white\n      uppercase\n      text-2xl\n      font-semibold\n      hover:underline\n      underline-offset-1\n    \"\n    (click)=\"handleLinkClick($event)\"\n    [ngClass]=\"size\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}</a\n  >\n</ng-template>\n"
+            "templateData": "<ng-container *ngIf=\"!linkTo.includes('http'); else out_side_link_template\">\n  <a\n    class=\"\n      text-white\n      uppercase\n      text-2xl\n      font-semibold\n      hover:underline\n      underline-offset-1\n    \"\n    (click)=\"handleLinkClick($event)\"\n    [ngClass]=\"size\"\n    [routerLink]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}\n  </a>\n</ng-container>\n<ng-template #out_side_link_template>\n  <a\n    class=\"underline hover:text-info-color\"\n    [ngClass]=\"size\"\n    [attr.href]=\"linkTo\"\n    [attr.target]=\"openInNewTab ? '_blank' : null\"\n  >\n    {{ linkText }}</a\n  >\n</ng-template>\n"
+        },
+        {
+            "name": "LoaderComponent",
+            "id": "component-LoaderComponent-bd0dcf5f706db2ab94f5f41451f459bb05a11f3610c0270aa3bf1ec7062dde044e9c572edebcd18d07061c509a2251f740ff17cc8eebe4cdee3a7fd1e517c1d6",
+            "file": "src/app/modules/shared/components/atoms/loader/loader.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-loader",
+            "styleUrls": [
+                "./loader.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./loader.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-loader',\n  templateUrl: './loader.component.html',\n  styleUrls: ['./loader.component.scss']\n})\nexport class LoaderComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./loader.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>loader works!</p>\n"
         },
         {
             "name": "LogoComponent",
@@ -1276,7 +1591,7 @@
         },
         {
             "name": "ProjectComponent",
-            "id": "component-ProjectComponent-051046e0342c3e2d4dc01f73745a68d1455fc8171d11564adb328a466297cc0ac17af16c3fc544bf093dbbcc055e4c1de7afe71825d9f52d69cc8d609b297a0c",
+            "id": "component-ProjectComponent-e5d29b2c2aac00c963532b723d9da5a2383b5f1c9d4b37838c87bbcb4c43744b09111faf38336c986868c5d2f6b6d7414946b2518c8a8ef845f11f3a5d7468d0",
             "file": "src/app/modules/features/project/page/project.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1294,8 +1609,38 @@
             "viewProviders": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "projects$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<Project[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "projectsLoading$",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Observable<boolean>",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1303,7 +1648,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { Store } from '@ngrx/store';\nimport { setPageTitle } from 'src/app/state/app.actions';\n\n@Component({\n  selector: 'jrs-page',\n  templateUrl: './project.component.html',\n  styleUrls: ['./project.component.scss'],\n})\nexport class ProjectComponent {\n  constructor(private store: Store) {}\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { select, Store } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { Project } from 'src/app/modules/shared/interfaces/project.interface';\nimport { ProjectPageActions } from '../state/actions';\nimport { State } from '../state/project.reducer';\nimport {\n  getProjectLoadingStatus,\n  getProjects,\n} from '../state/project.selectors';\n\n@Component({\n  selector: 'jrs-page',\n  templateUrl: './project.component.html',\n  styleUrls: ['./project.component.scss'],\n})\nexport class ProjectComponent implements OnInit {\n  projects$: Observable<Project[]>;\n  projectsLoading$: Observable<boolean>;\n\n  constructor(private store: Store<State>) {}\n\n  ngOnInit(): void {\n    this.store.dispatch(ProjectPageActions.loadProjects());\n\n    this.projects$ = this.store.pipe(select(getProjects));\n\n    this.projectsLoading$ = this.store.pipe(select(getProjectLoadingStatus));\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1320,16 +1665,16 @@
                 "args": [
                     {
                         "name": "store",
-                        "type": "Store",
+                        "type": "Store<State>",
                         "deprecated": false,
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 10,
+                "line": 19,
                 "jsdoctags": [
                     {
                         "name": "store",
-                        "type": "Store",
+                        "type": "Store<State>",
                         "deprecated": false,
                         "deprecationMessage": "",
                         "tagName": {
@@ -1338,7 +1683,83 @@
                     }
                 ]
             },
-            "templateData": "<p>page works!</p>\n"
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<ng-container *ngIf=\"projectsLoading$ | async; else display_grid\">\n  Loading\n</ng-container>\n\n<ng-template #display_grid>\n  <jrs-project-grid [projects]=\"projects$ | async\"></jrs-project-grid>\n</ng-template>\n"
+        },
+        {
+            "name": "ProjectGridComponent",
+            "id": "component-ProjectGridComponent-bdcdd2cec86eaaee9f566c1fad764d02a3f27f3e4a3768b981f985ac74c2014ba3a9bb31d6488c72e954717bfa6524f5fb27c155ba559f41ed9b55eb9926f9ab",
+            "file": "src/app/modules/features/project/components/project-grid/project-grid.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-project-grid",
+            "styleUrls": [
+                "./project-grid.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./project-grid.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "projects",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "Project[] | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  Input,\n  OnInit,\n} from '@angular/core';\nimport { Project } from 'src/app/modules/shared/interfaces/project.interface';\n\n@Component({\n  selector: 'jrs-project-grid',\n  templateUrl: './project-grid.component.html',\n  styleUrls: ['./project-grid.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ProjectGridComponent implements OnInit {\n  @Input() projects: Project[] | null = [];\n\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./project-grid.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 16
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>project-grid works!</p>\n<div *ngFor=\"let project of projects\">\n  <p>{{ project.projectCodeName }}</p>\n</div>\n"
         },
         {
             "name": "TextareaInputComponent",
@@ -1739,13 +2160,13 @@
     "modules": [
         {
             "name": "AppModule",
-            "id": "module-AppModule-259d03238c72c3a70d147d6bb1e86a6d2ad5cc132342fe83c751c5e20dd6bc148de893082da5f41a389f98b074b8b5f52c1571c2576397f60210fd88314720e9",
+            "id": "module-AppModule-8a68e17ba88cb7c065c6b53d5393af9e8eeb959034c936110b2e82e6d898ed2f2f46d13ee8333f0b66e2732f1abd3dbb45f589fd17ce25a95f175471d04e390d",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/app.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from './modules/shared/shared.module';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { environment } from '../environments/environment';\nimport { appReducer } from './state/app.reducer';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    SharedModule,\n    RouterModule.forRoot([]),\n    StoreModule.forRoot({ appState: appReducer }),\n    StoreDevtoolsModule.instrument({\n      maxAge: 50,\n      logOnly: environment.production,\n    }),\n  ],\n  exports: [StoreModule],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { BrowserModule } from '@angular/platform-browser';\nimport { RouterModule } from '@angular/router';\nimport { HttpClientModule } from '@angular/common/http';\n\nimport { AppRoutingModule } from './app-routing.module';\nimport { AppComponent } from './app.component';\nimport { SharedModule } from '@modules/shared/shared.module';\nimport { StoreModule } from '@ngrx/store';\nimport { StoreDevtoolsModule } from '@ngrx/store-devtools';\nimport { environment } from '../environments/environment';\nimport { appReducer } from './state/app.reducer';\nimport { EffectsModule } from '@ngrx/effects';\n\n@NgModule({\n  declarations: [AppComponent],\n  imports: [\n    BrowserModule,\n    AppRoutingModule,\n    HttpClientModule,\n    SharedModule,\n    RouterModule.forRoot([]),\n    StoreModule.forRoot({ appState: appReducer }),\n    StoreDevtoolsModule.instrument({\n      maxAge: 50,\n      logOnly: environment.production,\n    }),\n    EffectsModule.forRoot([]),\n  ],\n  exports: [StoreModule],\n  providers: [],\n  bootstrap: [AppComponent],\n})\nexport class AppModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1970,13 +2391,13 @@
         },
         {
             "name": "ProjectModule",
-            "id": "module-ProjectModule-b27859ef9eb8bc1600b823aa2faa0405ecb9b42be1a6aa8a62a293a54940fd92efa5997cddf382500cb91214ca2b73f3733e26736a8a2ab9810954ebdd01652d",
+            "id": "module-ProjectModule-6c91b4c24a8258ec89f2c8a58d18872a0ebb35a0807f91a3ddaab15dcad41c9a609a3707b0c415428b1c67099bc1c6b0704cd03e064a6534ad7a371c144b14ca",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/features/project/project.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectComponent } from './page/project.component';\nimport { SharedModule } from '../../shared/shared.module';\nimport { ProjectRoutingModule } from './project-routing.module';\nimport { StoreModule } from '@ngrx/store';\n\n@NgModule({\n  declarations: [ProjectComponent],\n  imports: [\n    CommonModule,\n    SharedModule,\n    ProjectRoutingModule,\n    StoreModule.forFeature('projects', {}),\n  ],\n})\nexport class ProjectModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectComponent } from './page/project.component';\nimport { SharedModule } from '../../shared/shared.module';\nimport { ProjectRoutingModule } from './project-routing.module';\nimport { StoreModule } from '@ngrx/store';\nimport { ProjectGridComponent } from './components/project-grid/project-grid.component';\nimport { ProjectFeatureKey, projectReducer } from './state/project.reducer';\nimport { EffectsModule } from '@ngrx/effects';\nimport { ProjectEffects } from './state/project.effects';\n\n@NgModule({\n  declarations: [ProjectComponent, ProjectGridComponent],\n  imports: [\n    CommonModule,\n    SharedModule,\n    ProjectRoutingModule,\n    StoreModule.forFeature(ProjectFeatureKey, projectReducer),\n    EffectsModule.forFeature([ProjectEffects]),\n  ],\n})\nexport class ProjectModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -1987,6 +2408,9 @@
                     "elements": [
                         {
                             "name": "ProjectComponent"
+                        },
+                        {
+                            "name": "ProjectGridComponent"
                         }
                     ]
                 },
@@ -2053,13 +2477,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-9e61a3d4befc1ad490240e841a56832b588949de605a88879555f4706209d876aff75065b2724770783faf0852c572970010a596c6f07266c1767f9cb7351602",
+            "id": "module-SharedModule-393404d0aff54949e914cff5aa7c8b3646af04ee7db03390eb0a5a9e867e284aa900d30ea673c3a569de06531b99fc874fa557fa2498b6426f430d279bb1486f",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport {\n  FaIconLibrary,\n  FontAwesomeModule,\n} from '@fortawesome/angular-fontawesome';\nimport {\n  faCircleCheck,\n  faCircleExclamation,\n  faFolder,\n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\nimport { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';\nimport { HeaderComponent } from './components/organisms/header/header.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    HeaderComponent,\n  ],\n  imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    HeaderComponent,\n  ],\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(faCircleCheck, faCircleExclamation, faFolder);\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport {\n  FaIconLibrary,\n  FontAwesomeModule,\n} from '@fortawesome/angular-fontawesome';\nimport {\n  faCircleCheck,\n  faCircleExclamation,\n  faFolder,\n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\nimport { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';\nimport { HeaderComponent } from './components/organisms/header/header.component';\nimport { LoaderComponent } from './components/atoms/loader/loader.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    LoaderComponent,\n    // Organisms\n    HeaderComponent,\n  ],\n  imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    LoaderComponent,\n    // Organisms\n    HeaderComponent,\n  ],\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(faCircleCheck, faCircleExclamation, faFolder);\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2085,6 +2509,9 @@
                         },
                         {
                             "name": "LinkComponent"
+                        },
+                        {
+                            "name": "LoaderComponent"
                         },
                         {
                             "name": "LogoComponent"
@@ -2121,6 +2548,9 @@
                         },
                         {
                             "name": "LinkComponent"
+                        },
+                        {
+                            "name": "LoaderComponent"
                         },
                         {
                             "name": "LogoComponent"
@@ -2180,6 +2610,16 @@
                 "name": "environment",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\n  production: true\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/environments/environment.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2187,14 +2627,44 @@
                 "defaultValue": "{\n  production: false\n}"
             },
             {
-                "name": "environment",
+                "name": "getProjectFeatureState",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/environments/environment.prod.ts",
+                "file": "src/app/modules/features/project/state/project.selectors.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  production: true\n}"
+                "type": "",
+                "defaultValue": "createFeatureSelector<ProjectState>('projects')"
+            },
+            {
+                "name": "getProjectLoadingErrorMsg",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/project.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.error\r\n)"
+            },
+            {
+                "name": "getProjectLoadingStatus",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/project.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.isLoading\r\n)"
+            },
+            {
+                "name": "getProjects",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/project.selectors.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.projects\r\n)"
             },
             {
                 "name": "Header",
@@ -2227,6 +2697,16 @@
                 "defaultValue": "{\r\n  pageTitle: 'WELCOME',\r\n}"
             },
             {
+                "name": "initialState",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/project.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ProjectState",
+                "defaultValue": "{\r\n  projects: [],\r\n  isLoading: true,\r\n  error: '',\r\n}"
+            },
+            {
                 "name": "InputLabel",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2247,6 +2727,46 @@
                 "defaultValue": "Template.bind({})"
             },
             {
+                "name": "Loader",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/loader/loader.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "loadProjectError",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/actions/project-api.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\r\n  '[Project] Load Project Error',\r\n  props<{ error: string }>()\r\n)"
+            },
+            {
+                "name": "loadProjects",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/actions/project-page.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction('[Project] Load Projects')"
+            },
+            {
+                "name": "loadProjectsSuccess",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/actions/project-api.actions.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createAction(\r\n  '[Project] Load Project Success',\r\n  props<{ projects: Project[] }>()\r\n)"
+            },
+            {
                 "name": "Logo",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -2265,6 +2785,26 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "ProjectFeatureKey",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/project.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "string",
+                "defaultValue": "'projects'"
+            },
+            {
+                "name": "projectReducer",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/features/project/state/project.reducer.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "createReducer(\r\n  initialState,\r\n  on(ProjectApiActions.loadProjectsSuccess, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: action.projects,\r\n      error: '',\r\n      isLoading: false,\r\n    };\r\n  }),\r\n  on(ProjectApiActions.loadProjectError, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: [],\r\n      isLoading: false,\r\n      error: action.error,\r\n    };\r\n  })\r\n)"
             },
             {
                 "name": "require",
@@ -2293,7 +2833,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "createFeatureSelector<AppState>('appState')"
+                "defaultValue": "createFeatureSelector<State>('appState')"
             },
             {
                 "name": "selectPageTitle",
@@ -2303,7 +2843,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
-                "defaultValue": "createSelector(\r\n  selectAppState,\r\n  (state: AppState) => state.pageTitle\r\n)"
+                "defaultValue": "createSelector(\r\n  selectAppState,\r\n  (state: State) => state.pageTitle\r\n)"
             },
             {
                 "name": "setPageTitle",
@@ -2324,6 +2864,16 @@
                 "deprecationMessage": "",
                 "type": "Story<ButtonComponent>",
                 "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<DropdownInputComponent>",
+                "defaultValue": "(\r\n  args: DropdownInputComponent\r\n) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -2359,6 +2909,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/loader/loader.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<LoaderComponent>",
+                "defaultValue": "(args: LoaderComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/logo/logo.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2369,31 +2929,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<TextInputComponent>",
-                "defaultValue": "(args: TextInputComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<DropdownInputComponent>",
-                "defaultValue": "(\r\n  args: DropdownInputComponent\r\n) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<TextareaInputComponent>",
                 "defaultValue": "(\r\n  args: TextareaInputComponent\r\n) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextInputComponent>",
+                "defaultValue": "(args: TextInputComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -2540,6 +3090,18 @@
                     "defaultValue": "(\r\n  args: DropdownInputComponent\r\n) => ({\r\n  props: args,\r\n})"
                 }
             ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true\n}"
+                }
+            ],
             "src/environments/environment.ts": [
                 {
                     "name": "environment",
@@ -2552,16 +3114,46 @@
                     "defaultValue": "{\n  production: false\n}"
                 }
             ],
-            "src/environments/environment.prod.ts": [
+            "src/app/modules/features/project/state/project.selectors.ts": [
                 {
-                    "name": "environment",
+                    "name": "getProjectFeatureState",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/environments/environment.prod.ts",
+                    "file": "src/app/modules/features/project/state/project.selectors.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  production: true\n}"
+                    "type": "",
+                    "defaultValue": "createFeatureSelector<ProjectState>('projects')"
+                },
+                {
+                    "name": "getProjectLoadingErrorMsg",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/project.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.error\r\n)"
+                },
+                {
+                    "name": "getProjectLoadingStatus",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/project.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.isLoading\r\n)"
+                },
+                {
+                    "name": "getProjects",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/project.selectors.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.projects\r\n)"
                 }
             ],
             "src/app/modules/shared/components/organisms/header/header.stories.ts": [
@@ -2608,6 +3200,38 @@
                     "defaultValue": "(args: IconComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
+            "src/app/modules/features/project/state/project.reducer.ts": [
+                {
+                    "name": "initialState",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/project.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ProjectState",
+                    "defaultValue": "{\r\n  projects: [],\r\n  isLoading: true,\r\n  error: '',\r\n}"
+                },
+                {
+                    "name": "ProjectFeatureKey",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/project.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "defaultValue": "'projects'"
+                },
+                {
+                    "name": "projectReducer",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/project.reducer.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createReducer(\r\n  initialState,\r\n  on(ProjectApiActions.loadProjectsSuccess, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: action.projects,\r\n      error: '',\r\n      isLoading: false,\r\n    };\r\n  }),\r\n  on(ProjectApiActions.loadProjectError, (state, action): ProjectState => {\r\n    return {\r\n      ...state,\r\n      projects: [],\r\n      isLoading: false,\r\n      error: action.error,\r\n    };\r\n  })\r\n)"
+                }
+            ],
             "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts": [
                 {
                     "name": "InputLabel",
@@ -2650,6 +3274,62 @@
                     "deprecationMessage": "",
                     "type": "Story<LinkComponent>",
                     "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/modules/shared/components/atoms/loader/loader.stories.ts": [
+                {
+                    "name": "Loader",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/loader/loader.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/loader/loader.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<LoaderComponent>",
+                    "defaultValue": "(args: LoaderComponent) => ({\r\n  props: args,\r\n})"
+                }
+            ],
+            "src/app/modules/features/project/state/actions/project-api.actions.ts": [
+                {
+                    "name": "loadProjectError",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/actions/project-api.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\r\n  '[Project] Load Project Error',\r\n  props<{ error: string }>()\r\n)"
+                },
+                {
+                    "name": "loadProjectsSuccess",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/actions/project-api.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction(\r\n  '[Project] Load Project Success',\r\n  props<{ projects: Project[] }>()\r\n)"
+                }
+            ],
+            "src/app/modules/features/project/state/actions/project-page.actions.ts": [
+                {
+                    "name": "loadProjects",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/features/project/state/actions/project-page.actions.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "createAction('[Project] Load Projects')"
                 }
             ],
             "src/app/modules/shared/components/atoms/logo/logo.stories.ts": [
@@ -2715,7 +3395,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "createFeatureSelector<AppState>('appState')"
+                    "defaultValue": "createFeatureSelector<State>('appState')"
                 },
                 {
                     "name": "selectPageTitle",
@@ -2725,7 +3405,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
-                    "defaultValue": "createSelector(\r\n  selectAppState,\r\n  (state: AppState) => state.pageTitle\r\n)"
+                    "defaultValue": "createSelector(\r\n  selectAppState,\r\n  (state: State) => state.pageTitle\r\n)"
                 }
             ],
             "src/app/state/app.actions.ts": [
@@ -2738,28 +3418,6 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "createAction(\n  '[App] Set Page Title',\n  props<{ pageTitle: string }>()\n)"
-                }
-            ],
-            "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts": [
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<TextInputComponent>",
-                    "defaultValue": "(args: TextInputComponent) => ({\r\n  props: args,\r\n})"
-                },
-                {
-                    "name": "TextInput",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
                 }
             ],
             "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts": [
@@ -2778,6 +3436,28 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts": [
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextInputComponent>",
+                    "defaultValue": "(args: TextInputComponent) => ({\r\n  props: args,\r\n})"
+                },
+                {
+                    "name": "TextInput",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -2890,12 +3570,157 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/modules/core/services/project.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ProjectService",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/components/project-grid/project-grid.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ProjectGridComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/modules/features/project/page/project.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ProjectComponent",
                 "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/actions/project-api.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadProjectError",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/actions/project-api.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadProjectsSuccess",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/actions/project-page.actions.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadProjects",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.effects.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "ProjectEffects",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.reducer.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ProjectState",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.reducer.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "State",
+                "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "initialState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "ProjectFeatureKey",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.reducer.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "projectReducer",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getProjectFeatureState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getProjectLoadingErrorMsg",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getProjectLoadingStatus",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/features/project/state/project.selectors.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "getProjects",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -3054,6 +3879,35 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/modules/shared/components/atoms/loader/loader.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/loader/loader.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Loader",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/loader/loader.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/modules/shared/components/atoms/logo/logo.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -3146,7 +4000,7 @@
                 "linktype": "component",
                 "name": "HeaderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
@@ -3286,7 +4140,7 @@
                 "filePath": "src/app/state/app.state.ts",
                 "type": "interface",
                 "linktype": "interface",
-                "name": "AppState",
+                "name": "State",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
                 "status": "low"

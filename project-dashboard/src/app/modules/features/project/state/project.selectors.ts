@@ -7,3 +7,13 @@ export const getProjects = createSelector(
   getProjectFeatureState,
   (state) => state.projects
 );
+
+export const getProjectLoadingStatus = createSelector(
+  getProjectFeatureState,
+  (state) => state.isLoading
+);
+
+export const getProjectLoadingErrorMsg = createSelector(
+  getProjectFeatureState,
+  (state) => state.error
+);

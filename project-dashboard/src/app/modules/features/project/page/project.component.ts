@@ -4,7 +4,10 @@ import { Observable } from 'rxjs';
 import { Project } from 'src/app/modules/shared/interfaces/project.interface';
 import { ProjectPageActions } from '../state/actions';
 import { State } from '../state/project.reducer';
-import { getProjects } from '../state/project.selectors';
+import {
+  getProjectLoadingStatus,
+  getProjects,
+} from '../state/project.selectors';
 
 @Component({
   selector: 'jrs-page',
@@ -13,11 +16,15 @@ import { getProjects } from '../state/project.selectors';
 })
 export class ProjectComponent implements OnInit {
   projects$: Observable<Project[]>;
+  projectsLoading$: Observable<boolean>;
 
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {
-    this.projects$ = this.store.pipe(select(getProjects));
     this.store.dispatch(ProjectPageActions.loadProjects());
+
+    this.projects$ = this.store.pipe(select(getProjects));
+
+    this.projectsLoading$ = this.store.pipe(select(getProjectLoadingStatus));
   }
 }

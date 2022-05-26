@@ -1,0 +1,17 @@
+.loading-animation {
+  &.xs {
+    width: 25px;
+  }
+  &.s {
+    width: 50px;
+  }
+  &.m {
+    width: 75px;
+  }
+  &.l {
+    width: 100px;
+  }
+  &.xl {
+    width: 125px;
+  }
+}
