@@ -9,21 +9,10 @@
   </div>
   <div class="flex justify-end content-evenly">
     <jrs-nav-link
-      linkTo="/projects"
-      linkText="PROJECTS"
-      (linkClickEvent)="linkClickEvent.emit($event)"
-      class="ml-4"
-    ></jrs-nav-link>
-    <jrs-nav-link
-      linkTo="/projects"
-      linkText="COMPANIES"
-      (linkClickEvent)="linkClickEvent.emit($event)"
-      class="ml-4"
-    ></jrs-nav-link>
-    <jrs-nav-link
-      linkTo="/projects"
-      linkText="CONSULTANTS"
-      (linkClickEvent)="linkClickEvent.emit($event)"
+      *ngFor="let link of navLinks"
+      [linkTo]="link.to"
+      [linkText]="link.text"
+      (linkClickEvent)="handleLinkClickEvent($event)"
       class="ml-4"
     ></jrs-nav-link>
   </div>

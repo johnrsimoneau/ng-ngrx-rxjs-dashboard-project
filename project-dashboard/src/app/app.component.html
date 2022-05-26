@@ -1,13 +1,9 @@
-<!-- <jrs-header
-  [headerTitle]="pageTitle$ | async"
-  (logoClickEvent)="handleLogoClick()"
-></jrs-header> -->
-
-<ng-container *ngIf="pageTitle$ | async; let pageTitle; else: loading">
+<ng-container *ngIf="pageTitle$ | async as pageTitle; else loading">
   <jrs-header
+    [navLinks]="navLinks"
     [headerTitle]="pageTitle"
-    (logoClickEvent)="handleLogoClick()"
-    (linkClickEvent)="handleLinkClick($event)"
+    (logoClickEvent)="handleLogoClickEvent()"
+    (linkClickEvent)="handleLinkClickEvent($event)"
   ></jrs-header>
 </ng-container>
 <ng-template #loading>

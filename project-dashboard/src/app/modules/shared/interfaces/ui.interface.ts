@@ -3,3 +3,8 @@ export interface Dropdown {
   display: any;
   metaData?: any;
 }
+
+export interface NavLinkObj {
+  to: string;
+  text: string;
+}

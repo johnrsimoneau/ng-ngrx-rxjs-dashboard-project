@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 import { SharedModule } from '../../../shared.module';
@@ -9,6 +10,7 @@ export default {
   decorators: [
     moduleMetadata({
       imports: [SharedModule, RouterTestingModule],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     }),
   ],
   argTypes: {

@@ -19,7 +19,8 @@
 <ng-template #out_side_link_template>
   <a
     class="underline hover:text-info-color"
-    [routerLink]="linkTo"
+    [ngClass]="size"
+    [attr.href]="linkTo"
     [attr.target]="openInNewTab ? '_blank' : null"
   >
     {{ linkText }}</a
