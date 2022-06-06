@@ -24,7 +24,6 @@ export class GridComponent {
   rowData: any[];
 
   onGridReady(params: GridReadyEvent) {
-    console.log('ran');
     let columnIds: string[] = [];
     this.columnDefs.forEach((item) => {
       if (item.field) {
@@ -35,8 +34,8 @@ export class GridComponent {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     // this.rowData = this.data;
-    this.gridApi.sizeColumnsToFit();
+    // this.gridApi.sizeColumnsToFit();
     console.log(columnIds);
-    this.gridColumnApi.autoSizeColumns(columnIds, true);
+    // this.gridColumnApi.autoSizeColumns(columnIds, true);
   }
 }

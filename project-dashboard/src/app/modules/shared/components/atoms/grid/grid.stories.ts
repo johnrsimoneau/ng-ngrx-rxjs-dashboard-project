@@ -1,4 +1,9 @@
-import { Story, Meta, moduleMetadata } from '@storybook/angular';
+import {
+  Story,
+  Meta,
+  moduleMetadata,
+  componentWrapperDecorator,
+} from '@storybook/angular';
 import { SharedModule } from '../../../shared.module';
 import { GridComponent } from './grid.component';
 
@@ -9,6 +14,9 @@ export default {
     moduleMetadata({
       imports: [SharedModule],
     }),
+    // componentWrapperDecorator(
+    //   (story) => `<div style="width: 400px">${story}</div>`
+    // ),
   ],
   argTypes: {
     // columnDef: {
