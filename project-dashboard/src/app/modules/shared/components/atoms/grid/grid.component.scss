@@ -1,0 +1,17 @@
+.grid-wrapper {
+  &.xs {
+    height: 150px;
+  }
+  &.s {
+    height: 200px;
+  }
+  &.m {
+    height: 300px;
+  }
+  &.l {
+    height: 400px;
+  }
+  &.xl {
+    height: 500px;
+  }
+}

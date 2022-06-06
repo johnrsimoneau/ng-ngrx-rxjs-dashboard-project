@@ -4,6 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { ColDef } from 'ag-grid-community';
 import { Project } from 'src/app/modules/shared/interfaces/project.interface';
 
 @Component({
@@ -14,6 +15,24 @@ import { Project } from 'src/app/modules/shared/interfaces/project.interface';
 })
 export class ProjectGridComponent implements OnInit {
   @Input() projects: Project[] | null = [];
+
+  columnDefs: ColDef[] = [
+    {
+      field: 'projectCodeName',
+    },
+    {
+      field: 'overallStatus',
+    },
+    {
+      field: 'startDate',
+    },
+    {
+      field: 'projectedEndDate',
+    },
+    {
+      field: 'percentageComplete',
+    },
+  ];
 
   constructor() {}
 

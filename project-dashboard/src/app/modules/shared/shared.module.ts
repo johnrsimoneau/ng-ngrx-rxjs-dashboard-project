@@ -21,6 +21,8 @@ import { LogoComponent } from './components/atoms/logo/logo.component';
 import { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';
 import { HeaderComponent } from './components/organisms/header/header.component';
 import { LoaderComponent } from './components/atoms/loader/loader.component';
+import { GridComponent } from './components/atoms/grid/grid.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -34,10 +36,17 @@ import { LoaderComponent } from './components/atoms/loader/loader.component';
     LogoComponent,
     DropdownInputComponent,
     LoaderComponent,
+    GridComponent,
     // Organisms
     HeaderComponent,
   ],
-  imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    FormsModule,
+    RouterModule,
+    AgGridModule,
+  ],
   exports: [
     // Atoms
     ButtonComponent,
@@ -49,6 +58,7 @@ import { LoaderComponent } from './components/atoms/loader/loader.component';
     LogoComponent,
     DropdownInputComponent,
     LoaderComponent,
+    GridComponent,
     // Organisms
     HeaderComponent,
   ],

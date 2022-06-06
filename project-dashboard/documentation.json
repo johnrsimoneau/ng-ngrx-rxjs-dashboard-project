@@ -582,7 +582,7 @@
         },
         {
             "name": "ProjectService",
-            "id": "injectable-ProjectService-575007d1d6b7b7fc7ad07ec40ac502484602171a45ada4a325eae2d3234eb2b36a522fc8f0c20d8f320b6146574cb161c440ee09b047d5f927ba7e787d65b328",
+            "id": "injectable-ProjectService-e67bedc5d786b80ff4e276a98ee89a8ea660d62aaf693dc0712ea542b81b4cb8dc512b1798bb4d2660be7480b923d68ad04b99f9cdfebb5b68daace2574fb79d",
             "file": "src/app/modules/core/services/project.service.ts",
             "properties": [
                 {
@@ -643,7 +643,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { HttpClient, HttpErrorResponse } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { catchError, Observable, tap, throwError } from 'rxjs';\nimport { Project } from '../../shared/interfaces/project.interface';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ProjectService {\n  private projectUrl = 'http://localhost:3000/projects';\n\n  constructor(private http: HttpClient) {}\n\n  getProjects() {\n    return this.http\n      .get<Project[]>(this.projectUrl)\n      .pipe(catchError(this.handleError));\n  }\n\n  handleError(err: HttpErrorResponse): Observable<never> {\n    let errorMessage: string;\n    if (err.error instanceof ErrorEvent) {\n      errorMessage = `An error occurred: ${err.error.message}`;\n    } else {\n      errorMessage = `Backend returned code ${err.status}: ${err.message}`;\n    }\n    console.error(err);\n    return throwError(() => errorMessage);\n  }\n}\n",
+            "sourceCode": "import { HttpClient, HttpErrorResponse } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { catchError, delay, Observable, throwError } from 'rxjs';\nimport { Project } from '../../shared/interfaces/project.interface';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ProjectService {\n  private projectUrl = 'http://localhost:3000/projects';\n\n  constructor(private http: HttpClient) {}\n\n  getProjects() {\n    return this.http\n      .get<Project[]>(this.projectUrl)\n      .pipe(delay(750), catchError(this.handleError));\n  }\n\n  handleError(err: HttpErrorResponse): Observable<never> {\n    let errorMessage: string;\n    if (err.error instanceof ErrorEvent) {\n      errorMessage = `An error occurred: ${err.error.message}`;\n    } else {\n      errorMessage = `Backend returned code ${err.status}: ${err.message}`;\n    }\n    console.error(err);\n    return throwError(() => errorMessage);\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -680,7 +680,7 @@
     "components": [
         {
             "name": "AppComponent",
-            "id": "component-AppComponent-4e56c666129f40ac0e235c0530bb7b1865d0deaf033a9dffcff702acf24c5ae085f1864177d3b9f0fc8f8a3adb8d4f316f6ddd263a5f7ef487b9f11e306782aa",
+            "id": "component-AppComponent-8bc0db5aec380b783889c093b61144d9f7c67deb32da03d52a11d1554a3dee87666b337d6596a7ad7d9a2523de44808873b5ab09bf999a2d7d65d92b42440747",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -734,7 +734,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 38,
+                    "line": 34,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -755,17 +755,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 42,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 34,
+                    "line": 38,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -777,7 +767,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { pipe } from 'rxjs';\nimport { NavLinkObj } from '@modules/shared/interfaces/ui.interface';\nimport { setPageTitle } from './state/app.actions';\nimport { selectPageTitle } from './state/app.selectors';\nimport { State } from './state/app.state';\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent implements OnInit {\n  pageTitle$ = this.store.select(pipe(selectPageTitle));\n\n  navLinks: NavLinkObj[] = [\n    {\n      to: '/projects',\n      text: 'PROJECTS',\n    },\n    {\n      to: '/projects',\n      text: 'COMPANIES',\n    },\n    {\n      to: '/projects',\n      text: 'CONSULTANTS',\n    },\n  ];\n\n  constructor(private router: Router, private store: Store<State>) {}\n\n  ngOnInit(): void {\n    this.navLinks;\n  }\n\n  handleLinkClickEvent(linkName: any) {\n    this.store.dispatch(setPageTitle({ pageTitle: linkName }));\n  }\n\n  handleLogoClickEvent() {\n    this.router.navigate(['/']);\n    this.store.dispatch(setPageTitle({ pageTitle: 'WELCOME' }));\n  }\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { Router } from '@angular/router';\nimport { Store } from '@ngrx/store';\nimport { pipe } from 'rxjs';\nimport { NavLinkObj } from '@modules/shared/interfaces/ui.interface';\nimport { setPageTitle } from './state/app.actions';\nimport { selectPageTitle } from './state/app.selectors';\nimport { State } from './state/app.state';\n@Component({\n  selector: 'jrs-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  pageTitle$ = this.store.select(pipe(selectPageTitle));\n\n  navLinks: NavLinkObj[] = [\n    {\n      to: '/projects',\n      text: 'PROJECTS',\n    },\n    {\n      to: '/projects',\n      text: 'COMPANIES',\n    },\n    {\n      to: '/projects',\n      text: 'CONSULTANTS',\n    },\n  ];\n\n  constructor(private router: Router, private store: Store<State>) {}\n\n  handleLinkClickEvent(linkName: any) {\n    this.store.dispatch(setPageTitle({ pageTitle: linkName }));\n  }\n\n  handleLogoClickEvent() {\n    this.router.navigate(['/']);\n    this.store.dispatch(setPageTitle({ pageTitle: 'WELCOME' }));\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -827,9 +817,6 @@
                     }
                 ]
             },
-            "implements": [
-                "OnInit"
-            ],
             "templateData": "<ng-container *ngIf=\"pageTitle$ | async as pageTitle; else loading\">\n  <jrs-header\n    [navLinks]=\"navLinks\"\n    [headerTitle]=\"pageTitle\"\n    (logoClickEvent)=\"handleLogoClickEvent()\"\n    (linkClickEvent)=\"handleLinkClickEvent($event)\"\n  ></jrs-header>\n</ng-container>\n<ng-template #loading>\n  <div id=\"loading\">Loading</div>\n</ng-template>\n\n<router-outlet></router-outlet>\n"
         },
         {
@@ -1076,6 +1063,144 @@
             ],
             "stylesData": "",
             "templateData": "<select\n  class=\"\n    py-2\n    px-3\n    border border-darker-grey-color\n    rounded-md\n    outline-2 outline-secondary-color\n    dropdown-select\n  \"\n  (change)=\"handleChangeOutputEvent(selectedValue.value)\"\n  [attr.aria-label]=\"accessibilityLabelName\"\n  [(ngModel)]=\"selectedValue.value\"\n  [attr.id]=\"inputId\"\n  [ngClass]=\"size\"\n  [attr.required]=\"isRequired\"\n>\n  <option *ngIf=\"placeholder !== ''\" value=\"0\">{{ placeholder }}</option>\n  <option\n    *ngFor=\"let option of options\"\n    [selected]=\"option.value\"\n    [ngValue]=\"option.value\"\n  >\n    {{ option.display }}\n  </option>\n</select>\n"
+        },
+        {
+            "name": "GridComponent",
+            "id": "component-GridComponent-257db90cf36c00d1a975496922ce63f2e0d399a0e84733fd054cb9ebbfa608addb06f3b515338247b79d26746643b4f7352729918cbf3d39704fd8694043ff2d",
+            "file": "src/app/modules/shared/components/atoms/grid/grid.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "jrs-grid",
+            "styleUrls": [
+                "./grid.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./grid.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "columnDefs",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 11,
+                    "type": "ColDef[]",
+                    "decorators": []
+                },
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "any[]",
+                    "decorators": []
+                },
+                {
+                    "name": "defaultColDef",
+                    "defaultValue": "{ sortable: true, filter: true }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "ColDef",
+                    "decorators": []
+                },
+                {
+                    "name": "height",
+                    "defaultValue": "'m'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "UiSize",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "gridApi",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "GridApi",
+                    "optional": false,
+                    "description": "",
+                    "line": 16,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "gridColumnApi",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ColumnApi",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "modifierKind": [
+                        121
+                    ]
+                },
+                {
+                    "name": "rowData",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onGridReady",
+                    "args": [
+                        {
+                            "name": "params",
+                            "type": "GridReadyEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "params",
+                            "type": "GridReadyEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '@modules/shared/types/ui.types';\nimport { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';\n\n@Component({\n  selector: 'jrs-grid',\n  templateUrl: './grid.component.html',\n  styleUrls: ['./grid.component.scss'],\n})\nexport class GridComponent {\n  @Input() columnDefs: ColDef[];\n  @Input() defaultColDef: ColDef = { sortable: true, filter: true };\n  @Input() data: any[];\n  @Input() height: UiSize = 'm';\n\n  private gridApi: GridApi;\n  private gridColumnApi!: ColumnApi;\n\n  rowData: any[];\n\n  onGridReady(params: GridReadyEvent) {\n    this.gridApi = params.api;\n    this.gridColumnApi = params.columnApi;\n    this.gridApi.sizeColumnsToFit();\n    this.rowData = this.data;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".grid-wrapper {\r\n  &.s {\r\n    height: 200px;\r\n  }\r\n  &.m {\r\n    height: 400px;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./grid.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<div class=\"grid-wrapper ag-theme-alpine\" [ngClass]=\"height\">\n  <ag-grid-angular\n    style=\"height: 100%\"\n    [columnDefs]=\"columnDefs\"\n    [defaultColDef]=\"defaultColDef\"\n    [rowData]=\"rowData\"\n    [animateRows]=\"true\"\n    (gridReady)=\"onGridReady($event)\"\n  ></ag-grid-angular>\n</div>\n"
         },
         {
             "name": "HeaderComponent",
@@ -1470,7 +1595,7 @@
         },
         {
             "name": "LoaderComponent",
-            "id": "component-LoaderComponent-bd0dcf5f706db2ab94f5f41451f459bb05a11f3610c0270aa3bf1ec7062dde044e9c572edebcd18d07061c509a2251f740ff17cc8eebe4cdee3a7fd1e517c1d6",
+            "id": "component-LoaderComponent-e1b31f803e0bb5409f3bbe399f62c89e5dd2879353ca216b6002da5a2f26019fee8aa24970c1eace1cebb53a565c5e386abbc248202d325a8fba9116df60491a",
             "file": "src/app/modules/shared/components/atoms/loader/loader.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1486,21 +1611,20 @@
                 "./loader.component.html"
             ],
             "viewProviders": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [
+            "inputsClass": [
                 {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 12,
+                    "name": "size",
+                    "defaultValue": "'l'",
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "line": 10,
+                    "type": "UiSize",
+                    "decorators": []
                 }
             ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
@@ -1508,27 +1632,16 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'jrs-loader',\n  templateUrl: './loader.component.html',\n  styleUrls: ['./loader.component.scss']\n})\nexport class LoaderComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '@modules/shared/types/ui.types';\n\n@Component({\n  selector: 'jrs-loader',\n  templateUrl: './loader.component.html',\n  styleUrls: ['./loader.component.scss'],\n})\nexport class LoaderComponent {\n  @Input() size: UiSize = 'l';\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "",
+                    "data": ".loading-animation {\r\n  &.xs {\r\n    width: 25px;\r\n  }\r\n  &.s {\r\n    width: 50px;\r\n  }\r\n  &.m {\r\n    width: 75px;\r\n  }\r\n  &.l {\r\n    width: 100px;\r\n  }\r\n  &.xl {\r\n    width: 125px;\r\n  }\r\n}\r\n",
                     "styleUrl": "./loader.component.scss"
                 }
             ],
             "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 8
-            },
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<p>loader works!</p>\n"
+            "templateData": "<div class=\"w-full\">\n  <img\n    class=\"loading-animation m-auto\"\n    [ngClass]=\"size\"\n    src=\"assets/loading.gif\"\n    alt=\"loading\"\n  />\n</div>\n"
         },
         {
             "name": "LogoComponent",
@@ -1591,7 +1704,7 @@
         },
         {
             "name": "ProjectComponent",
-            "id": "component-ProjectComponent-e5d29b2c2aac00c963532b723d9da5a2383b5f1c9d4b37838c87bbcb4c43744b09111faf38336c986868c5d2f6b6d7414946b2518c8a8ef845f11f3a5d7468d0",
+            "id": "component-ProjectComponent-455f73cff86537e93524f79116050f310a23c8b1fc028f44562c4367751c966962c1267d37be47da2ddce70bee509c3f702b3970e4d7320c456c38b4fa3903d6",
             "file": "src/app/modules/features/project/page/project.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1612,24 +1725,36 @@
             "propertiesClass": [
                 {
                     "name": "projects$",
+                    "defaultValue": "this.store.pipe(select(getProjects))",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Observable<Project[]>",
+                    "type": "",
                     "optional": false,
                     "description": "",
-                    "line": 18
+                    "line": 17
                 },
                 {
                     "name": "projectsLoading$",
+                    "defaultValue": "this.store.pipe(select(getProjectLoadingStatus))",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Observable<boolean>",
+                    "type": "",
                     "optional": false,
                     "description": "",
                     "line": 19
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "loadProjects",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
                 {
                     "name": "ngOnInit",
                     "args": [],
@@ -1648,7 +1773,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { select, Store } from '@ngrx/store';\nimport { Observable } from 'rxjs';\nimport { Project } from 'src/app/modules/shared/interfaces/project.interface';\nimport { ProjectPageActions } from '../state/actions';\nimport { State } from '../state/project.reducer';\nimport {\n  getProjectLoadingStatus,\n  getProjects,\n} from '../state/project.selectors';\n\n@Component({\n  selector: 'jrs-page',\n  templateUrl: './project.component.html',\n  styleUrls: ['./project.component.scss'],\n})\nexport class ProjectComponent implements OnInit {\n  projects$: Observable<Project[]>;\n  projectsLoading$: Observable<boolean>;\n\n  constructor(private store: Store<State>) {}\n\n  ngOnInit(): void {\n    this.store.dispatch(ProjectPageActions.loadProjects());\n\n    this.projects$ = this.store.pipe(select(getProjects));\n\n    this.projectsLoading$ = this.store.pipe(select(getProjectLoadingStatus));\n  }\n}\n",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { select, Store } from '@ngrx/store';\nimport { take } from 'rxjs';\nimport { ProjectPageActions } from './../state/actions/index';\nimport { State } from '../state/project.reducer';\nimport {\n  getProjectLoadingStatus,\n  getProjects,\n} from '../state/project.selectors';\n\n@Component({\n  selector: 'jrs-page',\n  templateUrl: './project.component.html',\n  styleUrls: ['./project.component.scss'],\n})\nexport class ProjectComponent implements OnInit {\n  projects$ = this.store.pipe(select(getProjects));\n\n  projectsLoading$ = this.store.pipe(select(getProjectLoadingStatus));\n\n  constructor(private store: Store<State>) {}\n\n  ngOnInit(): void {\n    this.store.pipe(select(getProjects), take(1)).subscribe({\n      next: (items) => {\n        if (items.length < 1) {\n          this.loadProjects();\n        }\n      },\n    });\n  }\n\n  loadProjects(): void {\n    this.store.dispatch(ProjectPageActions.loadProjects());\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1686,7 +1811,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<ng-container *ngIf=\"projectsLoading$ | async; else display_grid\">\n  Loading\n</ng-container>\n\n<ng-template #display_grid>\n  <jrs-project-grid [projects]=\"projects$ | async\"></jrs-project-grid>\n</ng-template>\n"
+            "templateData": "<ng-container *ngIf=\"projectsLoading$ | async; else display_grid\">\n  <jrs-loader></jrs-loader>\n</ng-container>\n\n<ng-template #display_grid>\n  <jrs-project-grid [projects]=\"projects$ | async\"></jrs-project-grid>\n</ng-template>\n"
         },
         {
             "name": "ProjectGridComponent",
@@ -1759,7 +1884,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<p>project-grid works!</p>\n<div *ngFor=\"let project of projects\">\n  <p>{{ project.projectCodeName }}</p>\n</div>\n"
+            "templateData": "<div *ngFor=\"let project of projects\">\n  <p>{{ project.projectCodeName }}</p>\n</div>\n"
         },
         {
             "name": "TextareaInputComponent",
@@ -2391,13 +2516,13 @@
         },
         {
             "name": "ProjectModule",
-            "id": "module-ProjectModule-6c91b4c24a8258ec89f2c8a58d18872a0ebb35a0807f91a3ddaab15dcad41c9a609a3707b0c415428b1c67099bc1c6b0704cd03e064a6534ad7a371c144b14ca",
+            "id": "module-ProjectModule-75a6eb78af9079c00ab00519e148302bfaefe4836b8ec22b00a9f46c2e55bab6a7e8ff012db05a0004e1bd05e29e434d187215db23960bff30144c572c0de601",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/features/project/project.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectComponent } from './page/project.component';\nimport { SharedModule } from '../../shared/shared.module';\nimport { ProjectRoutingModule } from './project-routing.module';\nimport { StoreModule } from '@ngrx/store';\nimport { ProjectGridComponent } from './components/project-grid/project-grid.component';\nimport { ProjectFeatureKey, projectReducer } from './state/project.reducer';\nimport { EffectsModule } from '@ngrx/effects';\nimport { ProjectEffects } from './state/project.effects';\n\n@NgModule({\n  declarations: [ProjectComponent, ProjectGridComponent],\n  imports: [\n    CommonModule,\n    SharedModule,\n    ProjectRoutingModule,\n    StoreModule.forFeature(ProjectFeatureKey, projectReducer),\n    EffectsModule.forFeature([ProjectEffects]),\n  ],\n})\nexport class ProjectModule {}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ProjectComponent } from './page/project.component';\nimport { SharedModule } from '../../shared/shared.module';\nimport { ProjectRoutingModule } from './project-routing.module';\nimport { StoreModule } from '@ngrx/store';\nimport { ProjectGridComponent } from './components/project-grid/project-grid.component';\nimport { ProjectFeatureKey, projectReducer } from './state/project.reducer';\nimport { EffectsModule } from '@ngrx/effects';\nimport { ProjectEffects } from './state/project.effects';\nimport { RouterModule } from '@angular/router';\n\n@NgModule({\n  declarations: [ProjectComponent, ProjectGridComponent],\n  imports: [\n    CommonModule,\n    SharedModule,\n    RouterModule,\n    ProjectRoutingModule,\n    StoreModule.forFeature(ProjectFeatureKey, projectReducer),\n    EffectsModule.forFeature([ProjectEffects]),\n  ],\n})\nexport class ProjectModule {}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2477,13 +2602,13 @@
         },
         {
             "name": "SharedModule",
-            "id": "module-SharedModule-393404d0aff54949e914cff5aa7c8b3646af04ee7db03390eb0a5a9e867e284aa900d30ea673c3a569de06531b99fc874fa557fa2498b6426f430d279bb1486f",
+            "id": "module-SharedModule-030e39a163a81556f00c02154054f936bc77f2e1be5105d00ac51684c1e4ccd83964b03c2e87212cc817e79ff046d08c2b46347a7ddd0f5297df43937595a61a",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
             "file": "src/app/modules/shared/shared.module.ts",
             "methods": [],
-            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport {\n  FaIconLibrary,\n  FontAwesomeModule,\n} from '@fortawesome/angular-fontawesome';\nimport {\n  faCircleCheck,\n  faCircleExclamation,\n  faFolder,\n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\nimport { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';\nimport { HeaderComponent } from './components/organisms/header/header.component';\nimport { LoaderComponent } from './components/atoms/loader/loader.component';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    LoaderComponent,\n    // Organisms\n    HeaderComponent,\n  ],\n  imports: [CommonModule, FontAwesomeModule, FormsModule, RouterModule],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    LoaderComponent,\n    // Organisms\n    HeaderComponent,\n  ],\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(faCircleCheck, faCircleExclamation, faFolder);\n  }\n}\n",
+            "sourceCode": "import { NgModule } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { ButtonComponent } from './components/atoms/button/button.component';\nimport {\n  FaIconLibrary,\n  FontAwesomeModule,\n} from '@fortawesome/angular-fontawesome';\nimport {\n  faCircleCheck,\n  faCircleExclamation,\n  faFolder,\n} from '@fortawesome/free-solid-svg-icons';\nimport { IconComponent } from './components/atoms/icon/icon.component';\nimport { InputLabelComponent } from './components/atoms/input-label/input-label.component';\nimport { TextInputComponent } from './components/atoms/text-input/text-input.component';\nimport { FormsModule } from '@angular/forms';\nimport { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';\nimport { LinkComponent } from './components/atoms/link/link.component';\nimport { RouterModule } from '@angular/router';\nimport { LogoComponent } from './components/atoms/logo/logo.component';\nimport { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';\nimport { HeaderComponent } from './components/organisms/header/header.component';\nimport { LoaderComponent } from './components/atoms/loader/loader.component';\nimport { GridComponent } from './components/atoms/grid/grid.component';\nimport { AgGridModule } from 'ag-grid-angular';\n\n@NgModule({\n  declarations: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    LoaderComponent,\n    GridComponent,\n    // Organisms\n    HeaderComponent,\n  ],\n  imports: [\n    CommonModule,\n    FontAwesomeModule,\n    FormsModule,\n    RouterModule,\n    AgGridModule,\n  ],\n  exports: [\n    // Atoms\n    ButtonComponent,\n    IconComponent,\n    InputLabelComponent,\n    TextInputComponent,\n    TextareaInputComponent,\n    LinkComponent,\n    LogoComponent,\n    DropdownInputComponent,\n    LoaderComponent,\n    GridComponent,\n    // Organisms\n    HeaderComponent,\n  ],\n})\nexport class SharedModule {\n  constructor(library: FaIconLibrary) {\n    library.addIcons(faCircleCheck, faCircleExclamation, faFolder);\n  }\n}\n",
             "children": [
                 {
                     "type": "providers",
@@ -2497,6 +2622,9 @@
                         },
                         {
                             "name": "DropdownInputComponent"
+                        },
+                        {
+                            "name": "GridComponent"
                         },
                         {
                             "name": "HeaderComponent"
@@ -2536,6 +2664,9 @@
                         },
                         {
                             "name": "DropdownInputComponent"
+                        },
+                        {
+                            "name": "GridComponent"
                         },
                         {
                             "name": "HeaderComponent"
@@ -2665,6 +2796,16 @@
                 "deprecationMessage": "",
                 "type": "",
                 "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.projects\r\n)"
+            },
+            {
+                "name": "Grid",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/grid/grid.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "Template.bind({})"
             },
             {
                 "name": "Header",
@@ -2889,6 +3030,16 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/grid/grid.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<GridComponent>",
+                "defaultValue": "(args: GridComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -2929,21 +3080,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<TextareaInputComponent>",
-                "defaultValue": "(\r\n  args: TextareaInputComponent\r\n) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<TextInputComponent>",
                 "defaultValue": "(args: TextInputComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<TextareaInputComponent>",
+                "defaultValue": "(\r\n  args: TextareaInputComponent\r\n) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3154,6 +3305,28 @@
                     "deprecationMessage": "",
                     "type": "",
                     "defaultValue": "createSelector(\r\n  getProjectFeatureState,\r\n  (state) => state.projects\r\n)"
+                }
+            ],
+            "src/app/modules/shared/components/atoms/grid/grid.stories.ts": [
+                {
+                    "name": "Grid",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/grid/grid.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/grid/grid.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<GridComponent>",
+                    "defaultValue": "(args: GridComponent) => ({\r\n  props: args,\r\n})"
                 }
             ],
             "src/app/modules/shared/components/organisms/header/header.stories.ts": [
@@ -3420,28 +3593,6 @@
                     "defaultValue": "createAction(\n  '[App] Set Page Title',\n  props<{ pageTitle: string }>()\n)"
                 }
             ],
-            "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts": [
-                {
-                    "name": "Template",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story<TextareaInputComponent>",
-                    "defaultValue": "(\r\n  args: TextareaInputComponent\r\n) => ({\r\n  props: args,\r\n})"
-                },
-                {
-                    "name": "TextareaInput",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "Template.bind({})"
-                }
-            ],
             "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts": [
                 {
                     "name": "Template",
@@ -3458,6 +3609,28 @@
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/app/modules/shared/components/atoms/text-input/text-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                }
+            ],
+            "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts": [
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story<TextareaInputComponent>",
+                    "defaultValue": "(\r\n  args: TextareaInputComponent\r\n) => ({\r\n  props: args,\r\n})"
+                },
+                {
+                    "name": "TextareaInput",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/modules/shared/components/atoms/textarea-input/textarea-input.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -3566,7 +3739,7 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/7",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -3593,7 +3766,7 @@
                 "linktype": "component",
                 "name": "ProjectComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/6",
                 "status": "low"
             },
             {
@@ -3792,6 +3965,35 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/modules/shared/components/atoms/grid/grid.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "GridComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/grid/grid.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Grid",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/modules/shared/components/atoms/grid/grid.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/modules/shared/components/atoms/icon/icon.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -3884,7 +4086,7 @@
                 "linktype": "component",
                 "name": "LoaderComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
+                "coverageCount": "0/2",
                 "status": "low"
             },
             {

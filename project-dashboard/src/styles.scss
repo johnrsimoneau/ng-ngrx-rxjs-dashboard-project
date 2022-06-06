@@ -1,10 +1,12 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import 'styles/utilities/color-variables';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import "ag-grid-community/dist/styles/ag-grid.css"; // Core grid CSS, always needed
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "styles/utilities/color-variables";
 
 * {
-  font-family: 'Roboto';
+  font-family: "Roboto";
 }
 
 h1 {
@@ -59,4 +61,3 @@ h6 {
 .xs {
   font-size: smaller !important;
 }
-

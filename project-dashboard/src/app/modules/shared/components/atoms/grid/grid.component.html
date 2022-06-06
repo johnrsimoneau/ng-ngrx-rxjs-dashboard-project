@@ -1,0 +1,14 @@
+<div
+  style="width: 100%"
+  class="grid-wrapper ag-theme-alpine"
+  [ngClass]="height"
+>
+  <ag-grid-angular
+    style="height: 100%"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData]="data"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+  ></ag-grid-angular>
+</div>
