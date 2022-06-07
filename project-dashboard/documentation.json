@@ -582,7 +582,7 @@
         },
         {
             "name": "ProjectService",
-            "id": "injectable-ProjectService-e67bedc5d786b80ff4e276a98ee89a8ea660d62aaf693dc0712ea542b81b4cb8dc512b1798bb4d2660be7480b923d68ad04b99f9cdfebb5b68daace2574fb79d",
+            "id": "injectable-ProjectService-4bd0371aa979d43b3dffbbd07039265eec336b98a393e5fd0a1e8ef09e1142975a71eeecedf73065bcdebf8d3a29a8e898bffe856b5f0b9fc3dd6f3c082956b8",
             "file": "src/app/modules/core/services/project.service.ts",
             "properties": [
                 {
@@ -593,7 +593,7 @@
                     "type": "string",
                     "optional": false,
                     "description": "",
-                    "line": 10,
+                    "line": 11,
                     "modifierKind": [
                         121
                     ]
@@ -606,7 +606,7 @@
                     "optional": false,
                     "returnType": "any",
                     "typeParameters": [],
-                    "line": 14,
+                    "line": 15,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -623,7 +623,7 @@
                     "optional": false,
                     "returnType": "Observable<never>",
                     "typeParameters": [],
-                    "line": 20,
+                    "line": 30,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -643,7 +643,7 @@
             "deprecationMessage": "",
             "description": "",
             "rawdescription": "\n",
-            "sourceCode": "import { HttpClient, HttpErrorResponse } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { catchError, delay, Observable, throwError } from 'rxjs';\nimport { Project } from '../../shared/interfaces/project.interface';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ProjectService {\n  private projectUrl = 'http://localhost:3000/projects';\n\n  constructor(private http: HttpClient) {}\n\n  getProjects() {\n    return this.http\n      .get<Project[]>(this.projectUrl)\n      .pipe(delay(750), catchError(this.handleError));\n  }\n\n  handleError(err: HttpErrorResponse): Observable<never> {\n    let errorMessage: string;\n    if (err.error instanceof ErrorEvent) {\n      errorMessage = `An error occurred: ${err.error.message}`;\n    } else {\n      errorMessage = `Backend returned code ${err.status}: ${err.message}`;\n    }\n    console.error(err);\n    return throwError(() => errorMessage);\n  }\n}\n",
+            "sourceCode": "import { HttpClient, HttpErrorResponse } from '@angular/common/http';\nimport { Injectable } from '@angular/core';\nimport { catchError, delay, map, Observable, throwError } from 'rxjs';\nimport { Project } from '../../shared/interfaces/project.interface';\nimport { DateUtility } from '../utilities/date.util';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class ProjectService {\n  private projectUrl = 'http://localhost:3000/projects';\n\n  constructor(private http: HttpClient) {}\n\n  getProjects() {\n    return this.http.get<Project[]>(this.projectUrl).pipe(\n      delay(750),\n      map((projects) => {\n        projects.forEach((item) => {\n          item.startDate = DateUtility.getDate(item.modifiedDate);\n          item.modifiedDate = DateUtility.getDate(item.modifiedDate);\n          item.projectedEndDate = DateUtility.getDate(item.projectedEndDate);\n        });\n        return projects;\n      }),\n      catchError(this.handleError)\n    );\n  }\n\n  handleError(err: HttpErrorResponse): Observable<never> {\n    let errorMessage: string;\n    if (err.error instanceof ErrorEvent) {\n      errorMessage = `An error occurred: ${err.error.message}`;\n    } else {\n      errorMessage = `Backend returned code ${err.status}: ${err.message}`;\n    }\n    console.error(err);\n    return throwError(() => errorMessage);\n  }\n}\n",
             "constructorObj": {
                 "name": "constructor",
                 "description": "",
@@ -657,7 +657,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 10,
+                "line": 11,
                 "jsdoctags": [
                     {
                         "name": "http",
@@ -675,7 +675,56 @@
     ],
     "guards": [],
     "interceptors": [],
-    "classes": [],
+    "classes": [
+        {
+            "name": "DateUtility",
+            "id": "class-DateUtility-a6335ff8022649e1bd58356c9be0e1de69908eb2cdbccb62d5f6b68e6b51d6aff9c49f3e2cf79bb9200beb9ceb3ef7dbb94272da0a0d535c89b9800467d3d9cd",
+            "file": "src/app/modules/core/utilities/date.util.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "class",
+            "sourceCode": "import * as moment from 'moment';\r\n\r\nexport class DateUtility {\r\n  public static getDate(str: string): string {\r\n    return moment(str).format('M.D.YYYY');\r\n  }\r\n}\r\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getDate",
+                    "args": [
+                        {
+                            "name": "str",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 4,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        124
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "str",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
     "directives": [],
     "components": [
         {
@@ -1066,7 +1115,7 @@
         },
         {
             "name": "GridComponent",
-            "id": "component-GridComponent-257db90cf36c00d1a975496922ce63f2e0d399a0e84733fd054cb9ebbfa608addb06f3b515338247b79d26746643b4f7352729918cbf3d39704fd8694043ff2d",
+            "id": "component-GridComponent-5f3404a10a270da7bb50e53f440dcc468a97ab39f9e2ed935bfb2526cd8823e0ffdd83d81916bd2ae9f8803e5dcd736d2a27b9d90e829824546244d572e5e0d2",
             "file": "src/app/modules/shared/components/atoms/grid/grid.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1095,13 +1144,13 @@
                     "name": "data",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 13,
+                    "line": 18,
                     "type": "any[]",
                     "decorators": []
                 },
                 {
                     "name": "defaultColDef",
-                    "defaultValue": "{ sortable: true, filter: true }",
+                    "defaultValue": "{\n    sortable: true,\n    filter: true,\n    flex: 1,\n    minWidth: 100,\n  }",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 12,
@@ -1113,7 +1162,7 @@
                     "defaultValue": "'m'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 14,
+                    "line": 19,
                     "type": "UiSize",
                     "decorators": []
                 }
@@ -1127,7 +1176,7 @@
                     "type": "GridApi",
                     "optional": false,
                     "description": "",
-                    "line": 16,
+                    "line": 21,
                     "modifierKind": [
                         121
                     ]
@@ -1139,7 +1188,7 @@
                     "type": "ColumnApi",
                     "optional": false,
                     "description": "",
-                    "line": 17,
+                    "line": 22,
                     "modifierKind": [
                         121
                     ]
@@ -1151,7 +1200,7 @@
                     "type": "any[]",
                     "optional": false,
                     "description": "",
-                    "line": 19
+                    "line": 24
                 }
             ],
             "methodsClass": [
@@ -1168,7 +1217,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 21,
+                    "line": 26,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1191,16 +1240,16 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '@modules/shared/types/ui.types';\nimport { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';\n\n@Component({\n  selector: 'jrs-grid',\n  templateUrl: './grid.component.html',\n  styleUrls: ['./grid.component.scss'],\n})\nexport class GridComponent {\n  @Input() columnDefs: ColDef[];\n  @Input() defaultColDef: ColDef = { sortable: true, filter: true };\n  @Input() data: any[];\n  @Input() height: UiSize = 'm';\n\n  private gridApi: GridApi;\n  private gridColumnApi!: ColumnApi;\n\n  rowData: any[];\n\n  onGridReady(params: GridReadyEvent) {\n    this.gridApi = params.api;\n    this.gridColumnApi = params.columnApi;\n    this.gridApi.sizeColumnsToFit();\n    this.rowData = this.data;\n  }\n}\n",
+            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { UiSize } from '@modules/shared/types/ui.types';\nimport { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';\n\n@Component({\n  selector: 'jrs-grid',\n  templateUrl: './grid.component.html',\n  styleUrls: ['./grid.component.scss'],\n})\nexport class GridComponent {\n  @Input() columnDefs: ColDef[];\n  @Input() defaultColDef: ColDef = {\n    sortable: true,\n    filter: true,\n    flex: 1,\n    minWidth: 100,\n  };\n  @Input() data: any[];\n  @Input() height: UiSize = 'm';\n\n  private gridApi: GridApi;\n  private gridColumnApi!: ColumnApi;\n\n  rowData: any[];\n\n  onGridReady(params: GridReadyEvent) {\n    let columnIds: string[] = [];\n    this.columnDefs.forEach((item) => {\n      if (item.field) {\n        columnIds.push(item.field);\n      }\n    });\n\n    this.gridApi = params.api;\n    this.gridColumnApi = params.columnApi;\n    // this.rowData = this.data;\n    // this.gridApi.sizeColumnsToFit();\n    console.log(columnIds);\n    // this.gridColumnApi.autoSizeColumns(columnIds, true);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".grid-wrapper {\r\n  &.s {\r\n    height: 200px;\r\n  }\r\n  &.m {\r\n    height: 400px;\r\n  }\r\n}\r\n",
+                    "data": ".grid-wrapper {\r\n  &.xs {\r\n    height: 150px;\r\n  }\r\n  &.s {\r\n    height: 200px;\r\n  }\r\n  &.m {\r\n    height: 300px;\r\n  }\r\n  &.l {\r\n    height: 400px;\r\n  }\r\n  &.xl {\r\n    height: 500px;\r\n  }\r\n}\r\n",
                     "styleUrl": "./grid.component.scss"
                 }
             ],
             "stylesData": "",
-            "templateData": "<div class=\"grid-wrapper ag-theme-alpine\" [ngClass]=\"height\">\n  <ag-grid-angular\n    style=\"height: 100%\"\n    [columnDefs]=\"columnDefs\"\n    [defaultColDef]=\"defaultColDef\"\n    [rowData]=\"rowData\"\n    [animateRows]=\"true\"\n    (gridReady)=\"onGridReady($event)\"\n  ></ag-grid-angular>\n</div>\n"
+            "templateData": "<div class=\"grid-wrapper ag-theme-material\" [ngClass]=\"height\">\n  <ag-grid-angular\n    class=\"ag-theme-material\"\n    style=\"height: 100%\"\n    [columnDefs]=\"columnDefs\"\n    [defaultColDef]=\"defaultColDef\"\n    [rowData]=\"data\"\n    [animateRows]=\"true\"\n    (gridReady)=\"onGridReady($event)\"\n  ></ag-grid-angular>\n</div>\n"
         },
         {
             "name": "HeaderComponent",
@@ -1815,7 +1864,7 @@
         },
         {
             "name": "ProjectGridComponent",
-            "id": "component-ProjectGridComponent-bdcdd2cec86eaaee9f566c1fad764d02a3f27f3e4a3768b981f985ac74c2014ba3a9bb31d6488c72e954717bfa6524f5fb27c155ba559f41ed9b55eb9926f9ab",
+            "id": "component-ProjectGridComponent-b798f08387753a6f315fd105558f5e5a8177b96b962cca6960acf214af2ebc5875c98c91e95d5ce07992ca6bc019cd8b353e31b2ecde796d61746c0609051ee6",
             "file": "src/app/modules/features/project/components/project-grid/project-grid.component.ts",
             "changeDetection": "ChangeDetectionStrategy.OnPush",
             "encapsulation": [],
@@ -1838,13 +1887,24 @@
                     "defaultValue": "[]",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 16,
+                    "line": 17,
                     "type": "Project[] | null",
                     "decorators": []
                 }
             ],
             "outputsClass": [],
-            "propertiesClass": [],
+            "propertiesClass": [
+                {
+                    "name": "columnDefs",
+                    "defaultValue": "[\n    {\n      field: 'projectCodeName',\n    },\n    {\n      field: 'overallStatus',\n    },\n    {\n      field: 'startDate',\n    },\n    {\n      field: 'projectedEndDate',\n    },\n    {\n      field: 'percentageComplete',\n    },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ColDef[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                }
+            ],
             "methodsClass": [
                 {
                     "name": "ngOnInit",
@@ -1852,7 +1912,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 20,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1864,7 +1924,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  Input,\n  OnInit,\n} from '@angular/core';\nimport { Project } from 'src/app/modules/shared/interfaces/project.interface';\n\n@Component({\n  selector: 'jrs-project-grid',\n  templateUrl: './project-grid.component.html',\n  styleUrls: ['./project-grid.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ProjectGridComponent implements OnInit {\n  @Input() projects: Project[] | null = [];\n\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
+            "sourceCode": "import {\n  ChangeDetectionStrategy,\n  Component,\n  Input,\n  OnInit,\n} from '@angular/core';\nimport { ColDef } from 'ag-grid-community';\nimport { Project } from 'src/app/modules/shared/interfaces/project.interface';\n\n@Component({\n  selector: 'jrs-project-grid',\n  templateUrl: './project-grid.component.html',\n  styleUrls: ['./project-grid.component.scss'],\n  changeDetection: ChangeDetectionStrategy.OnPush,\n})\nexport class ProjectGridComponent implements OnInit {\n  @Input() projects: Project[] | null = [];\n\n  columnDefs: ColDef[] = [\n    {\n      field: 'projectCodeName',\n    },\n    {\n      field: 'overallStatus',\n    },\n    {\n      field: 'startDate',\n    },\n    {\n      field: 'projectedEndDate',\n    },\n    {\n      field: 'percentageComplete',\n    },\n  ];\n\n  constructor() {}\n\n  ngOnInit(): void {}\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -1879,12 +1939,12 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "args": [],
-                "line": 16
+                "line": 35
             },
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<div *ngFor=\"let project of projects\">\n  <p>{{ project.projectCodeName }}</p>\n</div>\n"
+            "templateData": "<ng-container *ngIf=\"projects\">\n  <jrs-grid height=\"xl\" [columnDefs]=\"columnDefs\" [data]=\"projects\"></jrs-grid>\n</ng-container>\n"
         },
         {
             "name": "TextareaInputComponent",
@@ -3000,31 +3060,11 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<ButtonComponent>",
-                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "src/app/modules/shared/components/atoms/dropdown-input/dropdown-input.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<DropdownInputComponent>",
                 "defaultValue": "(\r\n  args: DropdownInputComponent\r\n) => ({\r\n  props: args,\r\n})"
-            },
-            {
-                "name": "Template",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/icon/icon.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story<IconComponent>",
-                "defaultValue": "(args: IconComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3040,11 +3080,21 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts",
+                "file": "src/app/modules/shared/components/atoms/button/button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Story<InputLabelComponent>",
-                "defaultValue": "(args: InputLabelComponent) => ({\r\n  props: args,\r\n})"
+                "type": "Story<ButtonComponent>",
+                "defaultValue": "(args: ButtonComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/icon/icon.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<IconComponent>",
+                "defaultValue": "(args: IconComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3055,6 +3105,16 @@
                 "deprecationMessage": "",
                 "type": "Story<LinkComponent>",
                 "defaultValue": "(args: LinkComponent) => ({\r\n  props: args,\r\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/modules/shared/components/atoms/input-label/input-label.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story<InputLabelComponent>",
+                "defaultValue": "(args: InputLabelComponent) => ({\r\n  props: args,\r\n})"
             },
             {
                 "name": "Template",
@@ -3752,12 +3812,21 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/modules/core/utilities/date.util.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "DateUtility",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/modules/features/project/components/project-grid/project-grid.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ProjectGridComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/4",
+                "coverageCount": "0/5",
                 "status": "low"
             },
             {
