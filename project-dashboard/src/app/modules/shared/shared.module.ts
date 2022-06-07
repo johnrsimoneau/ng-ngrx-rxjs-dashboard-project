@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { ButtonComponent } from './components/atoms/button/button.component';
 import {
   FaIconLibrary,
@@ -13,16 +15,15 @@ import {
 import { IconComponent } from './components/atoms/icon/icon.component';
 import { InputLabelComponent } from './components/atoms/input-label/input-label.component';
 import { TextInputComponent } from './components/atoms/text-input/text-input.component';
-import { FormsModule } from '@angular/forms';
 import { TextareaInputComponent } from './components/atoms/textarea-input/textarea-input.component';
 import { LinkComponent } from './components/atoms/link/link.component';
-import { RouterModule } from '@angular/router';
 import { LogoComponent } from './components/atoms/logo/logo.component';
 import { DropdownInputComponent } from './components/atoms/dropdown-input/dropdown-input.component';
 import { HeaderComponent } from './components/organisms/header/header.component';
 import { LoaderComponent } from './components/atoms/loader/loader.component';
 import { GridComponent } from './components/atoms/grid/grid.component';
 import { AgGridModule } from 'ag-grid-angular';
+import { ProjectStatusComponent } from './components/molecules/project-status/project-status.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,8 @@ import { AgGridModule } from 'ag-grid-angular';
     DropdownInputComponent,
     LoaderComponent,
     GridComponent,
+    // Molecules
+    ProjectStatusComponent,
     // Organisms
     HeaderComponent,
   ],
@@ -59,6 +62,8 @@ import { AgGridModule } from 'ag-grid-angular';
     DropdownInputComponent,
     LoaderComponent,
     GridComponent,
+    // Molecules
+    ProjectStatusComponent,
     // Organisms
     HeaderComponent,
   ],
