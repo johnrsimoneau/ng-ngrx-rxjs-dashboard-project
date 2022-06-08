@@ -15,13 +15,9 @@ export class ProjectEffects {
     return this.actions$.pipe(
       ofType(ProjectPageActions.loadProjects),
       exhaustMap(() =>
-        this.projectService
-          .getProjects()
-          .pipe(
-            map((projects) =>
-              ProjectApiActions.loadProjectsSuccess({ projects })
-            )
-          )
+        this.projectService.projectsWithCompanies$.pipe(
+          map((projects) => ProjectApiActions.loadProjectsSuccess({ projects }))
+        )
       )
     );
   });

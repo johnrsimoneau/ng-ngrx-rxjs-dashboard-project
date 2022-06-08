@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { ColDef } from 'ag-grid-community';
 import { Project } from 'src/app/modules/shared/interfaces/project.interface';
 
@@ -13,7 +8,7 @@ import { Project } from 'src/app/modules/shared/interfaces/project.interface';
   styleUrls: ['./project-grid.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectGridComponent implements OnInit {
+export class ProjectGridComponent {
   @Input() projects: Project[] | null = [];
 
   columnDefs: ColDef[] = [
@@ -33,8 +28,4 @@ export class ProjectGridComponent implements OnInit {
       field: 'percentageComplete',
     },
   ];
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

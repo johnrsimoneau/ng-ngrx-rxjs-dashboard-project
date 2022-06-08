@@ -1,8 +1,17 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, map, Observable, throwError } from 'rxjs';
-import { Project } from '../../shared/interfaces/project.interface';
+import { Project } from '@modules/shared/interfaces/project.interface';
+import {
+  catchError,
+  combineLatest,
+  delay,
+  map,
+  Observable,
+  throwError,
+} from 'rxjs';
 import { DateUtility } from '../utilities/date.util';
+import { HttpUtility } from '../utilities/http.util';
+import { CompanyService } from './company.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,31 +19,36 @@ import { DateUtility } from '../utilities/date.util';
 export class ProjectService {
   private projectUrl = 'http://localhost:3000/projects';
 
-  constructor(private http: HttpClient) {}
+  projects$ = this.http.get<Project[]>(this.projectUrl).pipe(
+    delay(750),
+    map((projects) => {
+      projects.forEach((item) => {
+        item.startDate = DateUtility.getDate(item.modifiedDate);
+        item.modifiedDate = DateUtility.getDate(item.modifiedDate);
+        item.projectedEndDate = DateUtility.getDate(item.projectedEndDate);
+      });
+      return projects;
+    }),
+    catchError(HttpUtility.handleError)
+  );
 
-  getProjects() {
-    return this.http.get<Project[]>(this.projectUrl).pipe(
-      delay(750),
-      map((projects) => {
-        projects.forEach((item) => {
-          item.startDate = DateUtility.getDate(item.modifiedDate);
-          item.modifiedDate = DateUtility.getDate(item.modifiedDate);
-          item.projectedEndDate = DateUtility.getDate(item.projectedEndDate);
-        });
-        return projects;
-      }),
-      catchError(this.handleError)
-    );
-  }
+  projectsWithCompanies$ = combineLatest([
+    this.projects$,
+    this.companyService.companies$,
+  ]).pipe(
+    map(([projects, companies]) =>
+      projects.map(
+        (project) =>
+          ({
+            ...project,
+            companyDetail: companies.find((c) => project.companyId === c.id),
+          } as Project)
+      )
+    )
+  );
 
-  handleError(err: HttpErrorResponse): Observable<never> {
-    let errorMessage: string;
-    if (err.error instanceof ErrorEvent) {
-      errorMessage = `An error occurred: ${err.error.message}`;
-    } else {
-      errorMessage = `Backend returned code ${err.status}: ${err.message}`;
-    }
-    console.error(err);
-    return throwError(() => errorMessage);
-  }
+  constructor(
+    private http: HttpClient,
+    private companyService: CompanyService
+  ) {}
 }

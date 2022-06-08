@@ -33,9 +33,5 @@ export class GridComponent {
 
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    // this.rowData = this.data;
-    // this.gridApi.sizeColumnsToFit();
-    console.log(columnIds);
-    // this.gridColumnApi.autoSizeColumns(columnIds, true);
   }
 }

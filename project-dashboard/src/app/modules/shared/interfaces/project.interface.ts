@@ -1,3 +1,5 @@
+import { Company } from './company.interface';
+
 export interface Project {
   id: string;
   projectCodeName: string;
@@ -7,4 +9,5 @@ export interface Project {
   percentageComplete: string;
   projectedEndDate: string;
   companyId: string;
+  companyDetail?: Company;
 }
