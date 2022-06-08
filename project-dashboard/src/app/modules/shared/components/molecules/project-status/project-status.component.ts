@@ -11,6 +11,8 @@ export class ProjectStatusComponent implements OnInit {
 
   @Input() projectCount: number;
 
+  @Input() title: string;
+
   constructor() {}
 
   ngOnInit(): void {}

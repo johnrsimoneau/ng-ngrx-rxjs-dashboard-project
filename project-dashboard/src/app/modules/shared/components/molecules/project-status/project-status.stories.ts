@@ -11,18 +11,10 @@ export default {
     }),
   ],
   argTypes: {
-    // label: {
-    //   control: { type: 'text' },
-    // },
-    // type: {
-    //   options: ['primary', 'secondary'],
-    //   control: { type: 'select' },
-    // },
     status: {
       options: ['none', 'G', 'Y', 'R'],
       control: { type: 'select' },
     },
-    // handleButtonClickEvent: { action: 'clicked ' },
   },
 } as Meta;
 
@@ -36,4 +28,5 @@ export const ProjectStatus = Template.bind({});
 ProjectStatus.args = {
   status: 'none',
   projectCount: 107,
+  title: 'All Projects',
 };

@@ -24,6 +24,7 @@ import { LoaderComponent } from './components/atoms/loader/loader.component';
 import { GridComponent } from './components/atoms/grid/grid.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { ProjectStatusComponent } from './components/molecules/project-status/project-status.component';
+import { ProjectStatusGroupComponent } from './components/organisms/project-status-group/project-status-group.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ProjectStatusComponent } from './components/molecules/project-status/pr
     ProjectStatusComponent,
     // Organisms
     HeaderComponent,
+    ProjectStatusGroupComponent,
   ],
   imports: [
     CommonModule,
@@ -66,6 +68,7 @@ import { ProjectStatusComponent } from './components/molecules/project-status/pr
     ProjectStatusComponent,
     // Organisms
     HeaderComponent,
+    ProjectStatusGroupComponent,
   ],
 })
 export class SharedModule {

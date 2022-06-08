@@ -1,0 +1,31 @@
+<ng-container *ngIf="projects">
+  <div class="flex space-x-1 w-full">
+    <div class="w-1/4">
+      <jrs-project-status
+        [projectCount]="projects.length"
+        [title]="'Projects'"
+      ></jrs-project-status>
+    </div>
+    <div class="w-1/4">
+      <jrs-project-status
+        [projectCount]="greenCount"
+        [status]="'G'"
+        [title]="'On Track'"
+      ></jrs-project-status>
+    </div>
+    <div class="w-1/4">
+      <jrs-project-status
+        [projectCount]="yellowCount"
+        [status]="'Y'"
+        [title]="'At Risk'"
+      ></jrs-project-status>
+    </div>
+    <div class="w-1/4">
+      <jrs-project-status
+        [projectCount]="redCount"
+        [status]="'R'"
+        [title]="'Overdue'"
+      ></jrs-project-status>
+    </div>
+  </div>
+</ng-container>
