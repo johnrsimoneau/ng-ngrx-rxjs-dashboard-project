@@ -1,0 +1,21 @@
+::ng-deep {
+  .header-status {
+    opacity: 0;
+    padding: 0 !important;
+  }
+  .status-green {
+    color: var(--success);
+    background-color: var(--success);
+    opacity: 0.85;
+  }
+  .status-yellow {
+    color: var(--warning);
+    background-color: var(--warning);
+    opacity: 0.85;
+  }
+  .status-red {
+    color: var(--error);
+    background-color: var(--error);
+    opacity: 0.85;
+  }
+}

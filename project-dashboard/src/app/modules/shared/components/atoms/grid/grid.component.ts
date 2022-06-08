@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UiSize } from '@modules/shared/types/ui.types';
 import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
 
@@ -7,31 +7,32 @@ import { ColDef, ColumnApi, GridApi, GridReadyEvent } from 'ag-grid-community';
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
 })
-export class GridComponent {
+export class GridComponent implements OnInit {
   @Input() columnDefs: ColDef[];
   @Input() defaultColDef: ColDef = {
     sortable: true,
-    filter: true,
-    flex: 1,
-    minWidth: 100,
   };
   @Input() data: any[];
   @Input() height: UiSize = 'm';
 
-  private gridApi: GridApi;
+  gridId = Math.floor(Math.random() * 100000000);
+
+  private gridApi!: GridApi;
   private gridColumnApi!: ColumnApi;
 
   rowData: any[];
 
+  ngOnInit(): void {}
+
   onGridReady(params: GridReadyEvent) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+
     let columnIds: string[] = [];
     this.columnDefs.forEach((item) => {
       if (item.field) {
         columnIds.push(item.field);
       }
     });
-
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
   }
 }

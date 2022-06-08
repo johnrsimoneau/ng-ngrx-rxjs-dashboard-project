@@ -19,18 +19,9 @@ import { CompanyService } from './company.service';
 export class ProjectService {
   private projectUrl = 'http://localhost:3000/projects';
 
-  projects$ = this.http.get<Project[]>(this.projectUrl).pipe(
-    delay(750),
-    map((projects) => {
-      projects.forEach((item) => {
-        item.startDate = DateUtility.getDate(item.modifiedDate);
-        item.modifiedDate = DateUtility.getDate(item.modifiedDate);
-        item.projectedEndDate = DateUtility.getDate(item.projectedEndDate);
-      });
-      return projects;
-    }),
-    catchError(HttpUtility.handleError)
-  );
+  projects$ = this.http
+    .get<Project[]>(this.projectUrl)
+    .pipe(delay(750), catchError(HttpUtility.handleError));
 
   projectsWithCompanies$ = combineLatest([
     this.projects$,

@@ -1,6 +1,15 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ColDef } from 'ag-grid-community';
+import { DateUtility } from '@modules/core/utilities/date.util';
+import { ColDef, ValueFormatterParams } from 'ag-grid-community';
 import { Project } from 'src/app/modules/shared/interfaces/project.interface';
+
+function dateFormatter(params: ValueFormatterParams) {
+  return DateUtility.getDate(params.value);
+}
+
+function percentFormatter(params: ValueFormatterParams) {
+  return `${params.value}%`;
+}
 
 @Component({
   selector: 'jrs-project-grid',
@@ -13,22 +22,40 @@ export class ProjectGridComponent {
 
   columnDefs: ColDef[] = [
     {
-      field: 'projectCodeName',
-    },
-    {
+      headerName: 'S',
       field: 'overallStatus',
+      cellClassRules: {
+        'status-green': 'x === "G"',
+        'status-yellow': 'x === "Y"',
+        'status-red': 'x === "R"',
+      },
+      width: 60,
+      headerClass: 'header-status',
     },
     {
-      field: 'startDate',
+      headerName: 'Project',
+      field: 'projectCodeName',
+      flex: 2,
     },
     {
-      field: 'projectedEndDate',
-    },
-    {
-      field: 'percentageComplete',
-    },
-    {
+      headerName: 'Company',
       field: 'companyName',
+      flex: 2,
+    },
+    {
+      headerName: '%',
+      field: 'percentageComplete',
+      valueFormatter: percentFormatter,
+    },
+    {
+      headerName: 'Start',
+      field: 'startDate',
+      valueFormatter: dateFormatter,
+    },
+    {
+      headerName: 'End',
+      field: 'projectedEndDate',
+      valueFormatter: dateFormatter,
     },
   ];
 }
