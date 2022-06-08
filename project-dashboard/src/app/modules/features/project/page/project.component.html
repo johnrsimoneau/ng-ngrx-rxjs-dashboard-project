@@ -4,11 +4,12 @@
 
 <ng-template #display_grid>
   <div class="container mx-auto">
-    <div class="col-span-12">
-      <h1>All Projects</h1>
+    <div class="mt-5">
       <jrs-project-status-group
         [projects]="projects$ | async"
       ></jrs-project-status-group>
+      <h1>All Projects</h1>
+      <hr />
       <jrs-project-grid [projects]="projects$ | async"></jrs-project-grid>
     </div>
   </div>

@@ -9,5 +9,5 @@ export interface Project {
   percentageComplete: string;
   projectedEndDate: string;
   companyId: string;
-  companyDetail?: Company;
+  companyName?: string;
 }

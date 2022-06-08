@@ -27,5 +27,8 @@ export class ProjectGridComponent {
     {
       field: 'percentageComplete',
     },
+    {
+      field: 'companyName',
+    },
   ];
 }

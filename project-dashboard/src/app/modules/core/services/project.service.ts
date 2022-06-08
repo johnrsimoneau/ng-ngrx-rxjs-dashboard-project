@@ -41,7 +41,8 @@ export class ProjectService {
         (project) =>
           ({
             ...project,
-            companyDetail: companies.find((c) => project.companyId === c.id),
+            companyName: companies.find((c) => project.companyId === c.id)
+              ?.companyName,
           } as Project)
       )
     )
