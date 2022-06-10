@@ -22,6 +22,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {
+    // NOT NEEDED, BUT LEAVING AS AN EXAMPLE
     this._destroySubject$.next();
     this._destroySubject$.complete();
   }
