@@ -1,3 +1,4 @@
+import { Status } from '@modules/shared/types/status.types';
 import { createReducer, on } from '@ngrx/store';
 import { Project } from 'src/app/modules/shared/interfaces/project.interface';
 import * as AppState from 'src/app/state/app.state';
@@ -11,14 +12,18 @@ export interface State extends AppState.State {
 
 export interface ProjectState {
   projects: Project[];
+  filteredProjects: Project[];
   isLoading: boolean;
   error: string;
+  selectedSortByStatus: Status;
 }
 
 const initialState: ProjectState = {
   projects: [],
+  filteredProjects: [],
   isLoading: true,
   error: '',
+  selectedSortByStatus: 'none',
 };
 
 export const projectReducer = createReducer(
@@ -27,6 +32,7 @@ export const projectReducer = createReducer(
     return {
       ...state,
       projects: action.projects,
+      filteredProjects: action.projects,
       error: '',
       isLoading: false,
     };
@@ -37,6 +43,21 @@ export const projectReducer = createReducer(
       projects: [],
       isLoading: false,
       error: action.error,
+    };
+  }),
+  on(ProjectPageActions.projectStatusClick, (state, action): ProjectState => {
+    let filteredProjects: Project[];
+    if (action.status === 'none') {
+      filteredProjects = [...state.projects];
+    } else {
+      filteredProjects = [...state.projects].filter(
+        (project) => project.overallStatus === action.status
+      );
+    }
+    return {
+      ...state,
+      selectedSortByStatus: action.status,
+      filteredProjects: filteredProjects,
     };
   })
 );

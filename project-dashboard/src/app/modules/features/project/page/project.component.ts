@@ -1,36 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
-import { take } from 'rxjs';
-import { ProjectPageActions } from './../state/actions/index';
-import { State } from '../state/project.reducer';
-import {
-  getProjectLoadingStatus,
-  getProjects,
-} from '../state/project.selectors';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Status } from '@modules/shared/types/status.types';
+import { ProjectFacade } from '@modules/features/project/state/project.facade';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'jrs-page',
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.scss'],
 })
-export class ProjectComponent implements OnInit {
-  projects$ = this.store.pipe(select(getProjects));
+export class ProjectComponent implements OnInit, OnDestroy {
+  private _destroySubject$: Subject<void> = new Subject();
 
-  projectsLoading$ = this.store.pipe(select(getProjectLoadingStatus));
+  projects$ = this.projectFacade.projects$;
 
-  constructor(private store: Store<State>) {}
+  filteredProjects$ = this.projectFacade.filteredProjects$;
 
-  ngOnInit(): void {
-    this.store.pipe(select(getProjects), take(1)).subscribe({
-      next: (items) => {
-        if (items.length < 1) {
-          this.loadProjects();
-        }
-      },
-    });
+  projectsLoading$ = this.projectFacade.projectsLoading$;
+
+  constructor(private projectFacade: ProjectFacade) {}
+
+  ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this._destroySubject$.next();
+    this._destroySubject$.complete();
   }
 
-  loadProjects(): void {
-    this.store.dispatch(ProjectPageActions.loadProjects());
+  handleSelectedStatus(status: Status) {
+    // TODO - handle dispatching actio
+    this.projectFacade.statusSelect(status);
   }
 }

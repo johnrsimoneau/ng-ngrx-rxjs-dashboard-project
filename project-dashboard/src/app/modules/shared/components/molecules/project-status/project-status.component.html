@@ -1,4 +1,8 @@
-<div class="px-2 py-8 rounded w-full" [ngClass]="status">
+<div
+  class="px-2 py-8 rounded w-full hover:cursor-pointer"
+  [ngClass]="status"
+  (click)="statusSelected.emit(status)"
+>
   <div class="mx-auto flex justify-center items-center">
     <div class="icon-container pr-1 mr-2">
       <h2 class="text-white text-5xl m-0">{{ projectCount }}</h2>

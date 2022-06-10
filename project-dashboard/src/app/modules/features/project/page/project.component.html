@@ -7,10 +7,13 @@
     <div class="mt-5">
       <jrs-project-status-group
         [projects]="projects$ | async"
+        (selectedStatus)="handleSelectedStatus($event)"
       ></jrs-project-status-group>
       <h1>All Projects</h1>
       <hr />
-      <jrs-project-grid [projects]="projects$ | async"></jrs-project-grid>
+      <jrs-project-grid
+        [projects]="filteredProjects$ | async"
+      ></jrs-project-grid>
     </div>
   </div>
 </ng-template>

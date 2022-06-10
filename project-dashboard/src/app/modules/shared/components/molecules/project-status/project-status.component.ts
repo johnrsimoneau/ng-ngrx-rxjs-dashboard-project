@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Status } from '@modules/shared/types/status.types';
 
 @Component({
@@ -12,6 +12,8 @@ export class ProjectStatusComponent implements OnInit {
   @Input() projectCount: number;
 
   @Input() title: string;
+
+  @Output() statusSelected: EventEmitter<Status> = new EventEmitter();
 
   constructor() {}
 

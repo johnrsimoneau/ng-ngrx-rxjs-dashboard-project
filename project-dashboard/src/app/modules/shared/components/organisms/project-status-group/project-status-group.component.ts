@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Project } from '@modules/shared/interfaces/project.interface';
+import { Status } from '@modules/shared/types/status.types';
 
 @Component({
   selector: 'jrs-project-status-group',
@@ -8,6 +9,8 @@ import { Project } from '@modules/shared/interfaces/project.interface';
 })
 export class ProjectStatusGroupComponent implements OnInit {
   @Input() projects: Project[] | null = [];
+
+  @Output() selectedStatus: EventEmitter<Status> = new EventEmitter();
 
   greenCount: number = 0;
   yellowCount: number = 0;
@@ -31,5 +34,9 @@ export class ProjectStatusGroupComponent implements OnInit {
     this.redCount = this.projects?.filter(
       (item) => item.overallStatus === 'R'
     ).length;
+  }
+
+  handleSelectedStatus(status: Status) {
+    this.selectedStatus.emit(status);
   }
 }

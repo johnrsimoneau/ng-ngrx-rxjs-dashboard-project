@@ -8,6 +8,11 @@ export const getProjects = createSelector(
   (state) => state.projects
 );
 
+export const getFilteredProjects = createSelector(
+  getProjectFeatureState,
+  (state) => state.filteredProjects
+);
+
 export const getProjectLoadingStatus = createSelector(
   getProjectFeatureState,
   (state) => state.isLoading
@@ -16,4 +21,9 @@ export const getProjectLoadingStatus = createSelector(
 export const getProjectLoadingErrorMsg = createSelector(
   getProjectFeatureState,
   (state) => state.error
+);
+
+export const getSelectedProjectStatus = createSelector(
+  getProjectFeatureState,
+  (state) => state.selectedSortByStatus
 );

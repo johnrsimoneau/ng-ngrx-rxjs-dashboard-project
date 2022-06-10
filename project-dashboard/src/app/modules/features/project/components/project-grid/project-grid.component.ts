@@ -46,6 +46,7 @@ export class ProjectGridComponent {
       headerName: '%',
       field: 'percentageComplete',
       valueFormatter: percentFormatter,
+      width: 100,
     },
     {
       headerName: 'Start',
